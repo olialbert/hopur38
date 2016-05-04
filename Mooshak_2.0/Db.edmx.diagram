@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="633afa3b61c24d6b99ccfda4146cc695" Name="Diagram1">
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.Assignments" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.AssignmentToPArtAssignment" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.Courses" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.PartAssignment" Width="1.5" PointX="5.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.PartAssignments" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.Roles" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.SentInAssignments" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.Table" Width="1.5" PointX="7.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.Users" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLN2_2016_H38Model.UsersToCourses" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_AssignmentToPartAssignment_Assignments" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_SentInAssignments_Assignments" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_AssignmentToPartAssignment_PartAssignemnts" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_UsersToCourses_ToCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_SentInAssignments_PartAssignments" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_Users_ToRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_SentInAssignments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="VLN2_2016_H38Model.FK_UsersToCourses_ToUsers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
