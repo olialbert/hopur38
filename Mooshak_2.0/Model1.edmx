@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VLN2_2016_H38Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserRolesId" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserUserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserPassWord" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserSsn" Type="int" Mode="In" />
+          <Parameter Name="UserEmail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddUsersToCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCourseByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCoursesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUserByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerchName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UppdateCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UppdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="varchar" Mode="In" />
+          <Parameter Name="UserRolesId" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserUserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserPassWord" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserSsn" Type="int" Mode="In" />
+          <Parameter Name="UserEmail" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="VLN2_2016_H38Model1StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VLN2_2016_H38Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VLN2_2016_H38Entities2" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="AddCourse">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddUser">
+            <Parameter Name="UserRolesId" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="UserUserName" Mode="In" Type="String" />
+            <Parameter Name="UserPassWord" Mode="In" Type="String" />
+            <Parameter Name="UserSsn" Mode="In" Type="Int32" />
+            <Parameter Name="UserEmail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddUsersToCourses">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCourse">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteStudent">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteTeacher">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCourseByName" ReturnType="Collection(String)">
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCourses" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetCoursesByUser" ReturnType="Collection(String)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoles" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetStudents" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetTeachers" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetUserByName" ReturnType="Collection(VLN2_2016_H38Model1.GetUserByName_Result)">
+            <Parameter Name="SerchName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UppdateCourse">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UppdateUser">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+            <Parameter Name="UserRolesId" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="UserUserName" Mode="In" Type="String" />
+            <Parameter Name="UserPassWord" Mode="In" Type="String" />
+            <Parameter Name="UserSsn" Mode="In" Type="Int32" />
+            <Parameter Name="UserEmail" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetUserByName_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassWord" Nullable="false" />
+          <Property Type="String" Name="Ssn" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="String" Name="Roles" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VLN2_2016_H38Model1StoreContainer" CdmEntityContainer="VLN2_2016_H38Entities2" >
+          <FunctionImportMapping FunctionImportName="AddCourse" FunctionName="VLN2_2016_H38Model1.Store.AddCourse" />
+          <FunctionImportMapping FunctionImportName="AddUser" FunctionName="VLN2_2016_H38Model1.Store.AddUser" />
+          <FunctionImportMapping FunctionImportName="AddUsersToCourses" FunctionName="VLN2_2016_H38Model1.Store.AddUsersToCourses" />
+          <FunctionImportMapping FunctionImportName="DeleteCourse" FunctionName="VLN2_2016_H38Model1.Store.DeleteCourse" />
+          <FunctionImportMapping FunctionImportName="DeleteStudent" FunctionName="VLN2_2016_H38Model1.Store.DeleteStudent" />
+          <FunctionImportMapping FunctionImportName="DeleteTeacher" FunctionName="VLN2_2016_H38Model1.Store.DeleteTeacher" />
+          <FunctionImportMapping FunctionImportName="GetCourseByName" FunctionName="VLN2_2016_H38Model1.Store.GetCourseByName" />
+          <FunctionImportMapping FunctionImportName="GetCourses" FunctionName="VLN2_2016_H38Model1.Store.GetCourses" />
+          <FunctionImportMapping FunctionImportName="GetCoursesByUser" FunctionName="VLN2_2016_H38Model1.Store.GetCoursesByUser" />
+          <FunctionImportMapping FunctionImportName="GetRoles" FunctionName="VLN2_2016_H38Model1.Store.GetRoles" />
+          <FunctionImportMapping FunctionImportName="GetStudents" FunctionName="VLN2_2016_H38Model1.Store.GetStudents" />
+          <FunctionImportMapping FunctionImportName="GetTeachers" FunctionName="VLN2_2016_H38Model1.Store.GetTeachers" />
+          <FunctionImportMapping FunctionImportName="GetUserByName" FunctionName="VLN2_2016_H38Model1.Store.GetUserByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model1.GetUserByName_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UppdateCourse" FunctionName="VLN2_2016_H38Model1.Store.UppdateCourse" />
+          <FunctionImportMapping FunctionImportName="UppdateUser" FunctionName="VLN2_2016_H38Model1.Store.UppdateUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

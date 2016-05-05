@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Mooshak_2._0.Models;
+using System.Data.Entity;
     
 namespace Mooshak_2._0.Services
 {
     public class connectTables
     {
-        private ApplicationDbContext _Db;
+        private VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
 
         public connectTables()
         {
-            _Db = new ApplicationDbContext();
+            //_Db = new ApplicationDbContext();
+        }
+
+        public List<String> GetCourses()
+        {
+            
+            var course = db.GetCourses();
+            return course.ToList();
         }
     }
 }

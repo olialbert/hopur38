@@ -29,7 +29,7 @@ namespace Mooshak_2._0.Models
         public DbSet<SentInAssignments> SentInAssignments {get; set;}
         public DbSet<Users> DBUsers {get; set;}
         public DbSet<UsersToCourses> UsersToCourses {get; set;}
-
+        
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
