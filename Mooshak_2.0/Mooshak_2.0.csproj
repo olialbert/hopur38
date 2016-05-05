@@ -243,6 +243,7 @@
     <Compile Include="SentInAssignments.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\connectTables.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Table.cs">
       <DependentUpon>Db.tt</DependentUpon>

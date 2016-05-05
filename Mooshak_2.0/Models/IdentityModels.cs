@@ -20,6 +20,17 @@ namespace Mooshak_2._0.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<Assignments> Assignments {get; set;}
+        public DbSet<AssignmentToPArtAssignment> AssignmentToPArtAssignment {get; set;}
+        public DbSet<Courses> Courses {get; set;}
+        public DbSet<PartAssignments> PartAssignments {get; set;}
+        public DbSet<Roles> DBRoles {get; set;}
+        public DbSet<SentInAssignments> SentInAssignments {get; set;}
+        public DbSet<Users> DBUsers {get; set;}
+        public DbSet<UsersToCourses> UsersToCourses {get; set;}
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
