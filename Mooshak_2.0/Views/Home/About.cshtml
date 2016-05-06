@@ -1,7 +1,109 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model List<string>
 
-<p>Use this area to provide additional information.</p>
+<style>
+    div#User {
+        background-color: blue;
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+    }
+
+    .leftSide {
+        float: left;
+        width: 20%;
+    }
+
+    div#sidebar ul {
+        text-decoration: none;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        background-color: #E6E6E6;
+        border-radius: 6px;
+    }
+
+    div#sidebar li {
+        padding: 10px;
+    }
+
+        div#sidebar li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        div#sidebar li:hover {
+            background-color: #CCCCCC;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        div#sidebar li#sidebar-title {
+            background-color: #808080;
+            border-radius: 6px;
+        }
+
+            div#sidebar li#sidebar-title a {
+                font-weight: bold;
+                color: white;
+            }
+
+    .main {
+        float: right;
+        width: 80%;
+        height: 800px;
+    }
+
+    div.main table.course {
+        border: 1px solid black;
+        width: 100%;
+    }
+</style>
+
+<div class="leftSide">
+    <div id="User">
+        <img />
+        <lable>Username</lable><br />
+        <label>Student</label>
+    </div>
+    <div id="lables"></div>
+
+    <div id="sidebar">
+        <ul>
+            <li id="sidebar-title"><a>Courses</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 1</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main">
+    <table class="course">
+        <caption>Gagnaskipan</caption>
+        <thead>
+            <tr>
+                <td>Assignment</td>
+                <td>Due Date</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => element)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<input type="button" value="Users" onclick="location.href='@Url.Action("Users", "Home")'" />

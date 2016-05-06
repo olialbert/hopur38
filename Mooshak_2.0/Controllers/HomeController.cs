@@ -12,9 +12,7 @@ namespace Mooshak_2._0.Controllers
         connectTables Tables = new connectTables();
         public ActionResult Index()
         {
-
-            var Courses = Tables.GetCourses();
-            return View(Courses);
+            return View();
         }
 
         public ActionResult Users()
@@ -26,9 +24,8 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-            
-            return View();
+            var Courses = Tables.GetCourses();
+            return View(Courses);
         }
 
         public ActionResult Contact()
