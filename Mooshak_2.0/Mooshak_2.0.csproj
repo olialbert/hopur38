@@ -291,6 +291,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DefaultWithTable.css" />
     <Content Include="Db.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Db.edmx</DependentUpon>
@@ -399,6 +400,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

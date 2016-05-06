@@ -22,6 +22,12 @@ namespace Mooshak_2._0.Controllers
             return View(Courses);
         }
 
+        public ActionResult Admin()
+        {
+            var Courses = Tables.GetCourses();
+            return View(Courses);
+        }
+
         public ActionResult About()
         {
             var Courses = Tables.GetCourses();

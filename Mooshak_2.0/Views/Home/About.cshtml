@@ -1,7 +1,7 @@
 ﻿@model List<string>
 
 <style>
-    div#User {
+  /*  div#User {
         background-color: blue;
         width: 50px;
         height: 50px;
@@ -31,7 +31,7 @@
         color: black;
     }
 
-    div#sidebar li:hover {
+    div#sidebar li:hover, div#sidebar li:visited  {
         background-color: #CCCCCC;
         font-weight: bold;
         border-radius: 6px;
@@ -47,6 +47,10 @@
         color: white;
     }
 
+    div.above-main{
+        height: 70px;
+    }
+
     .main {
         float: right;
         width: 80%;
@@ -54,7 +58,7 @@
     }
 
     table.course {
-        margin: 70px 10px;
+        margin: 0px 10px;
         border-bottom: 1px solid black;
         width: 100%;
     }
@@ -80,14 +84,18 @@
 
     table.course td {
         padding-left: 10px;
-    }
+    }*/
 </style>
 
 <div class="leftSide">
     <div id="User">
-        <img />
-        <lable>Username</lable><br />
-        <label>Student</label>
+        <div class="image">
+            <img href="" />
+        </div>
+        <div class="lables">
+            <label>Username</label><br />
+            <label>Student</label>
+        </div>
     </div>
     <div id="lables"></div>
 
@@ -100,6 +108,10 @@
             }
         </ul>
     </div>
+</div>
+
+<div class="above-main">
+
 </div>
 
 <div class="main">
