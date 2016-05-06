@@ -29,5 +29,19 @@ namespace Mooshak_2._0.Services
             var Student = db.GetStudents();
             return Student.ToList();
         }
+
+        public int AddCourse(string name)
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\\Users\\petur\\Desktop\\testing\test.txt"))
+            {
+                file.WriteLine("connectTable");
+                file.WriteLine(name);
+            }
+
+            db.AddCourse(name);
+
+            return 0;
+        }
     }
 }

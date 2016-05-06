@@ -47,5 +47,18 @@ namespace Mooshak_2._0.Controllers
 
             return View();
         }
+
+        public ActionResult AddCourse()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AddCourse(string Name)
+        {
+            Tables.AddCourse(Name);
+            return RedirectToAction("Index");
+        }
     }
 }
