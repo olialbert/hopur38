@@ -40,5 +40,12 @@ namespace Mooshak_2._0.Controllers
 
             return View();
         }
+
+        public ActionResult Courses()
+        {
+            ViewBag.Message = "The Courses.";
+
+            return View();
+        }
     }
 }
