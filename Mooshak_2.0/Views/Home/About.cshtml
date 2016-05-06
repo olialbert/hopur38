@@ -26,26 +26,26 @@
         padding: 10px;
     }
 
-        div#sidebar li a {
-            text-decoration: none;
-            color: black;
-        }
+    div#sidebar li a {
+        text-decoration: none;
+        color: black;
+    }
 
-        div#sidebar li:hover {
-            background-color: #CCCCCC;
-            font-weight: bold;
-            border-radius: 6px;
-        }
+    div#sidebar li:hover {
+        background-color: #CCCCCC;
+        font-weight: bold;
+        border-radius: 6px;
+    }
 
-        div#sidebar li#sidebar-title {
-            background-color: #808080;
-            border-radius: 6px;
-        }
+    div#sidebar li#sidebar-title {
+        background-color: #808080;
+        border-radius: 6px;
+    }
 
-            div#sidebar li#sidebar-title a {
-                font-weight: bold;
-                color: white;
-            }
+    div#sidebar li#sidebar-title a {
+        font-weight: bold;
+        color: white;
+    }
 
     .main {
         float: right;
@@ -53,9 +53,33 @@
         height: 800px;
     }
 
-    div.main table.course {
-        border: 1px solid black;
+    table.course {
+        margin: 70px 10px;
+        border-bottom: 1px solid black;
         width: 100%;
+    }
+
+    table.course caption {
+        border: 1px solid black;
+        padding: 5px 10px;
+        font-size: 1.5em;
+        text-align: left;
+        color: white;
+        background-color: #808080;
+    }
+
+    table.course thead tr {
+        font-weight: bold;
+        border-top: 2px solid black;
+        border-bottom: 3px solid black;
+    }
+
+    table.course tbody tr:nth-child(odd) {
+        background-color: #E6E6E6;
+    }
+
+    table.course td {
+        padding-left: 10px;
     }
 </style>
 
@@ -70,12 +94,10 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title"><a>Courses</a></li>
-            <li><a>Link 1</a></li>
-            <li><a>Link 1</a></li>
-            <li><a>Link 1</a></li>
-            <li><a>Link 1</a></li>
-            <li><a>Link 1</a></li>
-            <li><a>Link 1</a></li>
+            @foreach (var element in Model)
+            {
+                <li><a>@Html.DisplayFor(m => element)</a></li>
+            }
         </ul>
     </div>
 </div>
@@ -91,14 +113,13 @@
             </tr>
         </thead>
         <tbody>
-
-            
             @foreach (var element in Model)
             {
+                DateTime time1 = new DateTime(2016, 1, 10, 23, 59, 0);
                 <tr>
-                    <td>
-                        @Html.DisplayFor(m => element)
-                    </td>
+                    <td>@Html.DisplayFor(m => element)</td>
+                    <td>@time1.ToString()</td>
+                    <td>Accepted</td>
                 </tr>
             }
         </tbody>
