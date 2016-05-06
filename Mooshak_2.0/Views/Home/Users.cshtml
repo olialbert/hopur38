@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "User Page";
 }
 
 @model List<string>
@@ -8,7 +8,7 @@
     <p>@Html.DisplayFor(m => element)</p>
 }
 
-<input type="button" value="Users" onclick="location.href='@Url.Action("Users", "Home")'" />
+<input type="button" value="Users" onclick="location.href='@Url.Action("Index", "Home")'" />
 
 
 <div class="jumbotron">

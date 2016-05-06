@@ -19,6 +19,7 @@ namespace Mooshak_2._0
        
         public void Configuration(IAppBuilder app)
         {
+            /*
             VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
             var course = db.GetCourses();
             using (System.IO.StreamWriter file =
@@ -29,7 +30,7 @@ namespace Mooshak_2._0
                     file.WriteLine(i);
             }
 
-                
+              */  
             ConfigureAuth(app);
         }
         

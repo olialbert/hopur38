@@ -22,5 +22,12 @@ namespace Mooshak_2._0.Services
             var course = db.GetCourses();
             return course.ToList();
         }
+
+        public List<String> GetStudents()
+        {
+
+            var Student = db.GetStudents();
+            return Student.ToList();
+        }
     }
 }
