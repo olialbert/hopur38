@@ -403,6 +403,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Courses.cshtml" />
     <Content Include="Views\Admin\Courses.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
