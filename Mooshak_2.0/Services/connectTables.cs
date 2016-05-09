@@ -16,26 +16,105 @@ namespace Mooshak_2._0.Services
             //_Db = new ApplicationDbContext();
         }
 
+        public int AddCourse(string name)
+        {
+            db.AddCourse(name);
+            return 0;
+        }
+
+        public int AddUser(Nullable<int> userRolesId, string userName, string userUserName, string userPassWord, Nullable<int> userSsn, string userEmail)
+        {
+            db.AddUser(userRolesId, userName, userUserName, userPassWord, userSsn, userEmail);
+            return 0;
+        }
+
+        public int AddUsersToCourses(Nullable<int> userId, Nullable<int> courseId)
+        {
+            db.AddUsersToCourses(userId, courseId);
+            return 0;
+        }
+
+        public int DeleteCourse(string name)
+        {
+            db.DeleteCourse(name);
+            return 0;
+        }
+
+        public int DeleteStudent(string name)
+        {
+            db.DeleteStudent(name);
+            return 0;
+        }
+
+        public int DeleteTeacher(string name)
+        {
+            db.DeleteTeacher(name);
+            return 0;
+        }
+
+        public List<string> GetCourseByName(string courseName)
+        {
+            var coursesName = db.GetCourseByName(courseName);
+            return coursesName.ToList();
+        }
+
         public List<String> GetCourses()
         {
-            
             var course = db.GetCourses();
             return course.ToList();
         }
 
+        public List<string> GetCoursesByUser(string name)
+        {
+            var courseByUser = db.GetCoursesByUser(name);
+            return courseByUser.ToList();
+        }
+
+        public List<string> GetRoles()
+        {
+            var role = db.GetRoles();
+            return role.ToList();
+        }
+
         public List<String> GetStudents()
         {
-
             var Student = db.GetStudents();
             return Student.ToList();
         }
 
-        public int AddCourse(string name)
+        public List<string> GetTeachers()
         {
-          
 
-            db.AddCourse(name);
+            var Teachers = db.GetTeachers();
+            return Teachers.ToList();
+        }
 
+        // List<GetUserByName_Result>
+        public List<string> GetUserByName(string serchName)
+        {
+            
+            var userByName = db.GetUserByName(serchName);
+
+            GetUserByName_Result Res = new GetUserByName_Result();
+
+            Res = userByName.ElementAt(0);
+
+            List<string> Info = Res.ToString().Split(',').ToList<string>();
+
+
+            return Info;
+        }
+        
+
+        public int UppdateCourse(string searchName, string name)
+        {
+            db.UppdateCourse(searchName, name);
+            return 0;
+        }
+
+        public int UppdateUser(string searchName, Nullable<int> userRolesId, string userName, string userUserName, string userPassWord, Nullable<int> userSsn, string userEmail)
+        {
+            db.UppdateUser(searchName, userRolesId, userName, userUserName, userPassWord, userSsn, userEmail);
             return 0;
         }
     }
