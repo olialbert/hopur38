@@ -1,13 +1,31 @@
-﻿div#User {
-    background-color: blue;
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+﻿div.User {
+    display: flex;
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+}
+
+div.labels{
+    padding-top:12px;
 }
 
 .leftSide {
     float: left;
     width: 20%;
+}
+
+.rightSide{
+    padding-top: 35px;
+    padding-left: 10px;
+    display: flex;
+    float: right;
+    width: 80%;
+}
+
+div.above-main{
+    height: 80px;
+    width: 100%;
 }
 
 div#sidebar ul {
@@ -21,6 +39,7 @@ div#sidebar ul {
 
 div#sidebar li {
     padding: 10px;
+    border-radius: 6px;
 }
 
 div#sidebar li a {
@@ -28,25 +47,18 @@ div#sidebar li a {
     color: black;
 }
 
-div#sidebar li:hover, div#sidebar li:visited  {
+div#sidebar li:hover:not(:first-child), div#sidebar li:visited:not(:first-child)  {
     background-color: #CCCCCC;
     font-weight: bold;
-    border-radius: 6px;
 }
 
 div#sidebar li#sidebar-title {
     background-color: #808080;
-    border-radius: 6px;
-}
-
-div#sidebar li#sidebar-title a {
     font-weight: bold;
     color: white;
 }
 
-div.above-main{
-    height: 70px;
-}
+
 
 .main {
     float: right;
@@ -79,6 +91,29 @@ table.course tbody tr:nth-child(odd) {
     background-color: #E6E6E6;
 }
 
-table.course td {
+table.course td, table.course th{
+    padding: 5px;
     padding-left: 10px;
+}
+
+table.course td:first-child{
+    width: 75%;
+}
+
+.delete{
+    color: red;
+    margin-right: 30px;
+}
+
+.delete:hover{
+    color: darkred;
+}
+
+.edit{
+    color: green;
+    margin-right: 30px;
+}
+
+.edit{
+    color: darkgreen;
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mooshak_2._0.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,16 @@ namespace Mooshak_2._0.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        connectTables Tables = new connectTables();
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Courses()
+        {
+            var Courses = Tables.GetCourses();
+            return View(Courses);
         }
 
         public ActionResult AddCourse()
