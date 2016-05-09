@@ -2,22 +2,20 @@
     ViewBag.Title = "User Page";
 }
 
-@Html.ActionLink("Edit this course", "EditCourse", new { Id = "ForritunX" })
-
-@Html.ActionLink("Delete this course", "DeleteCourse", new { Id = "qq" })
-
-
-@model List<string>
-@foreach (var element in Model)
+@using (Html.BeginForm())
 {
-    <p>@Html.DisplayFor(m => element)</p>
+    @model List<string>
+    foreach (var element in Model)
+    {
+        
+        <input type="hidden" value=@Html.DisplayFor(m => element) name="SearchName" />
+        <input type="text" value=@Html.DisplayFor(m => element) name="Name" />
+    }
+
+    <input type="submit" value="submit" onclick="location.href='@Url.Action("Index", "Home" )'" />
 }
 
-@Html.ActionLink("Delete this user", "DeleteStudent", new { Id = "Arnór Erlingur" })
-
-@Html.ActionLink("Edit this user", "EditUser", new { Id = "Tómas Hinriksson" })
-
-<input type="button" value="Users" onclick="location.href='@Url.Action("Index", "Home")'" />
+<input type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" />
 
 
 <div class="jumbotron">
