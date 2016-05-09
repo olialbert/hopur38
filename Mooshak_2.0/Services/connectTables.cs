@@ -84,6 +84,7 @@ namespace Mooshak_2._0.Services
 
         public List<string> GetTeachers()
         {
+
             var Teachers = db.GetTeachers();
             return Teachers.ToList();
         }
