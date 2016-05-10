@@ -3,5 +3,29 @@
     ViewBag.Title = "AddAssignment";
 }
 
-<h2>AddAssignment</h2>
+<h2>New/Edit Assignment</h2>
 
+ <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju verkefni eða þá breyta því-->
+@using (Html.BeginForm())
+{
+    <label for="Name">Name:</label>                             <br />
+    <input type="text" name="Name" />                           <br />
+    <label for="Date">Due date:</label>                         <br />
+    <input type="date" name="Date"/>                            <br />
+    <label for="Descrip.">Description:</label>                  <br />
+    <textarea rows="5" cols="50" name="Descrip."></textarea>    <br />
+    <label for="limit">Submit limit:</label>                    <br />
+    <input type="number" name="limit" value="0"/>               <br />
+    <label for="Percentage">Percentage of total grade %:</label><br />
+    <input type="text" name="Percentage" value="0%" />          <br />
+    <label for="Input">Input:</label>                           <br />
+    <input type="file" name="Input" />                          <br />
+    <label for="Output">Output:</label>                         <br />
+    <input type="file" name="Output" />                         <br />
+
+
+
+    <input type="submit" value="Save" />                        <br />
+
+}
+    <input type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
