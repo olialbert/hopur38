@@ -47,7 +47,12 @@ namespace Mooshak_2._0.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult DeleteCourse(string ID)
+        {
+            Tables.DeleteCourse(ID);
+            return RedirectToAction("Courses");
+        }
 
         public ActionResult ViewUsersinCourse()
         {
@@ -107,13 +112,13 @@ namespace Mooshak_2._0.Controllers
         public ActionResult DeleteStudent(string ID)
         {
             Tables.DeleteStudent(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Users");
         }
 
         public ActionResult DeleteTeacher(string ID)
         {
             Tables.DeleteTeacher(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Users");
         }
     }
 }
