@@ -1,12 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Assignments";
+    ViewBag.Title = "Assignments - Teacher";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model List<String>
-
-@Html.Partial("_Teacherform")
+@Html.Partial("_TeacherForm")
 
 <div class="above-main">
     <div class="rightSide">
@@ -16,26 +14,15 @@
 
 <div class="main">
     <table class="default">
-        <caption>Assignment</caption>
+        <caption>Courses</caption>
         <thead>
             <tr>
-                <th>Assignment</th>
-                <th>Due Date</th>
+                <th>Course</th>
                 <th>Options</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(x => item)</td>
-                    <td>
-                        <div>@Html.ActionLink("Delete", "DeleteAssignment", new { id = item })</div>
-                        <div>@Html.ActionLink("Edit", "EditAssignment", new { id = item }, new { @class = "edit" })</div>
-                        <a>View users</a>
-                    </td>
-                </tr>
-            }
+            
         </tbody>
     </table>
 </div>
