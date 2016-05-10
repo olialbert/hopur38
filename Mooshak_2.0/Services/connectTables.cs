@@ -164,6 +164,20 @@ namespace Mooshak_2._0.Services
         {
             return 0;
         }*/
+        public List<string> GetStudentsInCoursesByName(string CourseName)
+        {
+            var role = db.GetStudentsInCoursesByName(CourseName);
+            return role.ToList();
+        }
+
+        public List<string> GetTeachersInCoursesByName(string CourseName)
+        {
+            var role = db.GetTeachersInCoursesByName(CourseName);
+            return role.ToList();
+        }
+
+
+
 
 
 

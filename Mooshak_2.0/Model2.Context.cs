@@ -451,5 +451,23 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePartAssignment", searchNameParameter, searchDescriptionParameter, uppdateNameParameter, uppdatePerCentParameter, uppdateDescriptionParameter, uppdatePathParameter);
         }
+    
+        public virtual ObjectResult<string> GetStudentsInCoursesByName(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetStudentsInCoursesByName", nameParameter);
+        }
+    
+        public virtual ObjectResult<string> GetTeachersInCoursesByName(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetTeachersInCoursesByName", nameParameter);
+        }
     }
 }

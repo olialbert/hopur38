@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Mooshak_2._0.Models
 {
-    public class ViewUsersInCourseViewModels
+    public class ViewUsersInCourseViewModel
     {
         public string CourseName {get; set;}
         public List<string> Teachers {get; set;}

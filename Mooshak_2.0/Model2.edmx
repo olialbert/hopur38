@@ -92,7 +92,13 @@
         </Function>
         <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetStudentsInCoursesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTeachersInCoursesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetUserByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SerchName" Type="varchar" Mode="In" />
         </Function>
@@ -221,7 +227,7 @@
             <Parameter Name="SubmissionPartAssignmentName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAssignments" ReturnType="Collection(String)">
-            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+          <Parameter Name="GetCourseName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetBestSubmissionAllStudents" ReturnType="Collection(VLN2_2016_H38Model2.GetBestSubmissionAllStudents_Result)">
             <Parameter Name="SubmissionCourseName" Mode="In" Type="String" />
@@ -256,6 +262,12 @@
             <Parameter Name="UppdatePerCent" Mode="In" Type="Int32" />
             <Parameter Name="UppdateDescription" Mode="In" Type="String" />
             <Parameter Name="UppdatePath" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentsInCoursesByName" ReturnType="Collection(String)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeachersInCoursesByName" ReturnType="Collection(String)">
+            <Parameter Name="Name" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
@@ -346,6 +358,8 @@
           <FunctionImportMapping FunctionImportName="SetGrade" FunctionName="VLN2_2016_H38Model2.Store.SetGrade" />
           <FunctionImportMapping FunctionImportName="UpdateAssignment" FunctionName="VLN2_2016_H38Model2.Store.UpdateAssignment" />
           <FunctionImportMapping FunctionImportName="UpdatePartAssignment" FunctionName="VLN2_2016_H38Model2.Store.UpdatePartAssignment" />
+          <FunctionImportMapping FunctionImportName="GetStudentsInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetStudentsInCoursesByName" />
+          <FunctionImportMapping FunctionImportName="GetTeachersInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetTeachersInCoursesByName" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
