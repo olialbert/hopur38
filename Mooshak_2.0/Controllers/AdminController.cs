@@ -99,9 +99,33 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
-        public ActionResult DeleteUser()
+        public ActionResult EditUser(string ID)
         {
-            return View();
+            var Users = Tables.GetUserByName(ID);
+
+            return View(Users);
+
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role)
+        {
+            int RolesId = Convert.ToInt32(Role);
+            int SsnInt = Convert.ToInt32(Ssn);
+            Tables.UppdateUser(SearchName, RolesId, Name, Username, Password, SsnInt, Email);
+            return RedirectToAction("Users");
+        }
+
+        public ActionResult DeleteStudent(string ID)
+        {
+            Tables.DeleteStudent(ID);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteTeacher(string ID)
+        {
+            Tables.DeleteTeacher(ID);
+            return RedirectToAction("Index");
         }
     }
 }
