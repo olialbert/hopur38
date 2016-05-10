@@ -172,6 +172,17 @@ namespace Mooshak_2._0.Services
 
         public List<string> GetTeachersInCoursesByName(string CourseName)
         {
+            
+            VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
+            var course = db.GetCourses();
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\\Users\\petur\\Desktop\\testing\test.txt"))
+            {
+                file.WriteLine(CourseName);
+
+            }
+
+              
             var role = db.GetTeachersInCoursesByName(CourseName);
             return role.ToList();
         }

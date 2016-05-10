@@ -452,22 +452,22 @@ namespace Mooshak_2._0
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePartAssignment", searchNameParameter, searchDescriptionParameter, uppdateNameParameter, uppdatePerCentParameter, uppdateDescriptionParameter, uppdatePathParameter);
         }
     
-        public virtual ObjectResult<string> GetStudentsInCoursesByName(string name)
+        public virtual ObjectResult<string> GetStudentsInCoursesByName(string getName)
         {
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
+            var getNameParameter = getName != null ?
+                new ObjectParameter("GetName", getName) :
+                new ObjectParameter("GetName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetStudentsInCoursesByName", nameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetStudentsInCoursesByName", getNameParameter);
         }
     
-        public virtual ObjectResult<string> GetTeachersInCoursesByName(string name)
+        public virtual ObjectResult<string> GetTeachersInCoursesByName(string getName)
         {
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
+            var getNameParameter = getName != null ?
+                new ObjectParameter("GetName", getName) :
+                new ObjectParameter("GetName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetTeachersInCoursesByName", nameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetTeachersInCoursesByName", getNameParameter);
         }
     }
 }

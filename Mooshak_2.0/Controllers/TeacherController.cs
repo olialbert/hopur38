@@ -19,7 +19,7 @@ namespace Mooshak_2._0.Controllers
             return View(CoursesUsers);
         }
 
-        public ActionResult Index()
+        public ActionResult Assignments()
         {
             var CoursesUsers = Tables.GetCoursesByUser("johann");
             return View(CoursesUsers);

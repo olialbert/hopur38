@@ -27,9 +27,8 @@
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
                     <td>
-                        <a class="delete">Delete</a>
-                        <a class="edit">Edit</a>
-                        <a>View users</a>
+                        @Html.ActionLink("Delete", "DeleteTeacher", new { id = element }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditUser", new { id = element }, new { @class = "edit" })
                     </td>
                 </tr>
             }
@@ -47,9 +46,8 @@
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
                     <td>
-                        <a class="delete">Delete</a>
-                        <a class="edit">Edit</a>
-                        <a>View users</a>
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = element }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditUser", new { id = element }, new { @class = "edit" })
                     </td>
                 </tr>
             }

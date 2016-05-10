@@ -93,11 +93,11 @@
         <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudentsInCoursesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="GetName" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetTeachersInCoursesByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="GetName" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetUserByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SerchName" Type="varchar" Mode="In" />
@@ -264,10 +264,10 @@
             <Parameter Name="UppdatePath" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentsInCoursesByName" ReturnType="Collection(String)">
-            <Parameter Name="Name" Mode="In" Type="String" />
+          <Parameter Name="GetName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetTeachersInCoursesByName" ReturnType="Collection(String)">
-            <Parameter Name="Name" Mode="In" Type="String" />
+          <Parameter Name="GetName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
