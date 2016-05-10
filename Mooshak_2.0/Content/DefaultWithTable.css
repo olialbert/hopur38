@@ -71,13 +71,13 @@ div#sidebar li#sidebar-title {
     height: 800px;
 }
 
-table.course {
+table.default {
     margin: 0px 10px;
     border-bottom: 1px solid black;
     width: 100%;
 }
 
-table.course caption {
+table.default caption {
     border: 1px solid black;
     padding: 5px 10px;
     font-size: 1.5em;
@@ -86,22 +86,22 @@ table.course caption {
     background-color: #808080;
 }
 
-table.course thead tr {
+table.default thead tr {
     font-weight: bold;
     border-top: 2px solid black;
     border-bottom: 3px solid black;
 }
 
-table.course tbody tr:nth-child(odd) {
+table.default tbody tr:nth-child(odd) {
     background-color: #E6E6E6;
 }
 
-table.course td, table.course th{
+table.default td, table.default th{
     padding: 5px;
     padding-left: 10px;
 }
 
-table.course td:first-child{
+table.default td:first-child{
     width: 75%;
 }
 

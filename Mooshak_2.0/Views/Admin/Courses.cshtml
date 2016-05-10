@@ -29,6 +29,7 @@
                     <td>@Html.DisplayFor(x => item)</td>
                     <td>
                         <div>@Html.ActionLink("Delete", "DeleteCourse", new { id = item }, new { @class = "delete" })</div>
+                        <a class="delete">Delete</a>
                         <div>@Html.ActionLink("Edit", "EditCourse", new { id = item }, new { @class = "edit" })</div>
                         <a>View users</a>
                     </td>
