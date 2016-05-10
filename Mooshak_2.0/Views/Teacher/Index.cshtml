@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index - Teacher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_TeacherForm")
+
+<div class="above-main">
+    <div class="rightSide">
+        @Html.ActionLink("Create New Course", "AddCourse", "Admin", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+<div class="main">
+    <table class="default">
+        <caption>Courses</caption>
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</div>
