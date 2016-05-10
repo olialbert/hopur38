@@ -27,9 +27,12 @@ namespace Mooshak_2._0.Controllers
         
         public ActionResult Users()
         {
-            var Users = Tables.GetTeachers();
-            Users.AddRange(Tables.GetStudents());
-            return View(Users);
+            var viewModel = new ViewUsersInCourseViewModel();
+            viewModel.CourseName = "";
+            viewModel.Teachers = Tables.GetTeachers();
+            viewModel.Students = Tables.GetStudents();
+
+            return View(viewModel);
         }
 
         public ActionResult AddCourse()
@@ -58,7 +61,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult ViewUsersinCourse(string ID)
         {
 
-            var viewModel = new ViewUsersInCourseViewModels();
+            var viewModel = new ViewUsersInCourseViewModel();
             viewModel.CourseName = ID;
             viewModel.Teachers = Tables.GetTeachers();
             viewModel.Students = Tables.GetStudents();
