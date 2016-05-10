@@ -61,6 +61,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult ViewUsersinCourse(string ID)
         {
 
+
             var viewModel = new ViewUsersInCourseViewModel();
             viewModel.CourseName = ID;
             viewModel.Teachers = Tables.GetTeachers();
