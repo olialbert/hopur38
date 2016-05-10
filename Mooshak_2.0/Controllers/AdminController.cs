@@ -91,7 +91,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult EditCourse(string SearchName, string Name)
         {
             Tables.UppdateCourse(SearchName, Name);
-            return RedirectToAction("Index");
+            return RedirectToAction("Courses");
         }
 
         public ActionResult UpdateUser()
