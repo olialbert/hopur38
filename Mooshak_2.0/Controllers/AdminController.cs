@@ -49,15 +49,10 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
-        public ActionResult DeleteCourse()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult DeleteCourse(string name)
+        public ActionResult DeleteCourse(string ID)
         {
-            Tables.DeleteCourse(name);
+            Tables.DeleteCourse(ID);
             return RedirectToAction("Courses");
         }
 
@@ -91,7 +86,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult EditCourse(string SearchName, string Name)
         {
             Tables.UppdateCourse(SearchName, Name);
-            return RedirectToAction("Index");
+            return RedirectToAction("Courses");
         }
 
         public ActionResult UpdateUser()
@@ -119,13 +114,13 @@ namespace Mooshak_2._0.Controllers
         public ActionResult DeleteStudent(string ID)
         {
             Tables.DeleteStudent(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Users");
         }
 
         public ActionResult DeleteTeacher(string ID)
         {
             Tables.DeleteTeacher(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Users");
         }
     }
 }

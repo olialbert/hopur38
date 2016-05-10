@@ -4,9 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VLN2_2016_H38Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VLN2_2016_H38Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentDueDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="AddCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddPartAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentPartName" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentValuePercentage" Type="int" Mode="In" />
+          <Parameter Name="AssignmentDescription" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentPath" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentCourse" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddSentInAssigments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="PartAssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="PathToAssinmentName" Type="varchar" Mode="In" />
+          <Parameter Name="PathToAssinmentSaveName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserRolesId" Type="int" Mode="In" />
@@ -20,14 +42,42 @@
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="CourseId" Type="int" Mode="In" />
         </Function>
+        <Function Name="DeleteAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DeleteName" Type="varchar" Mode="In" />
+          <Parameter Name="DeleteCourseName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="DeleteCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeletePartAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DeleteName" Type="varchar" Mode="In" />
+          <Parameter Name="DeleteDescription" Type="varchar" Mode="In" />
         </Function>
         <Function Name="DeleteStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="DeleteTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllSubmissionFromStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubmissionName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetBestSubmissionAllStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetBestSubmissionForStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubmissionName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetCourseByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
@@ -36,11 +86,34 @@
         <Function Name="GetCoursesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUserByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SerchName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SetGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Grade" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="varchar" Mode="In" />
+          <Parameter Name="SearchCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdateCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdateName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdateDueDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdatePartAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="varchar" Mode="In" />
+          <Parameter Name="SearchDescription" Type="varchar" Mode="In" />
+          <Parameter Name="UppdateName" Type="varchar" Mode="In" />
+          <Parameter Name="UppdatePerCent" Type="int" Mode="In" />
+          <Parameter Name="UppdateDescription" Type="varchar" Mode="In" />
+          <Parameter Name="UppdatePath" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UppdateCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SearchName" Type="varchar" Mode="In" />
@@ -56,14 +129,13 @@
           <Parameter Name="UserEmail" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="VLN2_2016_H38Model2StoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VLN2_2016_H38Model2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="VLN2_2016_H38Entities3" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="AddCourse">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AddUser">
             <Parameter Name="UserRolesId" Mode="In" Type="Int32" />
@@ -78,26 +150,26 @@
             <Parameter Name="CourseId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteCourse">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteStudent">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteTeacher">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCourseByName" ReturnType="Collection(String)">
-            <Parameter Name="CourseName" Mode="In" Type="String" />
+          <Parameter Name="CourseName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCourses" ReturnType="Collection(String)" />
           <FunctionImport Name="GetCoursesByUser" ReturnType="Collection(String)">
-            <Parameter Name="Name" Mode="In" Type="String" />
+          <Parameter Name="Name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetRoles" ReturnType="Collection(String)" />
           <FunctionImport Name="GetStudents" ReturnType="Collection(String)" />
           <FunctionImport Name="GetTeachers" ReturnType="Collection(String)" />
           <FunctionImport Name="GetUserByName" ReturnType="Collection(VLN2_2016_H38Model2.GetUserByName_Result)">
-            <Parameter Name="SerchName" Mode="In" Type="String" />
+          <Parameter Name="SerchName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UppdateCourse">
             <Parameter Name="SearchName" Mode="In" Type="String" />
@@ -112,6 +184,79 @@
             <Parameter Name="UserSsn" Mode="In" Type="Int32" />
             <Parameter Name="UserEmail" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AddAssignment">
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="AssignmentDueDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddPartAssignment">
+            <Parameter Name="AssignmentPartName" Mode="In" Type="String" />
+            <Parameter Name="AssignmentValuePercentage" Mode="In" Type="Int32" />
+            <Parameter Name="AssignmentDescription" Mode="In" Type="String" />
+            <Parameter Name="AssignmentPath" Mode="In" Type="String" />
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="AssignmentCourse" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddSentInAssigments">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="PartAssignmentName" Mode="In" Type="String" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="PathToAssinmentName" Mode="In" Type="String" />
+            <Parameter Name="PathToAssinmentSaveName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteAssignment">
+            <Parameter Name="DeleteName" Mode="In" Type="String" />
+            <Parameter Name="DeleteCourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePartAssignment">
+            <Parameter Name="DeleteName" Mode="In" Type="String" />
+            <Parameter Name="DeleteDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllSubmissionFromStudent" ReturnType="Collection(VLN2_2016_H38Model2.GetAllSubmissionFromStudent_Result)">
+            <Parameter Name="SubmissionName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionCourseName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionAssignmentName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionPartAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignments" ReturnType="Collection(String)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBestSubmissionAllStudents" ReturnType="Collection(VLN2_2016_H38Model2.GetBestSubmissionAllStudents_Result)">
+            <Parameter Name="SubmissionCourseName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionAssignmentName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionPartAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBestSubmissionForStudent" ReturnType="Collection(VLN2_2016_H38Model2.GetBestSubmissionForStudent_Result)">
+            <Parameter Name="SubmissionName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionCourseName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionAssignmentName" Mode="In" Type="String" />
+            <Parameter Name="SubmissionPartAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPartAssignmentByAssignmentName" ReturnType="Collection(String)">
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SetGrade">
+            <Parameter Name="Grade" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAssignment">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+            <Parameter Name="SearchCourseName" Mode="In" Type="String" />
+            <Parameter Name="UpdateCourseName" Mode="In" Type="String" />
+            <Parameter Name="UpdateName" Mode="In" Type="String" />
+            <Parameter Name="UpdateDueDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePartAssignment">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+            <Parameter Name="SearchDescription" Mode="In" Type="String" />
+            <Parameter Name="UppdateName" Mode="In" Type="String" />
+            <Parameter Name="UppdatePerCent" Mode="In" Type="Int32" />
+            <Parameter Name="UppdateDescription" Mode="In" Type="String" />
+            <Parameter Name="UppdatePath" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -120,6 +265,19 @@
           <Property Type="String" Name="Ssn" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="String" Name="Roles" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllSubmissionFromStudent_Result">
+          <Property Type="String" Name="PathToAssignmentSave" Nullable="false" />
+          <Property Type="Int32" Name="Grade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetBestSubmissionAllStudents_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="PathToAssignmentSave" Nullable="true" />
+          <Property Type="Int32" Name="Grade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetBestSubmissionForStudent_Result">
+          <Property Type="String" Name="PathToAssignmentSave" Nullable="true" />
+          <Property Type="Int32" Name="Grade" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -153,6 +311,41 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UppdateCourse" FunctionName="VLN2_2016_H38Model2.Store.UppdateCourse" />
           <FunctionImportMapping FunctionImportName="UppdateUser" FunctionName="VLN2_2016_H38Model2.Store.UppdateUser" />
+          <FunctionImportMapping FunctionImportName="AddAssignment" FunctionName="VLN2_2016_H38Model2.Store.AddAssignment" />
+          <FunctionImportMapping FunctionImportName="AddPartAssignment" FunctionName="VLN2_2016_H38Model2.Store.AddPartAssignment" />
+          <FunctionImportMapping FunctionImportName="AddSentInAssigments" FunctionName="VLN2_2016_H38Model2.Store.AddSentInAssigments" />
+          <FunctionImportMapping FunctionImportName="DeleteAssignment" FunctionName="VLN2_2016_H38Model2.Store.DeleteAssignment" />
+          <FunctionImportMapping FunctionImportName="DeletePartAssignment" FunctionName="VLN2_2016_H38Model2.Store.DeletePartAssignment" />
+          <FunctionImportMapping FunctionImportName="GetAllSubmissionFromStudent" FunctionName="VLN2_2016_H38Model2.Store.GetAllSubmissionFromStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetAllSubmissionFromStudent_Result">
+                <ScalarProperty Name="PathToAssignmentSave" ColumnName="PathToAssignmentSave" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAssignments" FunctionName="VLN2_2016_H38Model2.Store.GetAssignments" />
+          <FunctionImportMapping FunctionImportName="GetBestSubmissionAllStudents" FunctionName="VLN2_2016_H38Model2.Store.GetBestSubmissionAllStudents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetBestSubmissionAllStudents_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PathToAssignmentSave" ColumnName="PathToAssignmentSave" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBestSubmissionForStudent" FunctionName="VLN2_2016_H38Model2.Store.GetBestSubmissionForStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetBestSubmissionForStudent_Result">
+                <ScalarProperty Name="PathToAssignmentSave" ColumnName="PathToAssignmentSave" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPartAssignmentByAssignmentName" FunctionName="VLN2_2016_H38Model2.Store.GetPartAssignmentByAssignmentName" />
+          <FunctionImportMapping FunctionImportName="SetGrade" FunctionName="VLN2_2016_H38Model2.Store.SetGrade" />
+          <FunctionImportMapping FunctionImportName="UpdateAssignment" FunctionName="VLN2_2016_H38Model2.Store.UpdateAssignment" />
+          <FunctionImportMapping FunctionImportName="UpdatePartAssignment" FunctionName="VLN2_2016_H38Model2.Store.UpdatePartAssignment" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
