@@ -1,6 +1,8 @@
 ﻿
 <link rel="stylesheet" type="text/css" href="../Content/DefaultWithTable.css">
 
+@model List<String>
+
 <div class="leftSide">
     <div class="above">
         <div class="User leftSide">
@@ -14,8 +16,10 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
-            <li>@Html.ActionLink("Courses", "Courses", "Admin", null, new { @class = "link" })</li>
-            <li>@Html.ActionLink("Users", "Users", "Admin", null, new { @class = "link" })</li>
+            @foreach(var item in Model)
+            {
+                <li>@Html.DisplayFor(x => item)</li>
+            }
         </ul>
     </div>
 </div>

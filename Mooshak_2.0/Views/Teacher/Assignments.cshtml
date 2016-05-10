@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Assignments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<String>
+
+@Html.Partial("_Teacherform")
+
+<div class="above-main">
+    <div class="rightSide">
+        @Html.ActionLink("Create New Assignment", "AddAssignment", "Teacher", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+<div class="main">
+    <table class="default">
+        <caption>Assignment</caption>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Due Date</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => item)</td>
+                    <td>
+                        <div>@Html.ActionLink("Delete", "DeleteAssignment", new { id = item })</div>
+                        <div>@Html.ActionLink("Edit", "EditAssignment", new { id = item }, new { @class = "edit" })</div>
+                        <a>View users</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

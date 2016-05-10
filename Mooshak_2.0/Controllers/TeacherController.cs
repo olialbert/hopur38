@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mooshak_2._0.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,19 @@ namespace Mooshak_2._0.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher
+
+        connectTables Tables = new connectTables();
+
+        public ActionResult _TeacherForm(string name)
+        {
+            var CoursesUsers = Tables.GetCoursesByUser("Lalalalal");
+            return View(CoursesUsers);
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var CoursesUsers = Tables.GetCoursesByUser("johann");
+            return View(CoursesUsers);
         }
 
         public ActionResult AddAssignment()
