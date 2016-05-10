@@ -117,5 +117,49 @@ namespace Mooshak_2._0.Services
             db.UppdateUser(searchName, userRolesId, userName, userUserName, userPassWord, userSsn, userEmail);
             return 0;
         }
+
+        public int AddAssignment(string courseName, string assignmentName, DateTime dueDate)
+        {
+            db.AddAssignment(courseName, assignmentName, dueDate);
+            return 0;
+        }
+
+        public int AddPartAssignment(string assignmentPartName, int assignmentValuePercentage, string assignmentDescription, string assignmentPath, string assignmentName, string assignmentCourse)
+        {
+            db.AddPartAssignment(assignmentPartName, assignmentValuePercentage, assignmentDescription, assignmentPath, assignmentName, assignmentCourse);
+            return 0;
+        }
+
+        public int UpdateAssignment(string searchName, string searchCourseName, string updateCourseName, string updateName, DateTime updateDueDate)
+        {
+            db.UpdateAssignment(searchName, searchCourseName, updateCourseName, updateName, updateDueDate);
+            return 0;
+        }
+
+        public int UpdatePartAssignment(string searchName, string searchDescription, string updateName, int updatePerCent, string updateDescription, string updatePath)
+        {
+            db.UpdatePartAssignment(searchName, searchDescription, updateName, updatePerCent, updateDescription, updatePath);
+            return 0;
+        }
+
+        public int DeleteAssignment(string deleteName, string deleteCourseName)
+        {
+            db.DeleteAssignment(deleteName, deleteCourseName);
+            return 0;
+        }
+
+        public int DeletePartAssignment(string deleteName, string deleteDescription)
+        {
+            db.DeletePartAssignment(deleteName, deleteDescription);
+            return 0;
+        }
+
+        /*public List<string> GetAssignments(string getCourseName)
+        {
+            return 0;
+        }*/
+
+
+
     }
 }
