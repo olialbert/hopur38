@@ -76,12 +76,18 @@ namespace Mooshak_2._0.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddUser(string Name, string Username, string Password, string Ssn, string Email, string Role)
+        public ActionResult AddUser(string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {
             //vantar course í formið
-            int RolesId = Convert.ToInt32(Role);
-            int SsnInt = Convert.ToInt32(Ssn);
-            Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
+           // int RolesId = Convert.ToInt32(Role);
+           // int SsnInt = Convert.ToInt32(Ssn);
+            //Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
+            
+            foreach(var Course in Courses)
+            {
+                Tables.AddUsersToCourses("Anna Bergljótdóttir", Course);
+            }
+
             return RedirectToAction("Users");
         }
 

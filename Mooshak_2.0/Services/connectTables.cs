@@ -28,9 +28,9 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
-        public int AddUsersToCourses(Nullable<int> userId, Nullable<int> courseId)
+        public int AddUsersToCourses(string userName, string courseName)
         {
-            db.AddUsersToCourses(userId, courseId);
+            db.AddUsersToCourses(userName, courseName);
             return 0;
         }
 
@@ -76,10 +76,17 @@ namespace Mooshak_2._0.Services
             return role.ToList();
         }
 
+
         public List<String> GetStudents()
         {
             var Student = db.GetStudents();
             return Student.ToList();
+        }
+
+        public List<string> GetStudentsInCoursesByName(string CourseName)
+        {
+            var role = db.GetStudentsInCoursesByName(CourseName);
+            return role.ToList();
         }
 
         public List<string> GetTeachers()
@@ -87,6 +94,15 @@ namespace Mooshak_2._0.Services
 
             var Teachers = db.GetTeachers();
             return Teachers.ToList();
+        }
+
+        public List<string> GetTeachersInCoursesByName(string CourseName)
+        {
+
+            var course = db.GetCourses();
+          
+            var role = db.GetTeachersInCoursesByName(CourseName);
+            return role.ToList();
         }
 
         // List<GetUserByName_Result>
@@ -160,32 +176,10 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
-        /*public List<string> GetAssignments(string getCourseName)
-        {
-            return 0;
-        }*/
-        public List<string> GetStudentsInCoursesByName(string CourseName)
-        {
-            var role = db.GetStudentsInCoursesByName(CourseName);
-            return role.ToList();
-        }
+        
+       
 
-        public List<string> GetTeachersInCoursesByName(string CourseName)
-        {
-            
-            VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
-            var course = db.GetCourses();
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(@"C:\\Users\\petur\\Desktop\\testing\test.txt"))
-            {
-                file.WriteLine(CourseName);
-
-            }
-
-              
-            var role = db.GetTeachersInCoursesByName(CourseName);
-            return role.ToList();
-        }
+        
 
 
 
