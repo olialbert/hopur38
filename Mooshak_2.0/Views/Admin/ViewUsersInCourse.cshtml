@@ -3,17 +3,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Partial("_AdminForm")
+
+@Html.Partial("_AdminFormViewUsers")
 
 <div class="above-main">
     <div class="rightSide">
-        @Html.ActionLink("Create New User", "AddUser", "Admin", null, new { @class = "btn btn-default" })
     </div>
 </div>
 
 <div class="main">
     <table class="default">
-        <caption>All users</caption>
+        <caption>@Model.CourseName - Users</caption>
         <thead>
             <tr>
                 <th>Teachers</th>
@@ -21,14 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var element in Model)
+            @foreach (var element in Model.Teachers)
             {
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
                     <td>
                         <a class="delete">Delete</a>
                         <a class="edit">Edit</a>
-                        <a>View users</a>
                     </td>
                 </tr>
             }
@@ -40,14 +39,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var element in Model)
+            @foreach (var element in Model.Students)
             {
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
                     <td>
                         <a class="delete">Delete</a>
                         <a class="edit">Edit</a>
-                        <a>View users</a>
                     </td>
                 </tr>
             }

@@ -64,8 +64,8 @@ namespace Mooshak_2._0.Controllers
 
             var viewModel = new ViewUsersInCourseViewModel();
             viewModel.CourseName = ID;
-            viewModel.Teachers = Tables.GetTeachers();
-            viewModel.Students = Tables.GetStudents();
+            viewModel.Teachers = Tables.GetTeachersInCoursesByName(ID);
+            viewModel.Students = Tables.GetStudentsInCoursesByName(ID);
 
             return View(viewModel);
         }
