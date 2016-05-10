@@ -154,10 +154,30 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
+        public int AddSentInAssignments(string userName, string assignmentName, string partAssignmentName, string courseName, string description, string pathToAssinmentName, string pathToAssinmentSaveName)
+        {
+            db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
+            return 0;
+        }
+
         /*public List<string> GetAssignments(string getCourseName)
         {
             return 0;
         }*/
+        public List<string> GetStudentsInCoursesByName(string CourseName)
+        {
+            var role = db.GetStudentsInCoursesByName(CourseName);
+            return role.ToList();
+        }
+
+        public List<string> GetTeachersInCoursesByName(string CourseName)
+        {
+            var role = db.GetTeachersInCoursesByName(CourseName);
+            return role.ToList();
+        }
+
+
+
 
 
 

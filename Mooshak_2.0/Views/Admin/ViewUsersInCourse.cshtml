@@ -21,8 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            
-            @foreach (var element in Model.Teachers)
+            @foreach (var element in Model)
             {
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
@@ -41,8 +40,7 @@
             </tr>
         </thead>
         <tbody>
-            
-            @foreach (var element in Model.Students)
+            @foreach (var element in Model)
             {
                 <tr>
                     <td>@Html.DisplayFor(m => element)</td>
