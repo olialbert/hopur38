@@ -28,8 +28,8 @@
                 <tr>
                     <td>@Html.DisplayFor(x => item)</td>
                     <td>
-                        <div>@Html.ActionLink("Delete", "DeleteCourse", new { id = item })</div>
-                        <div>@Html.ActionLink("Edit", "EditCourse", new { id = item }, new { @class = "edit" })</div>
+                        @Html.ActionLink("Delete", "DeleteCourse", new { id = item }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditCourse", new { id = item }, new { @class = "edit" })
                         <a>View users</a>
                     </td>
                 </tr>
