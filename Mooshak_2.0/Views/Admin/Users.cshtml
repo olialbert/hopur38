@@ -1,24 +1,15 @@
-﻿
-@{
-    ViewBag.Title = "User Page";
-}
-
-@model List<string>
-@foreach (var element in Model)
-{
-    <p>@Html.DisplayFor(m => element)</p>
-}
-
-
-<input type="button" value="Users" onclick="location.href='@Url.Action("Index", "Home")'" />
-
-
-@{
-    ViewBag.Title = "Admin";
+﻿@{
+    ViewBag.Title = "Admin - Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("_AdminForm")
+
+<div class="above-main">
+    <div class="rightSide">
+        @Html.ActionLink("Create New User", "AddUser", "Admin", null, new { @class = "btn btn-default" })
+    </div>
+</div>
 
 <div class="main">
     <table class="course"> // breita nafninu á course clasanum

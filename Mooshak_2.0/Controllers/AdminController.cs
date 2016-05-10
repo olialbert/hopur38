@@ -23,12 +23,7 @@ namespace Mooshak_2._0.Controllers
             var Courses = Tables.GetCourses();
             return View(Courses);
         }
-
-        /*public ActionResult ()
-        {
-            var Students = Tables.GetStudents();
-            return View(Students);
-        }*/
+        
         public ActionResult Users()
         {
             var Teachers = Tables.GetTeachers();
@@ -59,14 +54,44 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult DeleteCourse(string name)
+        {
+            Tables.DeleteCourse(name);
+            return RedirectToAction("Courses");
+        }
+
         public ActionResult ViewUsersinCourse()
         {
             return View();
         }
 
-        public ActionResult Adduser()
+        public ActionResult AddUser()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(string Name, string Username, string Password, string Ssn, string Email, string Role)
+        {
+            //vantar course í formið
+            int RolesId = Convert.ToInt32(Role);
+            int SsnInt = Convert.ToInt32(Ssn);
+            Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
+            return RedirectToAction("Users");
+        }
+
+        public ActionResult EditCourse(string ID)
+        {
+            var Course = Tables.GetCourseByName(ID);
+            return View(Course);
+        }
+
+        [HttpPost]
+        public ActionResult EditCourse(string SearchName, string Name)
+        {
+            Tables.UppdateCourse(SearchName, Name);
+            return RedirectToAction("Index");
         }
 
         public ActionResult UpdateUser()

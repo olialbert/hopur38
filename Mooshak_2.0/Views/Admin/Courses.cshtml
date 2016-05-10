@@ -29,7 +29,7 @@
                     <td>@Html.DisplayFor(x => item)</td>
                     <td>
                         <a class="delete">Delete</a>
-                        <a class="edit">Edit</a>
+                        <div>@Html.ActionLink("Edit", "EditCourse", new { id = item.ElementAt(0) }, new { @class = "edit" })</div>
                         <a>View users</a>
                     </td>
                 </tr>
