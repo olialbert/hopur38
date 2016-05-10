@@ -39,8 +39,8 @@
           <Parameter Name="UserEmail" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="AddUsersToCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="UserId" Type="int" Mode="In" />
-          <Parameter Name="CourseId" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="DeleteAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DeleteName" Type="varchar" Mode="In" />
@@ -152,8 +152,8 @@
             <Parameter Name="UserEmail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AddUsersToCourses">
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteCourse">
           <Parameter Name="name" Mode="In" Type="String" />

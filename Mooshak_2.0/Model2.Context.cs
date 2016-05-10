@@ -66,17 +66,17 @@ namespace Mooshak_2._0
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUser", userRolesIdParameter, userNameParameter, userUserNameParameter, userPassWordParameter, userSsnParameter, userEmailParameter);
         }
     
-        public virtual int AddUsersToCourses(Nullable<int> userId, Nullable<int> courseId)
+        public virtual int AddUsersToCourses(string userName, string courseName)
         {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
     
-            var courseIdParameter = courseId.HasValue ?
-                new ObjectParameter("CourseId", courseId) :
-                new ObjectParameter("CourseId", typeof(int));
+            var courseNameParameter = courseName != null ?
+                new ObjectParameter("CourseName", courseName) :
+                new ObjectParameter("CourseName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUsersToCourses", userIdParameter, courseIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddUsersToCourses", userNameParameter, courseNameParameter);
         }
     
         public virtual int DeleteCourse(string name)

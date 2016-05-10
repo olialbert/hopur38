@@ -20,6 +20,13 @@
     @Html.RadioButton("Role", "2") <span>Teacher</span>
     @Html.RadioButton("Role", "3") <span>Student</span>
     <br />
+    <p>Courses</p>
+    @model List<string>
+    foreach (var element in Model)
+    {
+        @Html.CheckBox("Course")    <span>@element</span>        <br />
+    }
+
 
     <input type="submit" value="submit" onclick="location.href='@Url.Action("Users", "Home" )'" />    <br />
 }

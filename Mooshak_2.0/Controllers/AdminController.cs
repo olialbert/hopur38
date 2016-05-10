@@ -71,7 +71,8 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult AddUser()
         {
-            return View();
+            var Courses = Tables.GetCourses();
+            return View(Courses);
         }
 
         [HttpPost]
