@@ -66,13 +66,17 @@ div#sidebar li#sidebar-title {
 
 
 .main {
+    padding: 0px 10px;
     float: right;
     width: 80%;
-    height: 800px;
+    height: 100%;
+}
+
+.main h2{
+    margin-top: 0px;
 }
 
 table.default {
-    margin: 0px 10px;
     border-bottom: 1px solid black;
     width: 100%;
 }
@@ -121,4 +125,8 @@ table.default td:first-child{
 
 .edit{
     color: darkgreen;
+}
+
+.form{
+    margin: 10px 0px;
 }

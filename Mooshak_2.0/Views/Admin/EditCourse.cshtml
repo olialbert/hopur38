@@ -1,17 +1,24 @@
 ﻿@{
-    ViewBag.Title = "User Page";
+    ViewBag.Title = "Edit course";
 }
 
-@using (Html.BeginForm())
-{
-    @model List<string>
-    foreach (var item in Model)
+<input type="hidden" value=@Model[0] name="SearchName" />
+
+@Html.Partial("_AdminForm")
+
+<div class="above-main"></div>
+
+<div class="main">
+    <h2>Edit Course</h2>
+
+    @using (Html.BeginForm())
     {
-        <input type="hidden" value=@Html.DisplayFor(m => item) name="SearchName" />
-        <input type="text" value=@Html.DisplayFor(m => item) name="Name" />
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" value=@Model[0] name="Name" />
+        </div>
+        <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Courses", "Admin" )'" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Courses", "Admin")'" />    
     }
+</div>
 
-    <input type="submit" value="submit" onclick="location.href='@Url.Action("Courses", "Admin" )'" />
-}
-
-<input type="button" value="Cancel" onclick="location.href='@Url.Action("Courses", "Admin")'" />

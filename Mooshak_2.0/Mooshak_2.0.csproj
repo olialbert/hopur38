@@ -427,6 +427,8 @@
     <Content Include="Views\Admin\AddCourse.cshtml" />
     <Content Include="Views\Teacher\_TeacherForm.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Teacher\AddAssignment.cshtml" />
+    <Content Include="Views\Teacher\Assignments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
