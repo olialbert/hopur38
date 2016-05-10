@@ -1,4 +1,5 @@
 ﻿using Mooshak_2._0.Services;
+using Mooshak_2._0.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Mooshak_2._0.Controllers
     {
         // GET: Admin
         connectTables Tables = new connectTables();
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,13 @@ namespace Mooshak_2._0.Controllers
         public ActionResult AddCourse()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCourse(string Name)
+        {
+            Tables.AddCourse(Name);
+            return RedirectToAction("Courses");
         }
 
         public ActionResult UpdateCourse()

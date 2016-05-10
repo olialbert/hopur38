@@ -3,9 +3,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model List<string>
+@model List<String>
 
 @Html.Partial("_AdminForm")
+
+<div class="above-main">
+    <div class="rightSide">
+        @Html.ActionLink("Create New Course", "AddCourse", "Admin", null, new { @class = "btn btn-default" })
+    </div>
+</div>
 
 <div class="main">
     <table class="course">
@@ -17,10 +23,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var element in Model)
+            @foreach (var item in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(m => element)</td>
+                    <td>@Html.DisplayFor(x => item)</td>
                     <td>
                         <a class="delete">Delete</a>
                         <a class="edit">Edit</a>
