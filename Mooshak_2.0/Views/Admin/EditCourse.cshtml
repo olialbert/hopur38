@@ -5,11 +5,11 @@
 @using (Html.BeginForm())
 {
     @model List<string>
-    foreach (var element in Model)
+    foreach (var item in Model)
     {
         
-        <input type="hidden" value=@Html.DisplayFor(m => element) name="SearchName" />
-        <input type="text" value=@Html.DisplayFor(m => element) name="Name" />
+        <input type="hidden" value=@Html.DisplayFor(m => item) name="SearchName" />
+        <input type="text" value=@Html.DisplayFor(m => item) name="Name" />
     }
 
     <input type="submit" value="submit" onclick="location.href='@Url.Action("Index", "Home" )'" />

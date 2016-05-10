@@ -14,7 +14,7 @@
 </div>
 
 <div class="main">
-    <table class="course">
+    <table class="default">
         <caption>Courses</caption>
         <thead>
             <tr>
@@ -28,8 +28,8 @@
                 <tr>
                     <td>@Html.DisplayFor(x => item)</td>
                     <td>
-                        <a class="delete">Delete</a>
-                        <div>@Html.ActionLink("Edit", "EditCourse", new { id = item.ElementAt(0) }, new { @class = "edit" })</div>
+                        <div>@Html.ActionLink("Delete", "DeleteCourse", new { id = item }, new { @class = "delete" })</div>
+                        <div>@Html.ActionLink("Edit", "EditCourse", new { id = item }, new { @class = "edit" })</div>
                         <a>View users</a>
                     </td>
                 </tr>

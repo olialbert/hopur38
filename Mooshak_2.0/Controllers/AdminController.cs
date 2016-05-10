@@ -26,11 +26,10 @@ namespace Mooshak_2._0.Controllers
         
         public ActionResult Users()
         {
-            var Teachers = Tables.GetTeachers();
-            return View(Teachers);
+            var Users = Tables.GetTeachers();
+            Users.AddRange(Tables.GetStudents());
+            return View(Users);
         }
-
-
 
         public ActionResult AddCourse()
         {
@@ -48,18 +47,7 @@ namespace Mooshak_2._0.Controllers
         {
             return View();
         }
-
-        public ActionResult DeleteCourse()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult DeleteCourse(string name)
-        {
-            Tables.DeleteCourse(name);
-            return RedirectToAction("Courses");
-        }
+        
 
         public ActionResult ViewUsersinCourse()
         {
@@ -79,29 +67,6 @@ namespace Mooshak_2._0.Controllers
             int SsnInt = Convert.ToInt32(Ssn);
             Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
             return RedirectToAction("Users");
-        }
-
-        public ActionResult EditCourse(string ID)
-        {
-            var Course = Tables.GetCourseByName(ID);
-            return View(Course);
-        }
-
-        [HttpPost]
-        public ActionResult EditCourse(string SearchName, string Name)
-        {
-            Tables.UppdateCourse(SearchName, Name);
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult UpdateUser()
-        {
-            return View();
-        }
-
-        public ActionResult DeleteUser()
-        {
-            return View();
         }
     }
 }
