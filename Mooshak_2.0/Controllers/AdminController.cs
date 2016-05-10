@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mooshak_2._0.Models;
 
 namespace Mooshak_2._0.Controllers
 {
@@ -54,9 +55,15 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Courses");
         }
 
-        public ActionResult ViewUsersinCourse()
+        public ActionResult ViewUsersinCourse(string ID)
         {
-            return View();
+
+            var viewModel = new ViewUsersInCourseViewModels();
+            viewModel.CourseName = ID;
+            viewModel.Teachers = Tables.GetTeachers();
+            viewModel.Students = Tables.GetStudents();
+
+            return View(viewModel);
         }
 
         public ActionResult AddUser()
