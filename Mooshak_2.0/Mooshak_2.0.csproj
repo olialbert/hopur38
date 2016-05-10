@@ -422,7 +422,7 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Admin\EditCourse.cshtml" />
     <Content Include="Views\Admin\AddUser.cshtml" />
-    <Content Include="Views\Home\EditUser.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\_AdminForm.cshtml" />
     <Content Include="Views\Admin\AddCourse.cshtml" />
     <Content Include="Views\Teacher\_TeacherForm.cshtml" />
