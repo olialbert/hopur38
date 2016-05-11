@@ -23,4 +23,5 @@ namespace Mooshak_2._0.Models
         public List<string> Assignments { get; set; }
         public String Courses { get; set; }
     }
+
 }

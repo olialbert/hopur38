@@ -439,6 +439,7 @@
     <Content Include="Views\UserAccount\Error.cshtml" />
     <Content Include="Views\UserAccount\Login.cshtml" />
     <Content Include="Views\Teacher\AddSubAssignment.cshtml" />
+    <Content Include="Views\Teacher\EditAssignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
