@@ -1,0 +1,7 @@
+﻿table.teacher td:first-child{
+    width: 50%;
+}
+
+tr.sub td:first-child{
+    padding-left: 50px;
+}

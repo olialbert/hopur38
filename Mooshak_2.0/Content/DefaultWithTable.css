@@ -83,6 +83,7 @@ table.default {
 
 table.default caption {
     border: 1px solid black;
+    border-bottom: none;
     padding: 5px 10px;
     font-size: 1.5em;
     text-align: left;
@@ -92,7 +93,7 @@ table.default caption {
 
 table.default thead tr {
     font-weight: bold;
-    border-top: 2px solid black;
+    border-top: 3px solid black;
     border-bottom: 3px solid black;
 }
 
@@ -105,13 +106,13 @@ table.default td, table.default th{
     padding-left: 10px;
 }
 
-table.default td:first-child{
+table.admin td:first-child{
     width: 75%;
 }
 
 .delete{
     color: red;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .delete:hover{
@@ -120,10 +121,10 @@ table.default td:first-child{
 
 .edit{
     color: green;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
-.edit{
+.edit:hover{
     color: darkgreen;
 }
 

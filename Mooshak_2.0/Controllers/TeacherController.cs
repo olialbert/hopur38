@@ -13,21 +13,22 @@ namespace Mooshak_2._0.Controllers
 
         connectTables Tables = new connectTables();
 
-        public ActionResult _TeacherForm(string name)
+        public ActionResult _TeacherForm()
         {
-            var CoursesUsers = Tables.GetCoursesByUser("Lalalalal");
-            return View(CoursesUsers);
+            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
+            return View();
         }
 
         public ActionResult Assignments()
         {
-            var CoursesUsers = Tables.GetCoursesByUser("johann");
+            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
             return View(CoursesUsers);
         }
 
         public ActionResult AddAssignment()
         {
-            return View();
+            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
+            return View(CoursesUsers);
         }
 
         public ActionResult AddSubAssignment()

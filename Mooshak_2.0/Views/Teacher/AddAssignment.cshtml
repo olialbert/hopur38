@@ -3,19 +3,22 @@
     ViewBag.Title = "AddAssignment";
 }
 
+@Html.Partial("_TeacherForm")
+<div class="above-main"></div>
+
+<div class ="main">
 <h2>New/Edit Assignment</h2>
 
  <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju verkefni eða þá breyta því-->
-@using (Html.BeginForm())
-{
-    <label for="Name">Name:</label>                             <br />
-    <input type="text" name="Name" />                           <br />
-    <label for="Date">Due date:</label>                         <br />
-    <input type="date" name="Date"/>                            <br />
+    @using (Html.BeginForm())
+    {
+        <label for="Name">Name:</label>                             <br />
+        <input type="text" name="Name" />                           <br />
+        <label for="Date">Due date:</label>                         <br />
+        <input type="date" name="Date"/>                            <br />
+        
+        <input type="submit" value="Save" />                        <br />
 
-
-
-    <input type="submit" value="Save" />                        <br />
-
-}
+    }
     <input type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
+</div>
