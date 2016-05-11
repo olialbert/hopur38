@@ -3,7 +3,7 @@
     ViewBag.Title = "AddAssignment";
 }
 
-@Html.Partial("_TeacherForm")
+
 <div class="above-main"></div>
 
 <div class ="main">
@@ -13,6 +13,7 @@
     @using (Html.BeginForm())
     {
         <div class="form-group">
+            <input type="hidden" value="@Model.Courses" name="CourseHidden" />
             <label for="Name">Name:</label>
             <input type="text" class="form-control" name="Name" />
         </div>

@@ -9,7 +9,7 @@
 
 <div class="above-main">
     <div class="rightSide">
-        @Html.ActionLink("Create New Assignment", "AddAssignment", "Teacher", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create New Assignment", "AddAssignment", new { id = @Model.CurrentClass }, new { @class = "btn btn-default" })
     </div>
 </div>
 

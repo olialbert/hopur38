@@ -36,19 +36,23 @@ namespace Mooshak_2._0.Controllers
                 AssignmentList1.Add(AssignmentList2);
             }
             TeacherAssignments.Assignments = AssignmentList1;
+            TeacherAssignments.CurrentClass = ID;
             return View(TeacherAssignments);
         }
 
-        public ActionResult AddAssignment()
+        public ActionResult AddAssignment(string ID)
         {
-            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
-            return View(CoursesUsers);
+            var ViewModel = new AddAssignmentViewModel();
+            var Assignments = Tables.GetCoursesByUser("Jon Jonson");
+            ViewModel.Courses = ID;
+            ViewModel.Assignments = Assignments;
+            return View(ViewModel);
         }
 
         [HttpPost]
-        public ActionResult AddAssignment(string Name, DateTime Date)
+        public ActionResult AddAssignment(string CourseHidden, string Name, DateTime Date)
         {
-            Tables.AddAssignment(CourseName, Name, Date);
+            Tables.AddAssignment(CourseHidden, Name, Date);
             return RedirectToAction("Assignments");
 
         }
