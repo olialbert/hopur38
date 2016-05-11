@@ -12,6 +12,7 @@ namespace Mooshak_2._0.Controllers
         // GET: Teacher
 
         connectTables Tables = new connectTables();
+        string CourseName ="Forritun";
 
         public ActionResult _TeacherForm()
         {
@@ -21,8 +22,8 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult Assignments()
         {
-            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
-            return View(CoursesUsers);
+            var Assignments = Tables.GetAssignments(CourseName);
+            return View(Assignments);
         }
 
         public ActionResult AddAssignment()
@@ -31,9 +32,19 @@ namespace Mooshak_2._0.Controllers
             return View(CoursesUsers);
         }
 
+        [HttpPost]
+        public ActionResult AddAssignment(string Name, DateTime Date)
+        {
+            Tables.AddAssignment(CourseName, Name, Date);
+            return RedirectToAction("Assignments");
+
+        }
+       
+
         public ActionResult AddSubAssignment()
         {
-            return View();
+            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
+            return View(CoursesUsers);
         }
 
         public ActionResult UpdateDescription()

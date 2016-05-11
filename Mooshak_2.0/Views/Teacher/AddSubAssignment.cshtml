@@ -2,25 +2,29 @@
 @{
     ViewBag.Title = "AddSubAssignment";
 }
+@Html.Partial("_TeacherForm")
+<div class="above-main"></div>
 
-<h2>New/Edit SubAssignment</h2>
+<div class="main">
+    <h2>New/Edit SubAssignment</h2>
 
-<!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
-@using (Html.BeginForm())
-{
+    <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
+    @using (Html.BeginForm())
+    {
 
-<label for="Descrip.">Description:</label>                  <br />
-<textarea rows="5" cols="50" name="Descrip."></textarea>    <br />
-<label for="limit">Submit limit:</label>                    <br />
-<input type="number" name="limit" value="0" />               <br />
-<label for="Percentage">Percentage of total grade %:</label><br />
-<input type="text" name="Percentage" value="0%" />          <br />
-<label for="Input">Input:</label>                           <br />
-<input type="file" name="Input" />                          <br />
-<label for="Output">Output:</label>                         <br />
-<input type="file" name="Output" />                         <br />
+    <label for="Descrip.">Description:</label>                  <br />
+    <textarea rows="5" cols="50" name="Descrip."></textarea>    <br />
+    <label for="limit">Submit limit:</label>                    <br />
+    <input type="number" name="limit" value="0" />               <br />
+    <label for="Percentage">Percentage of total grade %:</label><br />
+    <input type="text" name="Percentage" value="0%" />          <br />
+    <label for="Input">Input:</label>                           <br />
+    <input type="file" name="Input" />                          <br />
+    <label for="Output">Output:</label>                         <br />
+    <input type="file" name="Output" />                         <br />
 
-<input type="submit" value="Save" />                        <br />
-}
+    <input type="submit" value="Save" />                        <br />
+    }
 
-<input type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
+    <input type="button" value="Cancel" onclick="location.href='@Url.Action(" Assignments", "Teacher" )'" />
+</div>
