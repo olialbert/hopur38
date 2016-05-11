@@ -58,6 +58,19 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
+        public List<string> GetAssignments(string courseName)
+        {
+            var coursesName = db.GetAssignments(courseName);
+            return coursesName.ToList();
+        }
+
+        public string GetRoleByUser(string UserName, string Password)
+        {
+            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
+
+            return Role;
+        }
+
         public List<string> GetCourseByName(string courseName)
         {
             var coursesName = db.GetCourseByName(courseName);
