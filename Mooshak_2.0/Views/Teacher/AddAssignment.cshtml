@@ -12,13 +12,16 @@
  <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju verkefni eða þá breyta því-->
     @using (Html.BeginForm())
     {
-        <label for="Name">Name:</label>                             <br />
-        <input type="text" name="Name" />                           <br />
-        <label for="Date">Due date:</label>                         <br />
-        <input type="date" name="Date"/>                            <br />
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" name="Name" />
+        </div>
+        <div class="form-group">
+            <label for="Date">Due date:</label>
+            <input type="date" class="form-control" name="Date" />
+        </div>
         
-        <input type="submit" value="Save" />                        <br />
-
+        <input type="submit" class="btn btn-default" value="Save" />        
+        <input type="button" class="btn btn-default" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
     }
-    <input type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
 </div>
