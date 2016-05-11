@@ -5,6 +5,8 @@
 
 @Html.Partial("_TeacherForm")
 
+@model Mooshak_2._0.Models.TeacherViewModelsAssignmetns
+
 <div class="above-main">
     <div class="rightSide">
         @Html.ActionLink("Create New Assignment", "AddAssignment", "Teacher", null, new { @class = "btn btn-default" })
@@ -22,6 +24,28 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var element in Model.Assignments)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => element)</td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteTeacher", new { id = element }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditUser", new { id = element }, new { @class = "edit" })
+                    </td>
+                </tr>
+                        foreach (var subelement in element.SubAssignments)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => subelement)</td>
+                                <td>
+                                    @Html.ActionLink("Delete", "DeleteTeacher", new { id = subelement }, new { @class = "delete" })
+                                    @Html.ActionLink("Edit", "EditUser", new { id = subelement }, new { @class = "edit" })
+                                </td>
+                            </tr>
+                        }
+
+
+            }
             <tr>
                 <td></td>
                 <td>01/01/16 - 23:59</td>

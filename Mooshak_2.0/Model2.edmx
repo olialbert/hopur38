@@ -107,7 +107,7 @@
         </Function>
         <Function Name="SetGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Grade" Type="int" Mode="In" />
-          <Parameter Name="FullName" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SearchName" Type="varchar" Mode="In" />
@@ -249,7 +249,7 @@
           </FunctionImport>
           <FunctionImport Name="SetGrade">
             <Parameter Name="Grade" Mode="In" Type="Int32" />
-            <Parameter Name="FullName" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateAssignment">
             <Parameter Name="SearchName" Mode="In" Type="String" />

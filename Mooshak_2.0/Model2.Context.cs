@@ -385,15 +385,15 @@ namespace Mooshak_2._0
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetPartAssignmentByAssignmentName", assignmentNameParameter, courseNameParameter);
         }
     
-        public virtual int SetGrade(Nullable<int> grade, Nullable<int> fullName)
+        public virtual int SetGrade(Nullable<int> grade, string fullName)
         {
             var gradeParameter = grade.HasValue ?
                 new ObjectParameter("Grade", grade) :
                 new ObjectParameter("Grade", typeof(int));
     
-            var fullNameParameter = fullName.HasValue ?
+            var fullNameParameter = fullName != null ?
                 new ObjectParameter("FullName", fullName) :
-                new ObjectParameter("FullName", typeof(int));
+                new ObjectParameter("FullName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetGrade", gradeParameter, fullNameParameter);
         }
@@ -469,27 +469,14 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetTeachersInCoursesByName", getNameParameter);
         }
-
+    
         public virtual int DeleteUsersToCoursesByUser(string userName)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
                 new ObjectParameter("UserName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUsersToCoursesByUser", userNameParameter);
-        }
-
-        public virtual ObjectResult<string> GetRoleByUser(string roleUserName, string rolePassWord)
-        {
-            var roleUserNameParameter = roleUserName != null ?
-                new ObjectParameter("RoleUserName", roleUserName) :
-                new ObjectParameter("RoleUserName", typeof(string));
-
-            var rolePassWordParameter = rolePassWord != null ?
-                new ObjectParameter("RolePassWord", rolePassWord) :
-                new ObjectParameter("RolePassWord", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRoleByUser", roleUserNameParameter, rolePassWordParameter);
         }
     }
 }

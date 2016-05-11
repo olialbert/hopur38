@@ -187,12 +187,12 @@ namespace Mooshak_2._0.Services
             return coursesName.ToList();
         }
 
-        public string GetRoleByUser(string UserName, string Password)
+        /*public string GetRoleByUser(string UserName, string Password)
         {
             var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
 
             return Role;
-        }
+        }*/
         
         public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
         {

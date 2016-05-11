@@ -21,21 +21,21 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
-        public ActionResult Assignments(string courseName)
+        public ActionResult Assignments(string ID)
         {
             var TeacherAssignments = new TeacherViewModelsAssignmetns();
             TeacherAssignments.Courses = Tables.GetCoursesByUser("Jon Jonson");
             
-            var Assignments = Tables.GetAssignments(courseName);
-
+            var Assignments = Tables.GetAssignments(ID);
+            List<AssignmentList> AssignmentList1 = new List<AssignmentList>();
             foreach(var assignment in Assignments)
             {
-                var AssignmentList = new AssignmentList();
-                AssignmentList.AssignmentName = assignment;
-                AssignmentList.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, courseName);
-                TeacherAssignments.Assignments.Add(AssignmentList);
+                var AssignmentList2 = new AssignmentList();
+                AssignmentList2.AssignmentName = assignment;
+                AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
+                AssignmentList1.Add(AssignmentList2);
             }
-
+            TeacherAssignments.Assignments = AssignmentList1;
             return View(TeacherAssignments);
         }
 
