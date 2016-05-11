@@ -6,56 +6,37 @@ ViewBag.Title = "User Page";
 
 <div class="above-main"></div>
 
-
 @model Mooshak_2._0.Models.EditUserViewModel
-@using (Html.BeginForm())
-{
-    
-    <input type="hidden" value="@Model.UserInfo.ElementAt(0)" name="SearchName" />    
-    <p>Name:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(0)" name="Name" />
-    <p>Username:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(1)"  name="Username" />
-    <p>Password:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(2)" name="Password" />
-    <p>Ssn:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(3)" name="Ssn" />
-    <p>Email:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(4)" name="Email" />
-
-    bool IsStudent = false;
-    <p>Role</p>
-    if (Model.UserInfo.ElementAt(5) == "Student")
 
 <div class="main">
     @using (Html.BeginForm())
     {
         <h2>Edit User</h2>
 
-        <input type="hidden" value="@Model.ElementAt(0)" name="SearchName" /> 
+        <input type="hidden" value="@Model.UserInfo.ElementAt(0)" name="SearchName" />
         <div class="form-group">
             <label for="Name">Name:</label>
-            <input type="text" value="@Model.ElementAt(0)" class="form-control" name="Name" />
+            <input type="text" value="@Model.UserInfo.ElementAt(0)" class="form-control" name="Name" />
         </div>
         <div class="form-group">
             <label for="Username">Username:</label>
-            <input type="text" value="@Model.ElementAt(2)" class="form-control" name="Username" />
+            <input type="text" value="@Model.UserInfo.ElementAt(1)" class="form-control" name="Username" />
         </div>
         <div class="form-group">
             <label for="Password">Password:</label>
-            <input type="password" value="@Model.ElementAt(3)" class="form-control" name="Password" />
+            <input type="password" value="@Model.UserInfo.ElementAt(2)" class="form-control" name="Password" />
         </div>
         <div class="form-group">
             <label for="SSN">SSN:</label>
-            <input type="text" value="@Model.ElementAt(4)" class="form-control" name="SSN" />
+            <input type="text" value="@Model.UserInfo.ElementAt(3)" class="form-control" name="SSN" />
         </div>
         <div class="form-group">
             <label for="Email">Email:</label>
-            <input type="email" value="@Model.ElementAt(5)" class="form-control" name="Email" />
+            <input type="email" value="@Model.UserInfo.ElementAt(4)" class="form-control" name="Email" />
         </div>
-
+    
         bool IsStudent = true;
-        if(@Model.ElementAt(6) == "Teacher")
+        if (@Model.UserInfo.ElementAt(5) == "Teacher")
         {
             IsStudent = false;
         }
@@ -67,56 +48,34 @@ ViewBag.Title = "User Page";
         </div>
 
         <label>Courses</label>
+        bool IsInCourse = true;
         <div class="form-group">
-            @model List<string>
-                @foreach (var element in Model)
+            @foreach (var element in Model.Courses)
+            {
+                IsInCourse = false;
+                foreach (var userElem in Model.UserCourses)
                 {
-                    @Html.CheckBox("Course")
-                    <span>@element</span>
-                    <br />
+                    if (element == userElem)
+                    {
+                        IsInCourse = true;
+                        break;
+                    }
                 }
+                if (IsInCourse)
+                {
+                    <input type="checkbox" name="Courses" value="@element" checked>
+                }
+                else
+                {
+                    <input type="checkbox" name="Courses" value="@element">
+                }
+                <span>@element</span>
+                <br />
+            }
         </div>
 
-        <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action(" Admin", "Users" )'" />
-        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action(" Admin", "Users" )'" />
+        <br />
+        <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Users", "Asmin" )'" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin" )'" />
     }
-
-    @Html.RadioButton("Role", "2",!IsStudent) <span>Teacher</span>
-    @Html.RadioButton("Role", "3", IsStudent) <span>Student</span>
-    bool IsInCourse = false;
-    <p>Courses</p>
-    foreach (var element in Model.Courses)
-    {
-        IsInCourse = false;
-        foreach (var el in Model.UserCourses)
-        {
-
-            if (element == el)
-            {
-
-                IsInCourse = true;
-                break;
-            }
-        }
-        if (IsInCourse)
-        {
-            <input type="checkbox" name="Courses" value="@element" checked>        <span>@element</span>        <br />
-        }
-
-        else
-        {
-            <input type="checkbox" name="Courses" value="@element" >        <span>@element</span>            <br />
-        }
-
-    }
-    <br />
-
-    
-
-    <input type="submit" value="submit" onclick="location.href='@Url.Action("Index", "Home" )'" />
-}
-    
-
-<input type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin")'" />
 </div>
-

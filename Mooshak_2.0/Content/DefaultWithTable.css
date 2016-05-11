@@ -130,3 +130,8 @@ table.default td:first-child{
 .form{
     margin: 10px 0px;
 }
+
+footer{
+    clear: both;
+    padding-top:10px;
+}

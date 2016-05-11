@@ -6,16 +6,6 @@
 
 <div class="above-main"></div>
 
-    <p>Role</p>
-    @Html.RadioButton("Role", "2") <span>Teacher</span>
-    @Html.RadioButton("Role", "3") <span>Student</span>
-    <br />
-    <p>Courses</p>
-    @model List<string>
-    foreach (var element in Model)
-    {
-        <input type="checkbox" name="Courses" value="@element">        <span>@element</span>            <br />
-    }
 <div class="main">
     @using (Html.BeginForm())
     {
@@ -53,7 +43,7 @@
             @model List<string>
             @foreach (var element in Model)
             {
-                @Html.CheckBox("Course")
+                <input type="checkbox" name="Courses" value="@element">
                 <span>@element</span>
                 <br />
             }
