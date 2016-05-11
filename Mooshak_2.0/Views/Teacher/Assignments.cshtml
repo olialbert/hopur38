@@ -27,39 +27,26 @@
             @foreach (var element in Model.Assignments)
             {
                 <tr>
-                    <td>@Html.DisplayFor(m => element)</td>
+                    <td>@Html.DisplayFor(m => element.AssignmentName)</td>
+                    <td></td>
                     <td>
                         @Html.ActionLink("Delete", "DeleteTeacher", new { id = element }, new { @class = "delete" })
                         @Html.ActionLink("Edit", "EditUser", new { id = element }, new { @class = "edit" })
+                        @Html.ActionLink("Add subassignment", "EditUser", new { id = element })
                     </td>
                 </tr>
-                        foreach (var subelement in element.SubAssignments)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(m => subelement)</td>
-                                <td>
-                                    @Html.ActionLink("Delete", "DeleteTeacher", new { id = subelement }, new { @class = "delete" })
-                                    @Html.ActionLink("Edit", "EditUser", new { id = subelement }, new { @class = "edit" })
-                                </td>
-                            </tr>
-                        }
-
-
+                foreach (var subelement in element.SubAssignments)
+                {
+                    <tr class="sub">
+                        <td>- @Html.DisplayFor(m => subelement)</td>
+                        <td></td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteTeacher", new { id = subelement }, new { @class = "delete" })
+                            @Html.ActionLink("Edit", "EditUser", new { id = subelement }, new { @class = "edit" })
+                        </td>
+                    </tr>
+                }
             }
-            <tr>
-                <td></td>
-                <td>01/01/16 - 23:59</td>
-                <td>
-                    @Html.ActionLink("Add sub-assignment", "AddSubAssignment")
-                </td>
-            </tr>
-            <tr>
-                <td>Assignment 2</td>
-                <td>01/01/16 - 23:59</td>
-                <td>
-                    @Html.ActionLink("Add sub-assignment", "ViewUsersinCourse")
-                </td>
-            </tr>
             
         </tbody>
     </table>
