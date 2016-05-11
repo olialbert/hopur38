@@ -181,16 +181,17 @@ namespace Mooshak_2._0.Services
             db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
             return 0;
         }
-
         
-       
+        public List<string> GetAssignments(string courseName)
+        {
+            var coursesName = db.GetAssignments(courseName);
+            return coursesName.ToList();
+        }
 
-        
-
-
-
-
-
-
+        public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
+        {
+            var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
+            return PartAssignments.ToList();
+        }
     }
 }

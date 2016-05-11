@@ -1,4 +1,5 @@
-﻿using Mooshak_2._0.Services;
+﻿using Mooshak_2._0.Models;
+using Mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,22 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
-        public ActionResult Assignments()
+        public ActionResult Assignments(string courseName)
         {
-            var Assignments = Tables.GetAssignments(CourseName);
-            return View(Assignments);
+            var TeacherAssignments = new TeacherViewModelsAssignmetns();
+            TeacherAssignments.Courses = Tables.GetCoursesByUser("Jon Jonson");
+            
+            var Assignments = Tables.GetAssignments(courseName);
+
+            foreach(var assignment in Assignments)
+            {
+                var AssignmentList = new AssignmentList();
+                AssignmentList.AssignmentName = assignment;
+                AssignmentList.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, courseName);
+                TeacherAssignments.Assignments.Add(AssignmentList);
+            }
+
+            return View(TeacherAssignments);
         }
 
         public ActionResult AddAssignment()

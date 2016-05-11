@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
-
+@model Mooshak_2._0.Models.TeacherViewModelsAssignmetns
 
 <div class="leftSide">
     <div class="above">
@@ -17,9 +17,9 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
-            @foreach(var item in Model)
+            @foreach (var item in Model.Courses)
             {
-                <li>@Html.DisplayFor(x => item)</li>
+                <li>@Html.ActionLink(Html.DisplayFor(x => item).ToString() , "Assignments", new { id = item })</li>
             }
         </ul>
     </div>

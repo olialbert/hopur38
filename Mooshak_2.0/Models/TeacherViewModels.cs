@@ -14,5 +14,6 @@ namespace Mooshak_2._0.Models
     public class TeacherViewModelsAssignmetns
     {
         public List<AssignmentList> Assignments { get; set; }
+        public List<string> Courses { get; set; }
     }
 }
