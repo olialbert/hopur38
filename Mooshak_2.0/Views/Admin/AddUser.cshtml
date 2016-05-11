@@ -2,19 +2,9 @@
     ViewBag.Title = "User Page";
 }
 
+@Html.Partial("_AdminForm")
 
-@using (Html.BeginForm())
-{
-    <label for="Name">Name:</label>             <br/>
-    <input type="text" name="Name" />           <br/>
-    <label for="Username">Username:</label>     <br/>
-    <input type="text" name="Username" />       <br/>
-    <label for="Password">Password:</label>     <br/>
-    <input type="password" name="Password" />   <br/>
-    <label for="SSN">SSN:</label>               <br/>
-    <input type="text" name="SSN" />            <br/>
-    <label for="Email">Email:</label>           <br/>
-    <input type="email" name="Email" />         <br/>
+<div class="above-main"></div>
 
     <p>Role</p>
     @Html.RadioButton("Role", "2") <span>Teacher</span>
@@ -26,9 +16,50 @@
     {
         <input type="checkbox" name="Courses" value="@element">        <span>@element</span>            <br />
     }
+<div class="main">
+    @using (Html.BeginForm())
+    {
+        <h2>Add User</h2>
 
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" name="Name" />
+        </div>
+        <div class="form-group">
+            <label for="Username">Username:</label>
+            <input type="text" class="form-control" name="Username" />
+        </div>
+        <div class="form-group">
+            <label for="Password">Password:</label>
+            <input type="password" class="form-control" name="Password" />
+        </div>
+        <div class="form-group">
+            <label for="SSN">SSN:</label>
+            <input type="text" class="form-control" name="SSN" />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="email" class="form-control" name="Email" />
+        </div>
 
-    <input type="submit" value="submit"  />    <br />
-}
+        <label>Role</label>
+        <div class="form-group">
+            <span>@Html.RadioButton("Role", "2") Teacher</span><br />
+            <span>@Html.RadioButton("Role", "3") Student</span>
+        </div>
 
-<input type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin")'" />
+        <label>Courses</label>
+        <div class="form-group">
+            @model List<string>
+            @foreach (var element in Model)
+            {
+                @Html.CheckBox("Course")
+                <span>@element</span>
+                <br />
+            }
+        </div>
+
+        <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Users", "Admin" )'" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin")'" />
+    }
+</div>
