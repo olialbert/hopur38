@@ -5,15 +5,15 @@
 
 
 
-@model Mooshak_2._0.Models.EditUserViewModel
+@model Mooshak_2._0.Models.ViewUsersInCourseEditUserViewModel
 @using (Html.BeginForm())
 {
-    
-    <input type="hidden" value="@Model.UserInfo.ElementAt(0)" name="SearchName" />    
+    <input type="hidden" value="@Model.CourseName" name="RedirectId" />
+    <input type="hidden" value="@Model.UserInfo.ElementAt(0)" name="SearchName" />
     <p>Name:</p>
     <input type="text" value="@Model.UserInfo.ElementAt(0)" name="Name" />
     <p>Username:</p>
-    <input type="text" value="@Model.UserInfo.ElementAt(1)"  name="Username" />
+    <input type="text" value="@Model.UserInfo.ElementAt(1)" name="Username" />
     <p>Password:</p>
     <input type="text" value="@Model.UserInfo.ElementAt(2)" name="Password" />
     <p>Ssn:</p>
@@ -27,7 +27,7 @@
     {
         IsStudent = true;
     }
-    @Html.RadioButton("Role", "2",!IsStudent) <span>Teacher</span>
+    @Html.RadioButton("Role", "2", !IsStudent) <span>Teacher</span>
     @Html.RadioButton("Role", "3", IsStudent) <span>Student</span>
     bool IsInCourse = false;
     <p>Courses</p>
@@ -51,17 +51,17 @@
 
         else
         {
-            <input type="checkbox" name="Courses" value="@element" >        <span>@element</span>            <br />
+            <input type="checkbox" name="Courses" value="@element">        <span>@element</span>            <br />
         }
 
     }
     <br />
 
-    
 
-    <input type="submit" value="submit" onclick="location.href='@Url.Action("Index", "Home" )'" />
+
+    <input type="submit" value="submit" />
 }
-    
 
-<input type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin")'" />
+
+<input type="button" value="Cancel" onclick="location.href='@Url.Action("ViewUsersinCourse", "Admin",new { id = @Model.CourseName })'" />
 

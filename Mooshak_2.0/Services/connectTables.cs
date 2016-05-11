@@ -52,6 +52,12 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
+        public int DeleteUsersToCoursesByUser(string name)
+        {
+            db.DeleteUsersToCoursesByUser(name);
+            return 0;
+        }
+
         public List<string> GetCourseByName(string courseName)
         {
             var coursesName = db.GetCourseByName(courseName);

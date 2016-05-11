@@ -59,6 +59,9 @@
         <Function Name="DeleteTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="DeleteUsersToCoursesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetAllSubmissionFromStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SubmissionName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
@@ -269,6 +272,9 @@
           <FunctionImport Name="GetTeachersInCoursesByName" ReturnType="Collection(String)">
           <Parameter Name="GetName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="DeleteUsersToCoursesByUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -360,6 +366,7 @@
           <FunctionImportMapping FunctionImportName="UpdatePartAssignment" FunctionName="VLN2_2016_H38Model2.Store.UpdatePartAssignment" />
           <FunctionImportMapping FunctionImportName="GetStudentsInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetStudentsInCoursesByName" />
           <FunctionImportMapping FunctionImportName="GetTeachersInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetTeachersInCoursesByName" />
+          <FunctionImportMapping FunctionImportName="DeleteUsersToCoursesByUser" FunctionName="VLN2_2016_H38Model2.Store.DeleteUsersToCoursesByUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

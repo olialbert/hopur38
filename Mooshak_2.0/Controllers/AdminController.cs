@@ -69,6 +69,37 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
+        public ActionResult EditUserViewUserInCourse(string ID)
+        {
+            List <string> Ids = ID.Split(',').ToList<string>();
+            var viewModel = new ViewUsersInCourseEditUserViewModel();
+            viewModel.CourseName = Ids.ElementAt(1);
+            viewModel.UserInfo = Tables.GetUserByName(Ids.ElementAt(0));
+            viewModel.Courses = Tables.GetCourses();
+            viewModel.UserCourses = Tables.GetCoursesByUser(Ids.ElementAt(0));
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditUserViewUserInCourse(string RedirectId,string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
+        {
+            int RolesId = Convert.ToInt32(Role);
+            int SsnInt = Convert.ToInt32(Ssn);
+            Tables.UppdateUser(SearchName, RolesId, Name, Username, Password, SsnInt, Email);
+            Tables.DeleteUsersToCoursesByUser(Name);
+            if (Courses.Length != 0)
+            {
+                foreach (var Course in Courses)
+                {
+
+                    Tables.AddUsersToCourses(Name, Course);
+                }
+            }
+
+            return RedirectToAction("ViewUsersinCourse", new { id = RedirectId });
+        }
+
         public ActionResult AddUser()
         {
             var Courses = Tables.GetCourses();
@@ -78,14 +109,14 @@ namespace Mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult AddUser(string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {
-            //vantar course í formið
-           // int RolesId = Convert.ToInt32(Role);
-           // int SsnInt = Convert.ToInt32(Ssn);
-            //Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
+            
+            int RolesId = Convert.ToInt32(Role);
+            int SsnInt = Convert.ToInt32(Ssn);
+            Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
             
             foreach(var Course in Courses)
             {
-                Tables.AddUsersToCourses("Anna Bergljótdóttir", Course);
+                Tables.AddUsersToCourses(Name, Course);
             }
 
             return RedirectToAction("Users");
@@ -111,18 +142,31 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult EditUser(string ID)
         {
-            var Users = Tables.GetUserByName(ID);
-
-            return View(Users);
+            var viewModel = new EditUserViewModel();
+            viewModel.UserInfo = Tables.GetUserByName(ID);
+            viewModel.Courses = Tables.GetCourses();
+            viewModel.UserCourses = Tables.GetCoursesByUser(ID);
+            
+            return View(viewModel);
 
         }
 
         [HttpPost]
-        public ActionResult EditUser(string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role)
+        public ActionResult EditUser(string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {
             int RolesId = Convert.ToInt32(Role);
             int SsnInt = Convert.ToInt32(Ssn);
             Tables.UppdateUser(SearchName, RolesId, Name, Username, Password, SsnInt, Email);
+            Tables.DeleteUsersToCoursesByUser(Name);
+            if (Courses.Length != 0)
+            {
+                foreach (var Course in Courses)
+                {
+                    
+                    Tables.AddUsersToCourses(Name, Course);
+                }
+            }
+            
             return RedirectToAction("Users");
         }
 
@@ -132,10 +176,24 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Users");
         }
 
+        public ActionResult DeleteStudentViewUsersInCourse(string ID)
+        {
+            List<string> Ids = ID.Split(',').ToList<string>();
+            // Tables.DeleteStudent(ID);
+            return RedirectToAction("Users",new { id = Ids.ElementAt(1) });
+        }
+
         public ActionResult DeleteTeacher(string ID)
         {
             Tables.DeleteTeacher(ID);
             return RedirectToAction("Users");
+        }
+
+        public ActionResult DeleteTeacherViewUsersInCourse(string ID)
+        {
+            List<string> Ids = ID.Split(',').ToList<string>();
+            // Tables.DeleteTeacher(ID);
+            return RedirectToAction("Users", new { id = Ids.ElementAt(1) });
         }
     }
 }

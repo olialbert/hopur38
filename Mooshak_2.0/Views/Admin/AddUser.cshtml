@@ -23,9 +23,8 @@
     <p>Courses</p>
     @model List<string>
     foreach (var element in Model)
-    {  
-        <input name="Courses" type="checkbox"  value="@element" />        <span>@element</span>        <br />
-
+    {
+        <input type="checkbox" name="Courses" value="@element">        <span>@element</span>            <br />
     }
 
 
