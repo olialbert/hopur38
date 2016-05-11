@@ -179,8 +179,8 @@ namespace Mooshak_2._0.Controllers
         public ActionResult DeleteStudentViewUsersInCourse(string ID)
         {
             List<string> Ids = ID.Split(',').ToList<string>();
-            // Tables.DeleteStudent(ID);
-            return RedirectToAction("Users",new { id = Ids.ElementAt(1) });
+            Tables.DeleteStudent(Ids.ElementAt(0));
+            return RedirectToAction("ViewUsersinCourse", new { id = Ids.ElementAt(1) });
         }
 
         public ActionResult DeleteTeacher(string ID)
@@ -192,8 +192,8 @@ namespace Mooshak_2._0.Controllers
         public ActionResult DeleteTeacherViewUsersInCourse(string ID)
         {
             List<string> Ids = ID.Split(',').ToList<string>();
-            // Tables.DeleteTeacher(ID);
-            return RedirectToAction("Users", new { id = Ids.ElementAt(1) });
+            Tables.DeleteTeacher(ID);
+            return RedirectToAction("ViewUsersinCourse", new { id = Ids.ElementAt(1) });
         }
     }
 }

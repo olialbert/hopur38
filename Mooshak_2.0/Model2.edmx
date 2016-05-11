@@ -273,7 +273,7 @@
           <Parameter Name="GetName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteUsersToCoursesByUser">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">

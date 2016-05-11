@@ -14,6 +14,7 @@
     @using (Html.BeginForm())
     {
         <div class="form-group">
+            <input type="hidden" class="form-control" value=@Model[0] name="SearchName" />
             <label for="Name">Name:</label>
             <input type="text" class="form-control" value=@Model[0] name="Name" />
         </div>
