@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Courses.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -432,6 +433,10 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\ViewUsersInCourse.cshtml" />
     <Content Include="Views\Admin\EditUserViewUserInCourse.cshtml" />
+    <Content Include="Views\UserAccount.cshtml" />
+    <Content Include="Views\UserAccount\_LoginForm.cshtml" />
+    <Content Include="Views\UserAccount\Error.cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
