@@ -64,6 +64,19 @@ namespace Mooshak_2._0.Controllers
             return View(CoursesUsers);
         }
 
+        public ActionResult EditAssignment(string ID)
+        {
+            var Assignment = Tables.GetAssignments(ID);
+            return View(Assignment);
+        }
+
+        [HttpPost]
+        public ActionResult EditAssignment(string searchName, string searchCourseName, string updateName, DateTime updateDueDate)
+        {
+            Tables.UpdateAssignment(searchName, searchCourseName, searchCourseName, updateName, updateDueDate);
+            return RedirectToAction("Assignments");
+        }
+
         public ActionResult UpdateDescription()
         {
             return View();
