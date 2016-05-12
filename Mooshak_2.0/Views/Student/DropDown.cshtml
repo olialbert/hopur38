@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script>
+        function loadUrl() {
+            var assignment = document.getElementById("mySelect").value;
+            this.document.location.href = "http://localhost:5686/Student/SelectSubmittions/" + assignment;
+        }
+    </script>
+
+</head>
+<body>
+    <select id="mySelect" onchange="loadUrl()">
+        <option selected disabled hidden style='display: none' value=''></option>
+        @foreach (var element in Model)
+        {
+            string name = element;
+            <option value="@name">@element</option>
+        }
+        
+    </select>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Select Assignment";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script>
+        function loadUrl() {
+            var assignment = document.getElementById("mySelect").value;
+            this.document.location.href = "http://localhost:5686/Student/SelectSubmittions/" + assignment;
+        }
+    </script>
+
+</head>
+<body>
+    @foreach (var element in Model.Submittions)
+    {
+        string name = element;
+        <p> @element</p>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <input type="hidden" name="ids" value="@Model.UberString"/>
+        <input class="btn btn-default" type="file" value="Choose File" name="path" />
+        <input class="btn btn-default" type="submit" value="Submit" />
+    }
+
+    <input class="btn btn-default" type="button" value="View Description" onclick="location.href='@Url.Action("ViewDescription", "Student",new { id = @Model.UberString })'" /> 
+
+
+    <select id="mySelect" onchange="loadUrl()">
+    <option selected disabled hidden style='display: none' value=''></option>
+    @foreach (var element in Model.SubAssignments)
+    {
+        string value = element;
+        int i = element.IndexOf(",");
+        string name = element.Substring(0, i);
+        <option value="@value">@name</option>
+    }
+
+    </select>
+
+</body>
+</html>

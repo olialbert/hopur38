@@ -478,7 +478,20 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUsersToCoursesByUser", userNameParameter);
         }
+        
+        public virtual ObjectResult<string> GetRoleByUser(string roleUserName, string rolePassWord)
+        {
+            var roleUserNameParameter = roleUserName != null ?
+                new ObjectParameter("RoleUserName", roleUserName) :
+                new ObjectParameter("RoleUserName", typeof(string));
     
+            var rolePassWordParameter = rolePassWord != null ?
+                new ObjectParameter("RolePassWord", rolePassWord) :
+                new ObjectParameter("RolePassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRoleByUser", roleUserNameParameter, rolePassWordParameter);
+        }
+
         public virtual ObjectResult<string> GetDescription(string assignmentName, string subAssignmentName)
         {
             var assignmentNameParameter = assignmentName != null ?

@@ -7,14 +7,13 @@
 
 @model List<string>
 
-
 <div class="main">
     @using (Html.BeginForm())
     {
         <h2>Edit User</h2>
 
-        <input type="hidden" value="" name="searchName" />
-        <input type="hidden" value="" name="searchCourseName" />
+        <input type="hidden" value="@Model.ElementAt(0)" name="searchName" />
+        <input type="hidden" value="@Model.ElementAt(2)" name="searchCourseName" />
         <div class="form-group">
             <label for="Name">Name:</label>
             <input type="text" value="" class="form-control" name="updateName" />

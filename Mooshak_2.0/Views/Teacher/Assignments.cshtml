@@ -33,6 +33,7 @@
                         @Html.ActionLink("Delete", "DeleteAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "delete" })
                         @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
                         @Html.ActionLink("Add subassignment", "EditUser", new { id = element.AssignmentName })
+ 
                     </td>
                 </tr>
                 foreach (var subelement in element.SubAssignments)

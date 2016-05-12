@@ -58,6 +58,36 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
+        public List<string> GetAssignments(string courseName)
+        {
+            var coursesName = db.GetAssignments(courseName);
+            return coursesName.ToList();
+        }
+
+        public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
+        {
+            var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
+            return PartAssignments.ToList();
+        }
+
+        public List<string> GetGrades(string UserFullName, string CourseName, string AssignmentName, string SubAssignmmentName)
+        {
+            var Grades = db.GetAllSubmissionFromStudent(UserFullName, CourseName, AssignmentName, SubAssignmmentName);
+            List<string> Res = new List<string>();
+            foreach (var Grade in Grades)
+            {
+                Res.Add(Grade.Grade.ToString());
+            }
+            return Res;
+        }
+
+        public string GetRoleByUser(string UserName, string Password)
+        {
+            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
+
+            return Role;
+        }
+
         public List<string> GetCourseByName(string courseName)
         {
             var coursesName = db.GetCourseByName(courseName);
@@ -181,25 +211,16 @@ namespace Mooshak_2._0.Services
             db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
             return 0;
         }
-        public List<string> GetAssignments(string courseName)
-        {
-            var coursesName = db.GetAssignments(courseName);
-            return coursesName.ToList();
-        }
 
-        /*public string GetRoleByUser(string UserName, string Password)
-        {
-            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
-
-            return Role;
-        }*/
         
-        public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
-        {
-            var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
-            return PartAssignments.ToList();
-        }
+       
 
+        public int SetGrade(int Grade, string Name)
+        {
+            db.SetGrade(Grade, Name);
+            return 0;
+        }
+        
         public List<string> GetDescription(string AssignmentName, string SubAssignmentName)
         {
             var Description = db.GetDescription(AssignmentName, SubAssignmentName);
