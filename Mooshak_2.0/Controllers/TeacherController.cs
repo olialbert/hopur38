@@ -66,7 +66,7 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult EditAssignment(string ID)
         {
-            var Assignment = Tables.GetAssignments(ID);
+            var Assignment = Tables.GetAssignmentsInfoByCourse(ID, "Verk1");
             return View(Assignment);
         }
 

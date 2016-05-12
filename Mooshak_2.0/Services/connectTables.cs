@@ -199,5 +199,21 @@ namespace Mooshak_2._0.Services
             var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
             return PartAssignments.ToList();
         }
+        
+        public List<string> GetAssignmentsInfoByCourse(string GetCourseName, string GetAssignmentName)
+        {
+            var AssignmentInfo = db.GetAssignmentsInfoByCourse(GetCourseName, GetAssignmentName);
+            GetAssignmentsInfoByCourse_Result Res = new GetAssignmentsInfoByCourse_Result();
+            Res = AssignmentInfo.ElementAt(0);
+            List<string> info = Res.ToString().Split('X').ToList<string>();
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\\Users\\Oli\\Desktop\\testing\test1.txt"))
+            {
+                //foreach (string i in info)
+                //file.WriteLine(i);
+                file.WriteLine(info.Count);
+            }
+            return info;
+        }
     }
 }

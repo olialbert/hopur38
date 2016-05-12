@@ -231,6 +231,9 @@
     <Compile Include="GetAllSubmissionFromStudent_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAssignmentsInfoByCourse_Result.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetBestSubmissionAllStudents_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>

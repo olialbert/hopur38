@@ -71,6 +71,10 @@
         <Function Name="GetAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAssignmentsInfoByCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetUsersName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetBestSubmissionAllStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
@@ -89,9 +93,21 @@
         <Function Name="GetCoursesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="SubAssignmentName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
+          <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetRoleByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
+          <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -275,6 +291,22 @@
           <FunctionImport Name="DeleteUsersToCoursesByUser">
           <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAssignmentsInfoByCourse" ReturnType="Collection(VLN2_2016_H38Model2.GetAssignmentsInfoByCourse_Result)">
+          <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetUsersName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetDescription" ReturnType="Collection(String)">
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="SubAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRole" ReturnType="Collection(String)">
+            <Parameter Name="RoleUserName" Mode="In" Type="String" />
+            <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoleByUser" ReturnType="Collection(String)">
+            <Parameter Name="RoleUserName" Mode="In" Type="String" />
+            <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -296,6 +328,11 @@
         <ComplexType Name="GetBestSubmissionForStudent_Result">
           <Property Type="String" Name="PathToAssignmentSave" Nullable="true" />
           <Property Type="Int32" Name="Grade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAssignmentsInfoByCourse_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Name1" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -367,6 +404,18 @@
           <FunctionImportMapping FunctionImportName="GetStudentsInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetStudentsInCoursesByName" />
           <FunctionImportMapping FunctionImportName="GetTeachersInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetTeachersInCoursesByName" />
           <FunctionImportMapping FunctionImportName="DeleteUsersToCoursesByUser" FunctionName="VLN2_2016_H38Model2.Store.DeleteUsersToCoursesByUser" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentsInfoByCourse" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentsInfoByCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetAssignmentsInfoByCourse_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDescription" FunctionName="VLN2_2016_H38Model2.Store.GetDescription" />
+          <FunctionImportMapping FunctionImportName="GetRole" FunctionName="VLN2_2016_H38Model2.Store.GetRole" />
+          <FunctionImportMapping FunctionImportName="GetRoleByUser" FunctionName="VLN2_2016_H38Model2.Store.GetRoleByUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

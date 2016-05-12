@@ -478,5 +478,57 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUsersToCoursesByUser", userNameParameter);
         }
+    
+        public virtual ObjectResult<GetAssignmentsInfoByCourse_Result> GetAssignmentsInfoByCourse(string getCourseName, string getUsersName)
+        {
+            var getCourseNameParameter = getCourseName != null ?
+                new ObjectParameter("GetCourseName", getCourseName) :
+                new ObjectParameter("GetCourseName", typeof(string));
+    
+            var getUsersNameParameter = getUsersName != null ?
+                new ObjectParameter("GetUsersName", getUsersName) :
+                new ObjectParameter("GetUsersName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAssignmentsInfoByCourse_Result>("GetAssignmentsInfoByCourse", getCourseNameParameter, getUsersNameParameter);
+        }
+    
+        public virtual ObjectResult<string> GetDescription(string assignmentName, string subAssignmentName)
+        {
+            var assignmentNameParameter = assignmentName != null ?
+                new ObjectParameter("AssignmentName", assignmentName) :
+                new ObjectParameter("AssignmentName", typeof(string));
+    
+            var subAssignmentNameParameter = subAssignmentName != null ?
+                new ObjectParameter("SubAssignmentName", subAssignmentName) :
+                new ObjectParameter("SubAssignmentName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetDescription", assignmentNameParameter, subAssignmentNameParameter);
+        }
+    
+        public virtual ObjectResult<string> GetRole(string roleUserName, string rolePassWord)
+        {
+            var roleUserNameParameter = roleUserName != null ?
+                new ObjectParameter("RoleUserName", roleUserName) :
+                new ObjectParameter("RoleUserName", typeof(string));
+    
+            var rolePassWordParameter = rolePassWord != null ?
+                new ObjectParameter("RolePassWord", rolePassWord) :
+                new ObjectParameter("RolePassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRole", roleUserNameParameter, rolePassWordParameter);
+        }
+    
+        public virtual ObjectResult<string> GetRoleByUser(string roleUserName, string rolePassWord)
+        {
+            var roleUserNameParameter = roleUserName != null ?
+                new ObjectParameter("RoleUserName", roleUserName) :
+                new ObjectParameter("RoleUserName", typeof(string));
+    
+            var rolePassWordParameter = rolePassWord != null ?
+                new ObjectParameter("RolePassWord", rolePassWord) :
+                new ObjectParameter("RolePassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRoleByUser", roleUserNameParameter, rolePassWordParameter);
+        }
     }
 }

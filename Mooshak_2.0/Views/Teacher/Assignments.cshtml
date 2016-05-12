@@ -30,9 +30,9 @@
                     <td>@Html.DisplayFor(m => element.AssignmentName)</td>
                     <td></td>
                     <td>
-                        @Html.ActionLink("Delete", "DeleteTeacher", new { id = element }, new { @class = "delete" })
-                        @Html.ActionLink("Edit", "EditUser", new { id = element }, new { @class = "edit" })
-                        @Html.ActionLink("Add subassignment", "EditUser", new { id = element })
+                        @Html.ActionLink("Delete", "DeleteTeacher", new { id = element.AssignmentName }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
+                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element })
                     </td>
                 </tr>
                 foreach (var subelement in element.SubAssignments)
