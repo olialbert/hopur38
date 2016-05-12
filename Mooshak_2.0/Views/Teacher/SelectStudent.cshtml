@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    @foreach (var element in Model.Students)
+    {
+        <p>@element </p>
+        @Html.ActionLink("Get all submissions", "AllSubmissions", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, }, new { @class = "" }) <br />
+        @Html.ActionLink("Get best submission", "BestSubmission", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, }, new { @class = "" })
+    }
+    </div>
+</body>
+</html>

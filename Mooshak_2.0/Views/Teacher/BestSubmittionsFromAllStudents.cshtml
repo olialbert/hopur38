@@ -1,0 +1,25 @@
+﻿@using System.Linq
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    @foreach (var element in Model)
+    {
+        string name = element.Name;
+        string path = element.PathToAssignmentSave;
+        string grade = element.Grade.ToString();
+        <p>@Html.DisplayFor(m => name)  @Html.DisplayFor(m => path) @Html.DisplayFor(m => grade)</p>
+    }
+    </div>
+</body>
+</html>

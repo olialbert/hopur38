@@ -72,6 +72,15 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments");
         }
 
+        public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId)
+        {
+            var Submittions = Tables.GetBestSubmissionAllStudents(CourseId,MainID,ID);
+
+            
+
+            return View(Submittions);
+        }
+
         public ActionResult EditAssignment(string ID)
          {
              var Assignment = Tables.GetAssignmentxInfoByCourse("Gagnaskipann", ID);
@@ -116,6 +125,38 @@ namespace Mooshak_2._0.Controllers
             Tables.DeletePartAssignment(ID, description);
             return RedirectToAction("Assignments/" + courseID);
         }
+
+        public ActionResult SelectStudent(string ID, string MainID, string CourseID)
+        {
+            var viewModel = new SelectStudentViewModel();
+            viewModel.CourseName = CourseID;
+            viewModel.AssignmentName = MainID;
+            viewModel.PartAssignmentName = ID;
+            viewModel.Students = Tables.GetStudentsInCoursesByName(CourseID);
+            return View(viewModel);
+        }
+
+        public ActionResult AllSubmissions(string ID, string MainID,string PartAssignmentId, string CourseID)
+        {
+            var viewModel = new SelectStudentViewModel();
+            viewModel.CourseName = CourseID;
+            viewModel.AssignmentName = MainID;
+            viewModel.PartAssignmentName = ID;
+            viewModel.AllSubmit = Tables.GetAllSubmissionFromStudent(ID, CourseID, MainID, PartAssignmentId);
+            return View(viewModel);
+        }
+
+
+        public ActionResult BestSubmission(string ID, string MainID, string PartAssignmentId, string CourseID)
+        {
+            var viewModel = new SelectStudentViewModel();
+            viewModel.CourseName = CourseID;
+            viewModel.AssignmentName = MainID;
+            viewModel.PartAssignmentName = ID;
+            viewModel.BestSubmit = Tables.GetBestSubmissionForStudent(ID, CourseID, MainID, PartAssignmentId);
+            return View(viewModel);
+        }
+
 
         public ActionResult ViewSubmittions()
         {
