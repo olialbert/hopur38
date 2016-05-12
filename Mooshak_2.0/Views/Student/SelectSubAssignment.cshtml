@@ -27,14 +27,25 @@
                 <li id="sidebar-title">@Model.CourseName</li>
                 @foreach (var element in Model.Assignments)
                 {
-                string studentName = "gunni ben";
-                    <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { mainID = element, courseID = @Model.CourseName, studentID = studentName })</li>
+                    <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = Model.SubAssignmentName, mainID = element, courseID = Model.CourseName, studentID = Model.StudentName })</li>
                 }
             </ul>
         </div>
     </div>
     <div class="above-main">
         <h2>@Model.AssignmentName</h2>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                ~ Sub-Assignments ~
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach (var element in Model.SubAssignments)
+                {
+                    <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = element, mainID = Model.AssignmentName, courseID = @Model.CourseName, studentID = Model.StudentName })</li>
+                }
+            </ul>
+        </div>
     </div>
 
     <div class="main">
@@ -49,16 +60,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var element in Model.SubAssignments)
+                @foreach (var element in Model.Submissions)
                 {
                     <tr>
-                        <td>num</td>
-                        <td>time</td>
+                        <td>number</td>
+                        <td>@DateTime.Now</td>
                         <td>C#</td>
-                        <td>
-
-                            @Html.DisplayFor(x => element)
-                        </td>
+                        <td>element.Grade</td>
                     </tr>
                 }
             </tbody>

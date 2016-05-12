@@ -28,6 +28,7 @@ namespace Mooshak_2._0.Models
         public string UberString { get; set; }
         public List<string> Assignments { get; set; }
         public List<string> SubAssignments { get; set; }
+        public IEnumerable<GetAllSubmissionFromStudent_Result> Submissions { get; set; }
         public List<string> Submittions { get; set; }
     }
 }
