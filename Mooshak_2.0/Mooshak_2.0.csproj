@@ -230,6 +230,9 @@
     <Compile Include="GetAllSubmissionFromStudent_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAssignmentsInfoByCourse_Result.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetBestSubmissionAllStudents_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
@@ -308,6 +311,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DefaultWithTable.css" />
+    <Content Include="Content\TeacherCSS.css" />
     <Content Include="Db.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Db.edmx</DependentUpon>
@@ -428,12 +432,12 @@
     <Content Include="Views\Admin\_AdminForm.cshtml" />
     <Content Include="Views\Admin\AddCourse.cshtml" />
     <Content Include="Views\Teacher\_TeacherForm.cshtml" />
-    <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Teacher\AddAssignment.cshtml" />
     <Content Include="Views\Teacher\Assignments.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\ViewUsersInCourse.cshtml" />
     <Content Include="Views\Admin\EditUserViewUserInCourse.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\SelectAssignments.cshtml" />
     <Content Include="Views\Student\SelecSubtAssignment.cshtml" />
@@ -441,6 +445,14 @@
     <Content Include="Views\Student\DropDown.cshtml" />
     <Content Include="Views\Student\SubmitAssignment.cshtml" />
     <Content Include="Views\Student\ViewDescription.cshtml" />
+=======
+    <Content Include="Views\UserAccount.cshtml" />
+    <Content Include="Views\UserAccount\_LoginForm.cshtml" />
+    <Content Include="Views\UserAccount\Error.cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\Teacher\AddSubAssignment.cshtml" />
+    <Content Include="Views\Teacher\EditAssignment.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

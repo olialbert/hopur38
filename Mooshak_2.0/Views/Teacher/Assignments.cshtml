@@ -1,27 +1,52 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Assignments - Teacher";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Partial("_TeacherForm")
 
+@model Mooshak_2._0.Models.TeacherViewModelsAssignmetns
+
 <div class="above-main">
     <div class="rightSide">
-        @Html.ActionLink("Create New Assignment", "AddAssignment", "Teacher", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create New Assignment", "AddAssignment", new { id = @Model.CurrentClass }, new { @class = "btn btn-default" })
     </div>
 </div>
 
 <div class="main">
-    <table class="default">
+    <table class="default teacher">
         <caption>Courses</caption>
         <thead>
             <tr>
-                <th>Course</th>
+                <th>Assignment</th>
+                <th>Due Date</th>
                 <th>Options</th>
             </tr>
         </thead>
         <tbody>
+            @foreach (var element in Model.Assignments)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => element.AssignmentName)</td>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteTeacher", new { id = element.AssignmentName }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
+                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element })
+                    </td>
+                </tr>
+                foreach (var subelement in element.SubAssignments)
+                {
+                    <tr class="sub">
+                        <td>- @Html.DisplayFor(m => subelement)</td>
+                        <td></td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteTeacher", new { id = subelement }, new { @class = "delete" })
+                            @Html.ActionLink("Edit", "EditUser", new { id = subelement }, new { @class = "edit" })
+                        </td>
+                    </tr>
+                }
+            }
             
         </tbody>
     </table>

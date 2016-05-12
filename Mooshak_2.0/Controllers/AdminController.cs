@@ -92,11 +92,9 @@ namespace Mooshak_2._0.Controllers
             {
                 foreach (var Course in Courses)
                 {
-
                     Tables.AddUsersToCourses(Name, Course);
                 }
             }
-
             return RedirectToAction("ViewUsersinCourse", new { id = RedirectId });
         }
 
@@ -109,7 +107,6 @@ namespace Mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult AddUser(string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {
-            
             int RolesId = Convert.ToInt32(Role);
             int SsnInt = Convert.ToInt32(Ssn);
             Tables.AddUser(RolesId, Name, Username, Password, SsnInt, Email);
