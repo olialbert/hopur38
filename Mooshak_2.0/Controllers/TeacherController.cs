@@ -60,20 +60,42 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult AddSubAssignment()
         {
-            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
-            return View(CoursesUsers);
+            var Courses = Tables.GetCoursesByUser("Jon Jonson");
+            return View(Courses);
         }
 
-       /* public ActionResult EditAssignment(string ID)
+        [HttpPost]
+        public ActionResult AddSubAssignment(string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
         {
-            var Assignment = Tables.GetAssignmentsInfoByCourse(ID, "Verk1");
-            return View(Assignment);
-        }*/
+            int PercentNum = Convert.ToInt32(Percentage);
+            Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, "Verk1", "Gagnaskipann");
+            return RedirectToAction("Assignments");
+        }
+
+        public ActionResult EditAssignment(string ID)
+         {
+             var Assignment = Tables.GetAssignmentxInfoByCourse("Gagnaskipann", ID);
+             return View(Assignment);
+         }
 
         [HttpPost]
         public ActionResult EditAssignment(string searchName, string searchCourseName, string updateName, DateTime updateDueDate)
         {
             Tables.UpdateAssignment(searchName, searchCourseName, searchCourseName, updateName, updateDueDate);
+            return RedirectToAction("Assignments");
+        }
+
+        public ActionResult EditSubassignment(string ID)
+        {
+            var Assignment = Tables.GetPartAssignmentInfoByName(ID, "sdf");
+            return View(Assignment);
+        }
+
+        [HttpPost]
+        public ActionResult EditSubassignment(string SearchName, string SearchDesc, string SubName, string Descrip, string Percentage, string Input)
+        {
+            int PercentNum = Convert.ToInt32(Percentage);
+            Tables.UpdatePartAssignment(SearchName, SearchDesc, SubName, PercentNum, Descrip, Input);
             return RedirectToAction("Assignments");
         }
 

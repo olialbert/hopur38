@@ -22,8 +22,10 @@ namespace Mooshak_2._0.Controllers
         }
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string courseName)
         {
+            var ViewStudentModel = new StudentIdsViewModel();
+            ViewStudentModel.Assignments = Tables.GetAssignments("prump");
             var Courses = Tables.GetCoursesByUser(Name);
             return View(Courses);
         }

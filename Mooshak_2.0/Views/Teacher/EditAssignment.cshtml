@@ -12,15 +12,32 @@
     {
         <h2>Edit User</h2>
 
-        <input type="hidden" value="@Model.ElementAt(0)" name="searchName" />
-        <input type="hidden" value="@Model.ElementAt(2)" name="searchCourseName" />
-        <div class="form-group">
-            <label for="Name">Name:</label>
-            <input type="text" value="" class="form-control" name="updateName" />
-        </div>
-        <div class="form-group">
-            <label for="Username">Username:</label>
-            <input type="date" value="" class="form-control" name="updateDueDate" />
-        </div>
+
+        string Value = @Model.ElementAt(1);
+        Value = Value.Remove(Value.Length - 11);
+
+        string day = Value.Substring(0, Value.IndexOf('-')+1);
+        Value = Value.Remove(0,day.Length);
+        string month = Value.Substring(0, Value.IndexOf('-')+1);
+        int montNum = DateTime.Parse("01," +month+",1900").Month;
+        string monthVal = montNum.ToString();
+        monthVal = (monthVal.Length == 1) ? ("0" + monthVal) : monthVal;
+        Value = Value.Remove(0, month.Length);
+        string Year = "20" + Value;
+        Year = Year.Remove(Year.Length-1);
+        day= day.Remove(day.Length - 1);
+
+                <input type="hidden" value="@Model.ElementAt(0)" name="searchName" />
+                <input type="hidden" value="@Model.ElementAt(2)" name="searchCourseName" />
+                <div class="form-group">
+                    <label for="updateName">Name:</label>
+                    <input type="text" value="@Model.ElementAt(0)" class="form-control" name="updateName" />
+                </div>
+                <div class="form-group">
+                    <label for="updateDueDate">Due date:</label>
+                    <input type="date" value="@Year-@monthVal-@day" class="form-control" name="updateDueDate" />
+                </div>
+
+                <input class="btn btn-default" type="submit" value="Submit" />
     }
 </div>

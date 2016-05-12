@@ -10,17 +10,11 @@
 namespace Mooshak_2._0
 {
     using System;
-
+    
     public partial class GetAssignmentsInfoByCourse_Result
     {
         public string Name { get; set; }
         public System.DateTime DueDate { get; set; }
         public string Name1 { get; set; }
-
-        public override string ToString()
-        {
-            string Res = Name + "X" + DueDate.ToString() + "X" + Name1;
-            return Res;
-        }
     }
 }

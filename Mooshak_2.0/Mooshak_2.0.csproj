@@ -233,10 +233,16 @@
     <Compile Include="GetAssignmentsInfoByCourse_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAssignmentxInfoByCourse_Result.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetBestSubmissionAllStudents_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBestSubmissionForStudent_Result.cs">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPartAssignmentInfoByName_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="GetUserByName_Result.cs">
@@ -450,6 +456,7 @@
     <Content Include="Views\UserAccount\Login.cshtml" />
     <Content Include="Views\UserAccount\_LoginForm.cshtml" />
     <Content Include="Views\Student\_StudentAssignmentsForm.cshtml" />
+    <Content Include="Views\Teacher\EditSubassignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

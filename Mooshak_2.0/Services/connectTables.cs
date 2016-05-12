@@ -106,6 +106,18 @@ namespace Mooshak_2._0.Services
             return courseByUser.ToList();
         }
 
+        public List<string> GetPartAssignmentInfoByName(string Name, string Desc)
+        {
+            var listX = db.GetPartAssignmentInfoByName(Name, Desc);
+
+             GetPartAssignmentInfoByName_Result Res = listX.ElementAt(0);
+
+            List<string> Info = Res.ToString().Split(',').ToList<string>();
+
+            return Info;
+        }
+      
+
         public List<string> GetRoles()
         {
             var role = db.GetRoles();
@@ -123,6 +135,30 @@ namespace Mooshak_2._0.Services
         {
             var role = db.GetStudentsInCoursesByName(CourseName);
             return role.ToList();
+        }
+
+        public List<string> GetAssignmentsInfoByCourse(string CourseName, string AssignmnetName)
+        {
+            var listX = db.GetAssignmentsInfoByCourse(CourseName, AssignmnetName);
+
+            GetAssignmentsInfoByCourse_Result Res = listX.ElementAt(0);
+
+            List<string> Info = Res.ToString().Split(',').ToList<string>();
+
+            return Info;
+
+        }
+
+        public List<string> GetAssignmentxInfoByCourse(string CourseName, string AssignmnetName)
+        {
+            var listX = db.GetAssignmentxInfoByCourse(CourseName, AssignmnetName);
+
+            GetAssignmentxInfoByCourse_Result Res = listX.ElementAt(0);
+
+            List<string> Info = Res.ToString().Split(',').ToList<string>();
+
+            return Info;
+
         }
 
         public List<string> GetTeachers()
@@ -211,6 +247,8 @@ namespace Mooshak_2._0.Services
             db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
             return 0;
         }
+
+
 
         
        
