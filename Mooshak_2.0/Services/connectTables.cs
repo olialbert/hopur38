@@ -199,5 +199,11 @@ namespace Mooshak_2._0.Services
             var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
             return PartAssignments.ToList();
         }
+
+        public List<string> GetDescription(string AssignmentName, string SubAssignmentName)
+        {
+            var Description = db.GetDescription(AssignmentName, SubAssignmentName);
+            return Description.ToList();
+        }
     }
 }

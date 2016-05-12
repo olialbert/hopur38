@@ -81,10 +81,18 @@ namespace Mooshak_2._0.Controllers
         {
             return View();
         }
-
-        public ActionResult DeleteAssignment()
+        
+        public ActionResult DeleteAssignment(string ID, string courseID)
         {
-            return View();
+            Tables.DeleteAssignment(ID, courseID);
+            return RedirectToAction("Assignments/" + courseID);
+        }
+
+        public ActionResult DeleteSubAssignment(string ID, string mainID, string courseID)
+        {
+            var description = Tables.GetDescription(mainID, ID).FirstOrDefault();
+            Tables.DeletePartAssignment(ID, description);
+            return RedirectToAction("Assignments/" + courseID);
         }
 
         public ActionResult ViewSubmittions()

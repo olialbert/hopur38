@@ -5,20 +5,23 @@
 
 <h2>EditAssignment</h2>
 
+@model List<string>
+
+
 <div class="main">
     @using (Html.BeginForm())
     {
         <h2>Edit User</h2>
 
-        <input type="hidden" value="@Model.ElementAt(0)" name="searchName" />
-        <input type="hidden" value="@Model.ElementAt(1)" name="searchCourseName" />
+        <input type="hidden" value="" name="searchName" />
+        <input type="hidden" value="" name="searchCourseName" />
         <div class="form-group">
             <label for="Name">Name:</label>
-            <input type="text" value="@Model.ElementAt(0)" class="form-control" name="updateName" />
+            <input type="text" value="" class="form-control" name="updateName" />
         </div>
         <div class="form-group">
             <label for="Username">Username:</label>
-            <input type="date" value="@Model.ElementAt(1)" class="form-control" name="updateDueDate" />
+            <input type="date" value="" class="form-control" name="updateDueDate" />
         </div>
     }
 </div>

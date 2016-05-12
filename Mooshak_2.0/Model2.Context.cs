@@ -478,5 +478,18 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUsersToCoursesByUser", userNameParameter);
         }
+    
+        public virtual ObjectResult<string> GetDescription(string assignmentName, string subAssignmentName)
+        {
+            var assignmentNameParameter = assignmentName != null ?
+                new ObjectParameter("AssignmentName", assignmentName) :
+                new ObjectParameter("AssignmentName", typeof(string));
+    
+            var subAssignmentNameParameter = subAssignmentName != null ?
+                new ObjectParameter("SubAssignmentName", subAssignmentName) :
+                new ObjectParameter("SubAssignmentName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetDescription", assignmentNameParameter, subAssignmentNameParameter);
+        }
     }
 }
