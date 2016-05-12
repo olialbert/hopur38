@@ -7,39 +7,46 @@
 
 @model List<string>
 
-
-<div class="main">
-    <table class="default teacher">
-        <caption>Courses</caption>
-        <thead>
-            <tr>
-                <th>Assignment</th>
-                <th>Due Date</th>
-                <th>Options</th>
-            </tr>
-        </thead>
-        <tbody>
-            <td>
+<div class="leftSide">
+    <div class="above">
+        <div class="User leftSide">
+            <img id="per" src="~/Content/Person.png" alt="Person" />
+            <div class="labels">
+                <label>Username</label><br />
+                <label>Teacher</label>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <ul>
+            <li id="sidebar-title">Courses</li>
                 @foreach (var element in Model)
                 {
                     string name = element;
-                    <p> @Html.ActionLink(name, "SelectAssignments", new { id = element })</p>
+                    <li> @Html.ActionLink(name, "SelectAssignments", new { id = element })</li>
                 }
-            </td>
-            @foreach (var element in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(m => element)</td>
-                    <td></td>
-                    <td>
-                      <p>some text</p>
 
-                    </td>
-                </tr>
-               
-                }
-            
 
-        </tbody>
-    </table>
+        </ul>
+    </div>
 </div>
+    <div class="above-main"></div>
+    <div class="main">
+        <table class="default teacher">
+            <caption>Courses</caption>
+            <thead>
+                <tr>
+                    <th>Assignment</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
