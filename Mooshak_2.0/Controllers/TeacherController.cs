@@ -85,6 +85,20 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments");
         }
 
+        public ActionResult EditSubassignment(string ID)
+        {
+            var Assignment = Tables.GetPartAssignmentInfoByName(ID, "sdf");
+            return View(Assignment);
+        }
+
+        [HttpPost]
+        public ActionResult EditSubassignment(string SearchName, string SearchDesc, string SubName, string Descrip, string Percentage, string Input)
+        {
+            int PercentNum = Convert.ToInt32(Percentage);
+            Tables.UpdatePartAssignment(SearchName, SearchDesc, SubName, PercentNum, Descrip, Input);
+            return RedirectToAction("Assignments");
+        }
+
         public ActionResult UpdateDescription()
         {
             return View();

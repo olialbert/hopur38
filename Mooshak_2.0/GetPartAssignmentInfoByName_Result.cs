@@ -11,13 +11,11 @@ namespace Mooshak_2._0
 {
     using System;
     
-    public partial class GetUserByName_Result
+    public partial class GetPartAssignmentInfoByName_Result
     {
         public string Name { get; set; }
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
-        public string Ssn { get; set; }
-        public string Email { get; set; }
-        public string Roles { get; set; }
+        public int ValuePercentage { get; set; }
+        public string Description { get; set; }
+        public string PathToInputOutputFile { get; set; }
     }
 }

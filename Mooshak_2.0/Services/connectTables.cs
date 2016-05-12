@@ -106,6 +106,18 @@ namespace Mooshak_2._0.Services
             return courseByUser.ToList();
         }
 
+        public List<string> GetPartAssignmentInfoByName(string Name, string Desc)
+        {
+            var listX = db.GetPartAssignmentInfoByName(Name, Desc);
+
+             GetPartAssignmentInfoByName_Result Res = listX.ElementAt(0);
+
+            List<string> Info = Res.ToString().Split(',').ToList<string>();
+
+            return Info;
+        }
+      
+
         public List<string> GetRoles()
         {
             var role = db.GetRoles();

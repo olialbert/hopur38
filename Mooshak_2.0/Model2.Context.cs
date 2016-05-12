@@ -478,7 +478,7 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUsersToCoursesByUser", userNameParameter);
         }
-        
+    
         public virtual ObjectResult<string> GetRoleByUser(string roleUserName, string rolePassWord)
         {
             var roleUserNameParameter = roleUserName != null ?
@@ -491,7 +491,7 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRoleByUser", roleUserNameParameter, rolePassWordParameter);
         }
-
+    
         public virtual ObjectResult<string> GetDescription(string assignmentName, string subAssignmentName)
         {
             var assignmentNameParameter = assignmentName != null ?
@@ -542,6 +542,19 @@ namespace Mooshak_2._0
                 new ObjectParameter("GetUsersName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAssignmentxInfoByCourse_Result>("GetAssignmentxInfoByCourse", getCourseNameParameter, getUsersNameParameter);
+        }
+    
+        public virtual ObjectResult<GetPartAssignmentInfoByName_Result> GetPartAssignmentInfoByName(string getName, string desc)
+        {
+            var getNameParameter = getName != null ?
+                new ObjectParameter("GetName", getName) :
+                new ObjectParameter("GetName", typeof(string));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("Desc", desc) :
+                new ObjectParameter("Desc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPartAssignmentInfoByName_Result>("GetPartAssignmentInfoByName", getNameParameter, descParameter);
         }
     }
 }

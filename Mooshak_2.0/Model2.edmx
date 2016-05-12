@@ -105,6 +105,10 @@
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetPartAssignmentInfoByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetName" Type="varchar" Mode="In" />
+          <Parameter Name="Desc" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
           <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
@@ -315,6 +319,10 @@
             <Parameter Name="GetCourseName" Mode="In" Type="String" />
             <Parameter Name="GetUsersName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetPartAssignmentInfoByName" ReturnType="Collection(VLN2_2016_H38Model2.GetPartAssignmentInfoByName_Result)">
+            <Parameter Name="GetName" Mode="In" Type="String" />
+            <Parameter Name="Desc" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -346,6 +354,12 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
           <Property Type="String" Name="CourseName" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPartAssignmentInfoByName_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="ValuePercentage" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="PathToInputOutputFile" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -435,6 +449,16 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DueDate" ColumnName="DueDate" />
                 <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPartAssignmentInfoByName" FunctionName="VLN2_2016_H38Model2.Store.GetPartAssignmentInfoByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetPartAssignmentInfoByName_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ValuePercentage" ColumnName="ValuePercentage" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PathToInputOutputFile" ColumnName="PathToInputOutputFile" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
