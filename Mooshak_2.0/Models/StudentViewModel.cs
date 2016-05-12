@@ -17,7 +17,6 @@ namespace Mooshak_2._0.Models
     {
         public string Description { get; set; }
         public string Ids { get; set; }
-
     }
 
     public class StudentIdsViewModel
@@ -31,8 +30,5 @@ namespace Mooshak_2._0.Models
         public List<string> Submittions { get; set; }
         public List<string> Courses { get; set; }
         public string StudentName { get; set; }
-
-    }
-
-    
+    }    
 }

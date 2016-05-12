@@ -54,9 +54,7 @@ namespace Mooshak_2._0.Controllers
         {
             Tables.AddAssignment(CourseHidden, Name, Date);
             return RedirectToAction("Assignments");
-
         }
-
 
         public ActionResult AddSubAssignment()
         {
@@ -65,7 +63,7 @@ namespace Mooshak_2._0.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddSubAssignment(string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
+        public ActionResult AddSubAssignment(string SubName, string Descrip, string limit, string Percentage, string Input, string Output)
         {
             int PercentNum = Convert.ToInt32(Percentage);
             Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, "Verk1", "Gagnaskipann");
@@ -75,9 +73,6 @@ namespace Mooshak_2._0.Controllers
         public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId)
         {
             var Submittions = Tables.GetBestSubmissionAllStudents(CourseId,MainID,ID);
-
-            
-
             return View(Submittions);
         }
 
@@ -107,11 +102,6 @@ namespace Mooshak_2._0.Controllers
             Tables.UpdatePartAssignment(SearchName, SearchDesc, SubName, PercentNum, Descrip, Input);
             return RedirectToAction("Assignments");
         }
-
-        public ActionResult UpdateDescription()
-        {
-            return View();
-        }
         
         public ActionResult DeleteAssignment(string ID, string courseID)
         {
@@ -136,7 +126,7 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AllSubmissions(string ID, string MainID,string PartAssignmentId, string CourseID)
+        public ActionResult AllSubmissions(string ID, string MainID, string PartAssignmentId, string CourseID)
         {
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
@@ -192,6 +182,5 @@ namespace Mooshak_2._0.Controllers
         {
             return View();
         }
-
     }
 }

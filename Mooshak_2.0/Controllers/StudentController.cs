@@ -65,7 +65,6 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult SelectSubmittions(string ID)
         {
-            
             List<string> Ids = ID.Split(',').ToList<string>();
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
 
@@ -105,7 +104,6 @@ namespace Mooshak_2._0.Controllers
         {
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
             return View(courses);
-
         }
 
         public ActionResult SubmitAssignment()
@@ -122,8 +120,7 @@ namespace Mooshak_2._0.Controllers
         }
 
         public ActionResult ViewDescription(string ID)
-        {
-            
+        {            
             List<string> Ids = ID.Split(',').ToList<string>();
 
             string CourseName = Ids.ElementAt(2);
@@ -137,7 +134,6 @@ namespace Mooshak_2._0.Controllers
             ViewModel.Ids = OldId;
             return View(ViewModel);
         }
-
 
         public ActionResult ViewMySolutions(string ID)
         {
