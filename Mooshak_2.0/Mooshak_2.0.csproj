@@ -437,7 +437,6 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\ViewUsersInCourse.cshtml" />
     <Content Include="Views\Admin\EditUserViewUserInCourse.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\SelectAssignments.cshtml" />
     <Content Include="Views\Student\SelecSubtAssignment.cshtml" />
@@ -445,14 +444,6 @@
     <Content Include="Views\Student\DropDown.cshtml" />
     <Content Include="Views\Student\SubmitAssignment.cshtml" />
     <Content Include="Views\Student\ViewDescription.cshtml" />
-=======
-    <Content Include="Views\UserAccount.cshtml" />
-    <Content Include="Views\UserAccount\_LoginForm.cshtml" />
-    <Content Include="Views\UserAccount\Error.cshtml" />
-    <Content Include="Views\UserAccount\Login.cshtml" />
-    <Content Include="Views\Teacher\AddSubAssignment.cshtml" />
-    <Content Include="Views\Teacher\EditAssignment.cshtml" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
