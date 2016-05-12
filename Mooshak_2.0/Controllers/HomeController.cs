@@ -15,6 +15,22 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(string UserName, string PassWord)
+        {
+
+            var Role = Tables.GetRoleByUser(UserName, PassWord);
+
+            if (Role == "Admin")
+                return RedirectToAction("Courses", "Admin");
+            if (Role == "Teacher")
+                return RedirectToAction("Assignments", "Teacher");
+            if (Role == "Student")
+                return RedirectToAction("Assignments", "Teacher");
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Users()
         {
 
