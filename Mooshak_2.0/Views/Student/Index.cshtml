@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
-@model List<string>
+
 
 <div class="leftSide">
     <div class="above">
@@ -20,10 +20,10 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
-            @foreach (var element in Model)
+            @foreach (var element in Model.Courses)
             {
                 string name = element;
-                <li> @Html.ActionLink(name, "SelectAssignments", new { id = element })</li>
+                <li> @Html.ActionLink(name, "SelectAssignments", new { id = element, studentID = @Model.StudentName })</li>
             }
         </ul>
     </div>
@@ -41,7 +41,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
+                    <td></td >
                     <td></td>
                     <td></td>
                 </tr> 
