@@ -41,26 +41,20 @@ namespace Mooshak_2._0.Controllers
             return View(ViewModel);
         }
 
-        public ActionResult SelectSubAssignment(string ID, string courseID, string studentID)
+        public ActionResult SelectSubAssignment(string subID, string mainID, string courseID, string studentID)
         {
-            //studentID = "gummi ben";
-            //courseID = "Gagnaskipann";
-
-
+            studentID = "gummi ben";
 
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = courseID;
-            ViewModel.AssignmentName = ID;
-            //ViewModel.SubAssignmentName = subID;
-            ViewModel.Assignments = Tables.GetAssignments(courseID);
-            /*foreach (var item in Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID))
-            {
-                ViewModel.Submittions.Add(item.ToString());
-            }*/
-            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(ID, courseID);
-            ViewModel.Courses = Tables.GetCoursesByUser(studentID);
-            return View(ViewModel);
+            ViewModel.AssignmentName = mainID;
+            ViewModel.SubAssignmentName = subID;
+            ViewModel.Submissions = Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID);
 
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(mainID, courseID);
+
+            return View(ViewModel);
         }
 
         public ActionResult SelectSubmittions(string ID)
