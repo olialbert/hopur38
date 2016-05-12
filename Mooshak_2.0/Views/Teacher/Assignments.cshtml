@@ -42,7 +42,9 @@
                         <td></td>
                         <td>
                             @Html.ActionLink("Delete", "DeleteSubAssignment", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "delete" })
-                            @Html.ActionLink("Edit", "EditSubassignment", new { id = subelement }, new { @class = "edit" })
+                            @Html.ActionLink("Edit", "EditSubassignment", new { id = subelement }, new { @class = "edit" }) <br />
+                            @Html.ActionLink("View Best Submissions from all students", "BestSubmittionsFromAllStudents", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" }) <br />
+                            @Html.ActionLink("View Submission from student", "SelectStudent", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" })
                         </td>
                     </tr>
                 }

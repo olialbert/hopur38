@@ -25,17 +25,19 @@ namespace Mooshak_2._0.Controllers
         public ActionResult Index(string courseName)
         {
             var ViewStudentModel = new StudentIdsViewModel();
-            ViewStudentModel.Assignments = Tables.GetAssignments("prump");
-            var Courses = Tables.GetCoursesByUser(Name);
-            return View(Courses);
+            ViewStudentModel.Assignments = Tables.GetAssignments("dsfsdf");
+            ViewStudentModel.Courses = Tables.GetCoursesByUser(Name);
+                ViewStudentModel.StudentName = "gummi ben";
+            return View(ViewStudentModel);
         }
 
-        public ActionResult SelectAssignments(string ID)
+        public ActionResult SelectAssignments(string ID, string studentID)
         {
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = ID;
 
             ViewModel.Assignments = Tables.GetAssignments(ID);
+            ViewModel.Courses = Tables.GetCoursesByUser(studentID);
             return View(ViewModel);
         }
 
@@ -51,11 +53,13 @@ namespace Mooshak_2._0.Controllers
 
             ViewModel.Assignments = Tables.GetAssignments(courseID);
             ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(mainID, courseID);
+
             return View(ViewModel);
         }
 
         public ActionResult SelectSubmittions(string ID)
         {
+            
             List<string> Ids = ID.Split(',').ToList<string>();
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
 
@@ -128,20 +132,6 @@ namespace Mooshak_2._0.Controllers
             return View(ViewModel);
         }
 
-        public ActionResult UploadFile()
-        {
-            return View();
-        }
-
-        public ActionResult SeeDescription()
-        {
-            return View();
-        }
-
-        public ActionResult SubmitFile()
-        {
-            return View();
-        }
 
         public ActionResult ViewMySolutions(string ID)
         {

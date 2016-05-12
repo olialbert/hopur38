@@ -30,5 +30,10 @@ namespace Mooshak_2._0.Models
         public List<string> SubAssignments { get; set; }
         public IEnumerable<GetAllSubmissionFromStudent_Result> Submissions { get; set; }
         public List<string> Submittions { get; set; }
+        public List<string> Courses { get; set; }
+        public string StudentName { get; set; }
+
     }
+
+    
 }

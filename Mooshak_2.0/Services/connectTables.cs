@@ -64,6 +64,49 @@ namespace Mooshak_2._0.Services
             return coursesName.ToList();
         }
 
+        public List<GetBestSubmissionAllStudents_Result> GetBestSubmissionAllStudents(string CourseName, string AssignmentName, string PartAssignmentName)
+        {
+            var listX = db.GetBestSubmissionAllStudents(CourseName, AssignmentName, PartAssignmentName);
+
+            List<GetBestSubmissionAllStudents_Result> Res = new List<GetBestSubmissionAllStudents_Result>();
+
+
+            foreach (var item in listX.ToList())
+            {
+                Res.Add(item);
+            }
+
+            return Res;
+        }
+
+        public List<GetBestSubmissionForStudent_Result> GetBestSubmissionForStudent(string Name,string CourseName, string AssignmentName, string PartAssignmentName)
+        {
+            var listX = db.GetBestSubmissionForStudent(Name,CourseName, AssignmentName, PartAssignmentName);
+
+            List<GetBestSubmissionForStudent_Result> Res = new List<GetBestSubmissionForStudent_Result>();
+
+            foreach (var item in listX.ToList())
+            {
+                Res.Add(item);
+            }
+
+            return Res;
+        }
+
+        public List<GetAllSubmissionFromStudent_Result> GetAllSubmissionFromStudent(string Name,string CourseName, string AssignmentName, string PartAssignmentName)
+        {
+            var listX = db.GetAllSubmissionFromStudent(Name,CourseName, AssignmentName, PartAssignmentName);
+
+            List<GetAllSubmissionFromStudent_Result> Res = new List<GetAllSubmissionFromStudent_Result>();
+            
+            foreach (var item in listX.ToList())
+            {
+                Res.Add(item);
+            }
+
+            return Res;
+        }
+
         public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
         {
             var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
@@ -83,7 +126,7 @@ namespace Mooshak_2._0.Services
 
         public string GetRoleByUser(string UserName, string Password)
         {
-            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
+            var Role = db.GetRoleByUser(UserName, Password).FirstOrDefault();
 
             return Role;
         }

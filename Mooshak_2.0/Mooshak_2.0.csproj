@@ -457,6 +457,10 @@
     <Content Include="Views\UserAccount\_LoginForm.cshtml" />
     <Content Include="Views\Student\_StudentAssignmentsForm.cshtml" />
     <Content Include="Views\Teacher\EditSubassignment.cshtml" />
+    <Content Include="Views\Teacher\BestSubmittionsFromAllStudents.cshtml" />
+    <Content Include="Views\Teacher\SelectStudent.cshtml" />
+    <Content Include="Views\Teacher\BestSubmission.cshtml" />
+    <Content Include="Views\Teacher\AllSubmissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
