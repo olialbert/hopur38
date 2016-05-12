@@ -90,7 +90,7 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult DeleteSubAssignment(string ID, string mainID, string courseID)
         {
-            var description = Tables.GetDescription(mainID, ID).FirstOrDefault();
+            var description = Tables.GetDescription(mainID, ID);
             Tables.DeletePartAssignment(ID, description);
             return RedirectToAction("Assignments/" + courseID);
         }

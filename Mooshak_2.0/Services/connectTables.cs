@@ -220,11 +220,13 @@ namespace Mooshak_2._0.Services
             db.SetGrade(Grade, Name);
             return 0;
         }
-        
-        public List<string> GetDescription(string AssignmentName, string SubAssignmentName)
+
+        public string GetDescription(string AssignmentName, string SubAssignmentName)
         {
-            var Description = db.GetDescription(AssignmentName, SubAssignmentName);
-            return Description.ToList();
+            var Description = db.GetDescription(AssignmentName, SubAssignmentName).ElementAt(0);
+
+            return Description;
+
         }
     }
 }

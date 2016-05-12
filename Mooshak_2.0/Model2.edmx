@@ -283,13 +283,10 @@
           <FunctionImport Name="DeleteUsersToCoursesByUser">
           <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
-<<<<<<< HEAD
-=======
           <FunctionImport Name="GetRoleByUser" ReturnType="Collection(String)">
             <Parameter Name="RoleUserName" Mode="In" Type="String" />
             <Parameter Name="RolePassWord" Mode="In" Type="String" />
           </FunctionImport>
->>>>>>> bc75b93683cadaafaf5c735ab4a3bda362d51e81
           <FunctionImport Name="GetDescription" ReturnType="Collection(String)">
             <Parameter Name="AssignmentName" Mode="In" Type="String" />
             <Parameter Name="SubAssignmentName" Mode="In" Type="String" />
@@ -386,10 +383,7 @@
           <FunctionImportMapping FunctionImportName="GetStudentsInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetStudentsInCoursesByName" />
           <FunctionImportMapping FunctionImportName="GetTeachersInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetTeachersInCoursesByName" />
           <FunctionImportMapping FunctionImportName="DeleteUsersToCoursesByUser" FunctionName="VLN2_2016_H38Model2.Store.DeleteUsersToCoursesByUser" />
-<<<<<<< HEAD
-=======
           <FunctionImportMapping FunctionImportName="GetRoleByUser" FunctionName="VLN2_2016_H38Model2.Store.GetRoleByUser" />
->>>>>>> bc75b93683cadaafaf5c735ab4a3bda362d51e81
           <FunctionImportMapping FunctionImportName="GetDescription" FunctionName="VLN2_2016_H38Model2.Store.GetDescription" />
         </EntityContainerMapping>
       </Mapping>
