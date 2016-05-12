@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <p>@Model.Description</p>
+
+        <input class="btn btn-default" type="button" value="View" onclick="location.href='@Url.Action("SelectSubmittions", "Student",new { id = @Model.Ids })'" />
+    </div>
+</body>
+</html>

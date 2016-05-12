@@ -30,11 +30,6 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
-        public ActionResult AddSubAssignment()
-        {
-            return View();
-        }
-
         public ActionResult UpdateDescription()
         {
             return View();

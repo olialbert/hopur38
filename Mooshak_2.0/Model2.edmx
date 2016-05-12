@@ -89,6 +89,10 @@
         <Function Name="GetCoursesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
+          <Parameter Name="SubAssignmentName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
@@ -111,7 +115,7 @@
         </Function>
         <Function Name="SetGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Grade" Type="int" Mode="In" />
-          <Parameter Name="FullName" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SearchName" Type="varchar" Mode="In" />
@@ -253,7 +257,7 @@
           </FunctionImport>
           <FunctionImport Name="SetGrade">
             <Parameter Name="Grade" Mode="In" Type="Int32" />
-            <Parameter Name="FullName" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateAssignment">
             <Parameter Name="SearchName" Mode="In" Type="String" />
@@ -282,6 +286,10 @@
           <FunctionImport Name="GetRoleByUser" ReturnType="Collection(String)">
             <Parameter Name="RoleUserName" Mode="In" Type="String" />
             <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetDescription" ReturnType="Collection(String)">
+            <Parameter Name="AssignmentName" Mode="In" Type="String" />
+            <Parameter Name="SubAssignmentName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
@@ -376,6 +384,7 @@
           <FunctionImportMapping FunctionImportName="GetTeachersInCoursesByName" FunctionName="VLN2_2016_H38Model2.Store.GetTeachersInCoursesByName" />
           <FunctionImportMapping FunctionImportName="DeleteUsersToCoursesByUser" FunctionName="VLN2_2016_H38Model2.Store.DeleteUsersToCoursesByUser" />
           <FunctionImportMapping FunctionImportName="GetRoleByUser" FunctionName="VLN2_2016_H38Model2.Store.GetRoleByUser" />
+          <FunctionImportMapping FunctionImportName="GetDescription" FunctionName="VLN2_2016_H38Model2.Store.GetDescription" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

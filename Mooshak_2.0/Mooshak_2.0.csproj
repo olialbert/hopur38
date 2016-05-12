@@ -209,7 +209,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Courses.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -278,6 +277,8 @@
     <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
+    <Compile Include="Models\TeacherViewModels.cs" />
     <Compile Include="PartAssignment.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -433,14 +434,16 @@
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\ViewUsersInCourse.cshtml" />
     <Content Include="Views\Admin\EditUserViewUserInCourse.cshtml" />
-    <Content Include="Views\UserAccount.cshtml" />
-    <Content Include="Views\UserAccount\_LoginForm.cshtml" />
-    <Content Include="Views\UserAccount\Error.cshtml" />
-    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\SelectAssignments.cshtml" />
+    <Content Include="Views\Student\SelecSubtAssignment.cshtml" />
+    <Content Include="Views\Student\SelectSubmittions.cshtml" />
+    <Content Include="Views\Student\DropDown.cshtml" />
+    <Content Include="Views\Student\SubmitAssignment.cshtml" />
+    <Content Include="Views\Student\ViewDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
