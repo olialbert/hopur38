@@ -504,5 +504,44 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetDescription", assignmentNameParameter, subAssignmentNameParameter);
         }
+    
+        public virtual ObjectResult<GetAssignmentsInfoByCourse_Result> GetAssignmentsInfoByCourse(string getCourseName, string getUsersName)
+        {
+            var getCourseNameParameter = getCourseName != null ?
+                new ObjectParameter("GetCourseName", getCourseName) :
+                new ObjectParameter("GetCourseName", typeof(string));
+    
+            var getUsersNameParameter = getUsersName != null ?
+                new ObjectParameter("GetUsersName", getUsersName) :
+                new ObjectParameter("GetUsersName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAssignmentsInfoByCourse_Result>("GetAssignmentsInfoByCourse", getCourseNameParameter, getUsersNameParameter);
+        }
+    
+        public virtual ObjectResult<string> GetRole(string roleUserName, string rolePassWord)
+        {
+            var roleUserNameParameter = roleUserName != null ?
+                new ObjectParameter("RoleUserName", roleUserName) :
+                new ObjectParameter("RoleUserName", typeof(string));
+    
+            var rolePassWordParameter = rolePassWord != null ?
+                new ObjectParameter("RolePassWord", rolePassWord) :
+                new ObjectParameter("RolePassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetRole", roleUserNameParameter, rolePassWordParameter);
+        }
+    
+        public virtual ObjectResult<GetAssignmentxInfoByCourse_Result> GetAssignmentxInfoByCourse(string getCourseName, string getUsersName)
+        {
+            var getCourseNameParameter = getCourseName != null ?
+                new ObjectParameter("GetCourseName", getCourseName) :
+                new ObjectParameter("GetCourseName", typeof(string));
+    
+            var getUsersNameParameter = getUsersName != null ?
+                new ObjectParameter("GetUsersName", getUsersName) :
+                new ObjectParameter("GetUsersName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAssignmentxInfoByCourse_Result>("GetAssignmentxInfoByCourse", getCourseNameParameter, getUsersNameParameter);
+        }
     }
 }

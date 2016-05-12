@@ -32,7 +32,7 @@
                     <td>
                         @Html.ActionLink("Delete", "DeleteTeacher", new { id = element.AssignmentName }, new { @class = "delete" })
                         @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
-                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element })
+                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element.AssignmentName })
                     </td>
                 </tr>
                 foreach (var subelement in element.SubAssignments)

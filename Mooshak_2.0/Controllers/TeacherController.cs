@@ -1,4 +1,5 @@
-﻿using Mooshak_2._0.Services;
+﻿using Mooshak_2._0.Models;
+using Mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,76 @@ namespace Mooshak_2._0.Controllers
         // GET: Teacher
 
         connectTables Tables = new connectTables();
+        string CourseName = "Forritun";
 
-        public ActionResult _TeacherForm(string name)
+        public ActionResult _TeacherForm()
         {
-            var CoursesUsers = Tables.GetCoursesByUser("Lalalalal");
-            return View(CoursesUsers);
-        }
-
-        public ActionResult Assignments()
-        {
-            var CoursesUsers = Tables.GetCoursesByUser("johann");
-            return View(CoursesUsers);
-        }
-
-        public ActionResult AddAssignment()
-        {
+            var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
             return View();
+        }
+
+        public ActionResult Assignments(string ID)
+        {
+            var TeacherAssignments = new TeacherViewModelsAssignmetns();
+            TeacherAssignments.Courses = Tables.GetCoursesByUser("Jon Jonson");
+
+            var Assignments = Tables.GetAssignments(ID);
+            List<AssignmentList> AssignmentList1 = new List<AssignmentList>();
+            foreach (var assignment in Assignments)
+            {
+                var AssignmentList2 = new AssignmentList();
+                AssignmentList2.AssignmentName = assignment;
+                AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
+                AssignmentList1.Add(AssignmentList2);
+            }
+            TeacherAssignments.Assignments = AssignmentList1;
+            TeacherAssignments.CurrentClass = ID;
+            return View(TeacherAssignments);
+        }
+
+        public ActionResult AddAssignment(string ID)
+        {
+            var ViewModel = new AddAssignmentViewModel();
+            var Assignments = Tables.GetCoursesByUser("Jon Jonson");
+            ViewModel.Courses = ID;
+            ViewModel.Assignments = Assignments;
+            return View(ViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddAssignment(string CourseHidden, string Name, DateTime Date)
+        {
+            Tables.AddAssignment(CourseHidden, Name, Date);
+            return RedirectToAction("Assignments");
+
+        }
+
+
+        public ActionResult AddSubAssignment()
+        {
+            var Courses = Tables.GetCoursesByUser("Jon Jonson");
+            return View(Courses);
+        }
+
+        [HttpPost]
+        public ActionResult AddSubAssignment(string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
+        {
+            int PercentNum = Convert.ToInt32(Percentage);
+            Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, "Verk1", "Gagnaskipann");
+            return RedirectToAction("Assignments");
+        }
+
+        public ActionResult EditAssignment(string ID)
+         {
+             var Assignment = Tables.GetAssignmentxInfoByCourse("Gagnaskipann", ID);
+             return View(Assignment);
+         }
+
+        [HttpPost]
+        public ActionResult EditAssignment(string searchName, string searchCourseName, string updateName, DateTime updateDueDate)
+        {
+            Tables.UpdateAssignment(searchName, searchCourseName, searchCourseName, updateName, updateDueDate);
+            return RedirectToAction("Assignments");
         }
 
         public ActionResult UpdateDescription()

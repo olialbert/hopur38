@@ -71,6 +71,14 @@
         <Function Name="GetAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAssignmentsInfoByCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetUsersName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAssignmentxInfoByCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetUsersName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetBestSubmissionAllStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SubmissionCourseName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
@@ -96,6 +104,10 @@
         <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
+          <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetRoleByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
@@ -291,6 +303,18 @@
             <Parameter Name="AssignmentName" Mode="In" Type="String" />
             <Parameter Name="SubAssignmentName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAssignmentsInfoByCourse" ReturnType="Collection(VLN2_2016_H38Model2.GetAssignmentsInfoByCourse_Result)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetUsersName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRole" ReturnType="Collection(String)">
+            <Parameter Name="RoleUserName" Mode="In" Type="String" />
+            <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignmentxInfoByCourse" ReturnType="Collection(VLN2_2016_H38Model2.GetAssignmentxInfoByCourse_Result)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetUsersName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -312,6 +336,16 @@
         <ComplexType Name="GetBestSubmissionForStudent_Result">
           <Property Type="String" Name="PathToAssignmentSave" Nullable="true" />
           <Property Type="Int32" Name="Grade" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAssignmentsInfoByCourse_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Name1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAssignmentxInfoByCourse_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CourseName" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -385,6 +419,25 @@
           <FunctionImportMapping FunctionImportName="DeleteUsersToCoursesByUser" FunctionName="VLN2_2016_H38Model2.Store.DeleteUsersToCoursesByUser" />
           <FunctionImportMapping FunctionImportName="GetRoleByUser" FunctionName="VLN2_2016_H38Model2.Store.GetRoleByUser" />
           <FunctionImportMapping FunctionImportName="GetDescription" FunctionName="VLN2_2016_H38Model2.Store.GetDescription" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentsInfoByCourse" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentsInfoByCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetAssignmentsInfoByCourse_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRole" FunctionName="VLN2_2016_H38Model2.Store.GetRole" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentxInfoByCourse" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentxInfoByCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VLN2_2016_H38Model2.GetAssignmentxInfoByCourse_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
