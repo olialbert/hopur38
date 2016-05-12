@@ -1,34 +1,45 @@
 ﻿@{
     ViewBag.Title = "Select course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
+<link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
+
+@model List<string>
 
 
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <div class="main">
-        <table class="default student">
-            <caption>Assignments</caption>
-            <thead>
+<div class="main">
+    <table class="default teacher">
+        <caption>Courses</caption>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Due Date</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>
+                @foreach (var element in Model)
+                {
+                    string name = element;
+                    <p> @Html.ActionLink(name, "SelectAssignments", new { id = element })</p>
+                }
+            </td>
+            @foreach (var element in Model)
+            {
                 <tr>
-                    <th>Assignment</th>
-                    <th>Due Date</th>
-                    <th>Options</th>
+                    <td>@Html.DisplayFor(m => element)</td>
+                    <td></td>
+                    <td>
+                      <p>some text</p>
+
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <meta name="viewport" content="width=device-width" />
-                <title></title>
-</head>
-<body>
-    @foreach (var element in Model)
-    {
-            string name = element;
-            <p> @Html.ActionLink(name, "SelectAssignments", new { id = element })</p>
-    }
-</body>
-</html>
+               
+                }
+            
+
+        </tbody>
+    </table>
+</div>
