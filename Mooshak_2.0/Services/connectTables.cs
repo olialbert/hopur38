@@ -81,14 +81,6 @@ namespace Mooshak_2._0.Services
             return Res;
         }
 
-        public string GetDescription(string AssignmentName, string SubAssignmentName)
-        {
-            var Description = db.GetDescription(AssignmentName, SubAssignmentName).ElementAt(0);
-
-            return Description;
-
-        }
-
         public string GetRoleByUser(string UserName, string Password)
         {
             var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
@@ -255,10 +247,12 @@ namespace Mooshak_2._0.Services
             return 0;
         }
 
+        public string GetDescription(string AssignmentName, string SubAssignmentName)
+        {
+            var Description = db.GetDescription(AssignmentName, SubAssignmentName).ElementAt(0);
 
+            return Description;
 
-
-
-
+        }
     }
 }
