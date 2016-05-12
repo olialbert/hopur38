@@ -18,6 +18,10 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
+        
+
+
+
         //Gets courses from the database using the connectTables and returns them to the View so they can be used
         public ActionResult Courses()
         {
