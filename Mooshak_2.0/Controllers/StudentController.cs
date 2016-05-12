@@ -37,13 +37,22 @@ namespace Mooshak_2._0.Controllers
             return View(ViewModel);
         }
 
-        public ActionResult SelecSubtAssignment(string ID)
+        public ActionResult SelectSubAssignment(string mainID, string courseID, string studentID)
         {
-            List<string> Ids = ID.Split(',').ToList<string>();
+            studentID = "gummi ben";
+            courseID = "Gagnaskipann";
+
+
             var ViewModel = new StudentIdsViewModel();
-            ViewModel.CourseName = Ids.ElementAt(1);
-            ViewModel.AssignmentName = Ids.ElementAt(0);
-            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(Ids.ElementAt(0), Ids.ElementAt(1));
+            ViewModel.CourseName = courseID;
+            ViewModel.AssignmentName = mainID;
+            //ViewModel.SubAssignmentName = subID;
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            /*foreach (var item in Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID))
+            {
+                ViewModel.Submittions.Add(item.ToString());
+            }*/
+            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(mainID, courseID);
             return View(ViewModel);
         }
 

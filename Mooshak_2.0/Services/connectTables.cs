@@ -228,5 +228,11 @@ namespace Mooshak_2._0.Services
             return Description;
 
         }
+
+        public IEnumerable<GetAllSubmissionFromStudent_Result> GetAllSubmissionsFromStudent(string SubmissionName, string CourseName, string AssignmentName, string PartAssignmentName)
+        {
+            var AllSubmissions = db.GetAllSubmissionFromStudent(SubmissionName, CourseName, AssignmentName, PartAssignmentName);
+            return AllSubmissions;
+        }
     }
 }

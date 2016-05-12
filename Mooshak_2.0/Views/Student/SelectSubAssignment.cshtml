@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Select Assignment";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
+
+    <div class="leftSide">
+        <div class="above">
+            <div class="User leftSide">
+                <img id="per" src="~/Content/Person.png" alt="Person" />
+                <div class="labels">
+                    <label>Username</label><br />
+                    <label>Student</label>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li id="sidebar-title">@Model.CourseName</li>
+                @foreach (var element in Model.Assignments)
+                {
+                string studentName = "gunni ben";
+                    <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { mainID = element, courseID = @Model.CourseName, studentID = studentName })</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="above-main">
+        <h2>@Model.AssignmentName</h2>
+    </div>
+
+    <div class="main">
+        <table class="default admin">
+            <caption>Courses</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Time</th>
+                    <th>Language</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var element in Model.SubAssignments)
+                {
+                    <tr>
+                        <td>num</td>
+                        <td>time</td>
+                        <td>C#</td>
+                        <td>
+
+                            @Html.DisplayFor(x => element)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
