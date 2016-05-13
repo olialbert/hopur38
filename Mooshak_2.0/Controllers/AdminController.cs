@@ -31,6 +31,12 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
+        public ActionResult AddCourse()
+        {
+            var Courses = Tables.GetCourses();
+            return View(Courses);
+        }
+
         //Used to add a course to the database through the view and the connectTable, redirects you to the "Course" View afterwards 
         [HttpPost]
         public ActionResult AddCourse(string Name)
