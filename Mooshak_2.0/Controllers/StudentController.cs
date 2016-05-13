@@ -27,7 +27,7 @@ namespace Mooshak_2._0.Controllers
             var ViewStudentModel = new StudentIdsViewModel();
             ViewStudentModel.Assignments = Tables.GetAssignments("dsfsdf");
             ViewStudentModel.Courses = Tables.GetCoursesByUser(Name);
-                ViewStudentModel.StudentName = "gummi ben";
+            ViewStudentModel.StudentName = "gummi ben";
             return View(ViewStudentModel);
         }
 
@@ -35,7 +35,6 @@ namespace Mooshak_2._0.Controllers
         {
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = ID;
-
             ViewModel.Assignments = Tables.GetAssignments(ID);
             ViewModel.Courses = Tables.GetCoursesByUser(studentID);
             return View(ViewModel);
