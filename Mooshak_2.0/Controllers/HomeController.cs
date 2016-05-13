@@ -13,6 +13,11 @@ namespace Mooshak_2._0.Controllers
         //So the connectTables can be used
         connectTables Tables = new connectTables();
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         //Used to check out what permission the user login in has, redirects the user on the right page depending what role he has in the database
         [HttpPost]
         public ActionResult Index(string UserName, string PassWord)

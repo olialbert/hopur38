@@ -10,7 +10,7 @@
 <div class="above-main"></div>
 <div class="main">
     <table class="default teacher">
-        <caption>Courses</caption>
+        <caption>Students - @Model.PartAssignmentName</caption>
         <thead>
             <tr>
                 <th>Student Name</th>
@@ -29,5 +29,7 @@
             }
         </tbody>
     </table>
+    <input class="btn btn-default" type="button" value="Back" onclick="location.href='@Url.Action("Assignments/" + Model.CourseName, "Teacher")'" />
 </div>
+
 
