@@ -1,7 +1,6 @@
 ﻿@using System.Linq
 
 @{
-
     ViewBag.Title = "BestSubmittions - AllStudents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,6 +20,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays a list of the best submittions from all of the students from the Model-->
             @foreach (var element in Model)
             {
                 string name = element.Name;

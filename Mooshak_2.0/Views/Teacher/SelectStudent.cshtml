@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
@@ -19,6 +18,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays a list of students and their submitted assignments from the Model-->
             @foreach (var element in Model.Students)
             {
                 <tr>

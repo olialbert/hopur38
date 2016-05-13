@@ -3,13 +3,17 @@
     ViewBag.Title = "AddSubAssignment";
 }
 <div class="above-main"></div>
+
+<!--Connects the cshtml with the model below-->
 @model GetPartAssignmentInfoByName_Result
+
 <div class="main">
     <h2>Edit SubAssignment</h2>
 
     <!--This is the form used to edit a subAssignment, which is then sent to a premade model-->
     @using (Html.BeginForm())
     {
+        <!--Hidden so the user can't see and interact with it-->
         @Html.Hidden("SearchName", Model.Name)
         @Html.Hidden("SearchDesc", Model.Description)
 
@@ -17,22 +21,18 @@
             <label for="SubName">Description:</label>
             <input type="text" name="SubName" value="@Model.Name" />
         </div>
-
         <div class="form-group">
             <label for="Descrip.">Description:</label>                  
             <textarea rows="5" cols="50" name="Descrip">@Model.Description</textarea>    
         </div>
-
         <div class="form-group">
             <label for="Percentage">Percentage of total grade :</label>
             <input type="text" name="Percentage" value="@Model.ValuePercentage" />          
         </div>
-
         <div class="form-group">
             <label for="Input">Input:</label>                           
             <input type="file" name="Input" />                          
         </div>
-
         <div class="form-group">
             <label for="Input">Input:</label>                           
             <input type="file"  name="Input" />                          
@@ -41,5 +41,4 @@
         <input class="btn btn-default" type="submit" value="Save" />
         <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
     }
-
 </div>

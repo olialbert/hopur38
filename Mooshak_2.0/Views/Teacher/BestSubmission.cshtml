@@ -1,12 +1,10 @@
 ﻿@{
-
     ViewBag.Title = "BestSubmittions - Student";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
-
 
 <div class="above-main"></div>
 <div class="main">
@@ -20,9 +18,9 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays list of the best submits from the selected assignment from the Model-->
            @foreach (var element in Model.BestSubmit)
-           {
-              
+           {             
                string path = element.PathToAssignmentSave;
                string grade = element.Grade.ToString();
                 <tr>
