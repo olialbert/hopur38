@@ -20,13 +20,14 @@ namespace Mooshak_2._0.Controllers
         {
 
             var Role = Tables.GetRoleByUser(UserName, PassWord);
+            var Name = Tables.GetName(UserName, PassWord);
 
             if (Role == "Admin")
                 return RedirectToAction("Courses", "Admin");
             if (Role == "Teacher")
                 return RedirectToAction("Assignments", "Teacher");
             if (Role == "Student")
-                return RedirectToAction("Assignments", "Teacher");
+                return RedirectToAction("Index", "Student", new { id = Name });
 
             return RedirectToAction("Index");
         }
