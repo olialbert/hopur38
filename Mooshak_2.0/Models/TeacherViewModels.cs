@@ -26,6 +26,7 @@ namespace Mooshak_2._0.Models
 
     public class SelectStudentViewModel
     {
+        public string StudentName { get; set; }
         public string CourseName { get; set; }
         public string AssignmentName { get; set; }
         public string PartAssignmentName { get; set; }

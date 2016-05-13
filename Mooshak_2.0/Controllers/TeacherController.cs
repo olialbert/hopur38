@@ -149,23 +149,25 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AllSubmissions(string ID, string MainID, string PartAssignmentId, string CourseID)
+        public ActionResult AllSubmissions(string ID, string MainID, string PartAssignmentId, string CourseID, string StudentId)
         {
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
             viewModel.PartAssignmentName = ID;
+            viewModel.StudentName = StudentId;
             viewModel.AllSubmit = Tables.GetAllSubmissionFromStudent(ID, CourseID, MainID, PartAssignmentId);
             return View(viewModel);
         }
 
 
-        public ActionResult BestSubmission(string ID, string MainID, string PartAssignmentId, string CourseID)
+        public ActionResult BestSubmission(string ID, string MainID, string PartAssignmentId, string CourseID, string StudentId)
         {
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
             viewModel.PartAssignmentName = ID;
+            viewModel.StudentName = StudentId;
             viewModel.BestSubmit = Tables.GetBestSubmissionForStudent(ID, CourseID, MainID, PartAssignmentId);
             return View(viewModel);
         }
