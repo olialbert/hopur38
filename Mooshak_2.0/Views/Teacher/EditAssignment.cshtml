@@ -10,9 +10,8 @@
 <div class="main">
     @using (Html.BeginForm())
     {
-        <h2>Edit User</h2>
 
-/*
+
         string Value = @Model.ElementAt(1);
         Value = Value.Remove(Value.Length - 11);
 
@@ -26,7 +25,7 @@
         string Year = "20" + Value;
         Year = Year.Remove(Year.Length-1);
         day= day.Remove(day.Length - 1);
-        */
+     
                 <input type="hidden" value="@Model.ElementAt(0)" name="searchName" />
                 <input type="hidden" value="@Model.ElementAt(2)" name="searchCourseName" />
                 <div class="form-group">

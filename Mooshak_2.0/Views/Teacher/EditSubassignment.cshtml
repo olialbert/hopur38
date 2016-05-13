@@ -11,31 +11,33 @@
     @using (Html.BeginForm())
     {
         @Html.Hidden("SearchName", Model.Name)
-        @Html.Hidden("SearchDescip", Model.Description)
+        @Html.Hidden("SearchDesc", Model.Description)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Name, "SubName", new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @cols = 50, @rows = 5, @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "text-danger" })
+            <label for="SubName">Description:</label>
+            <input type="text" name="SubName" value="@Model.Name" />
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ValuePercentage, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.ValuePercentage, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ValuePercentage, null, new { @class = "text-danger" })
+            <label for="Descrip.">Description:</label>                  
+            <textarea rows="5" cols="50" name="Descrip">@Model.Description</textarea>    
+        </div>
+
+        <div class="form-group">
+            <label for="Percentage">Percentage of total grade :</label>
+            <input type="text" name="Percentage" value="@Model.ValuePercentage" />          
+        </div>
+
+        <div class="form-group">
+            <label for="Input">Input:</label>                           
+            <input type="file" name="Input" />                          
         </div>
 
         <div class="form-group">
             <label for="Input">Input:</label>                           
             <input type="file"  name="Input" />                          
         </div>
+
         <input type="submit" value="Save" />
         <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
     }
