@@ -10,8 +10,11 @@
     <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
     @using (Html.BeginForm())
     {
+        @Html.Hidden("TeacherID", Model.Name)
         @Html.Hidden("SearchName", Model.Name)
         @Html.Hidden("SearchDesc", Model.Description)
+
+
 
         <div class="form-group">
             <label for="SubName">Description:</label>
@@ -39,7 +42,7 @@
         </div>
 
         <input class="btn btn-default" type="submit" value="Save" />
-        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher", new {id =  })'" />
     }
 
 </div>

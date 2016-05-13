@@ -19,7 +19,7 @@
             <li id="sidebar-title">Courses</li>
             @foreach (var item in Model.Courses)
             {
-                <li>@Html.ActionLink(Html.DisplayFor(x => item).ToString() , "Assignments", new { id = item })</li>
+                <li>@Html.ActionLink(Html.DisplayFor(x => item).ToString() , "Assignments", new { id = item, TeacherID =  @Model.Name })</li>
             }
         </ul>
     </div>

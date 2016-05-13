@@ -9,7 +9,7 @@
 
 <div class="above-main">
     <div class="rightSide">
-        @Html.ActionLink("Create New Assignment", "AddAssignment", new { id = @Model.CurrentClass }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Create New Assignment", "AddAssignment", new { id = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "btn btn-default" })
     </div>
 </div>
 
@@ -30,9 +30,9 @@
                     <td>@Html.DisplayFor(m => element.AssignmentName)</td>
                     <td>@Html.DisplayFor(m => element.DueDate)</td>
                     <td>
-                        @Html.ActionLink("Delete", "DeleteAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "delete" })
-                        @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
-                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass })
+                        @Html.ActionLink("Delete", "DeleteAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "delete" })
+                        @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "edit" })
+                        @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name })
                     </td>
                 </tr>
                 foreach (var subelement in element.SubAssignments)
@@ -41,8 +41,8 @@
                         <td>- @Html.DisplayFor(m => subelement)</td>
                         <td></td>
                         <td>
-                            @Html.ActionLink("Delete", "DeleteSubAssignment", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "delete" })
-                            @Html.ActionLink("Edit", "EditSubassignment", new { subID = subelement, mainID = element.AssignmentName }, new { @class = "edit" }) <br />
+                            @Html.ActionLink("Delete", "DeleteSubAssignment", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "delete" })
+                            @Html.ActionLink("Edit", "EditSubassignment", new { subID = subelement, mainID = element.AssignmentName, TeacherID = @Model.Name }, new { @class = "edit" }) <br />
                             @Html.ActionLink("View Best Submissions from all students", "BestSubmittionsFromAllStudents", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" }) <br />
                             @Html.ActionLink("View Submission from student", "SelectStudent", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" })
                         </td>
