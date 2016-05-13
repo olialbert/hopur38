@@ -98,7 +98,6 @@ namespace Mooshak_2._0.Controllers
         {
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
             return View(courses);
-
         }
 
         public ActionResult SubmitAssignment()
@@ -113,7 +112,7 @@ namespace Mooshak_2._0.Controllers
             Tables.SetGrade(54, Name);
             return RedirectToAction("Index");
         }
-
+        
         public ActionResult ViewDescription(string subID, string mainID, string courseID)
         {
             var ViewModel = new StudentIdsViewModel();
@@ -123,20 +122,8 @@ namespace Mooshak_2._0.Controllers
 
             ViewModel.Description = Tables.GetDescription(mainID, subID);
             ViewModel.Assignments = Tables.GetAssignments(courseID);
-            /*List<string> Ids = ID.Split(',').ToList<string>();
-
-            string CourseName = Ids.ElementAt(2);
-            string AssignmentName = Ids.ElementAt(0);
-            string SubAssignmentName = Ids.ElementAt(1);
-
-            string OldId = SubAssignmentName + "," + CourseName + "," + AssignmentName;
-            var Description = Tables.GetDescription(AssignmentName, SubAssignmentName);
-            var ViewModel = new StudentsViewModel();
-            ViewModel.Description = Description;
-            ViewModel.Ids = OldId;*/
             return View(ViewModel);
         }
-
 
         public ActionResult ViewMySolutions(string ID)
         {

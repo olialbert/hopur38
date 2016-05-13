@@ -70,7 +70,6 @@ namespace Mooshak_2._0.Services
 
             List<GetBestSubmissionAllStudents_Result> Res = new List<GetBestSubmissionAllStudents_Result>();
 
-
             foreach (var item in listX.ToList())
             {
                 Res.Add(item);
@@ -117,16 +116,18 @@ namespace Mooshak_2._0.Services
         {
             var Grades = db.GetAllSubmissionFromStudent(UserFullName, CourseName, AssignmentName, SubAssignmmentName);
             List<string> Res = new List<string>();
+
             foreach (var Grade in Grades)
             {
                 Res.Add(Grade.Grade.ToString());
             }
+
             return Res;
         }
 
         public string GetRoleByUser(string UserName, string Password)
         {
-            var Role = db.GetRoleByUser(UserName, Password).FirstOrDefault();
+            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
 
             return Role;
         }
@@ -151,9 +152,9 @@ namespace Mooshak_2._0.Services
 
         public GetPartAssignmentInfoByName_Result GetPartAssignmentInfoByName(string Name, string Desc)
         {
-            var listX = db.GetPartAssignmentInfoByName(Name, Desc);
-
-            GetPartAssignmentInfoByName_Result Result = listX.FirstOrDefault();
+            var list = db.GetPartAssignmentInfoByName(Name, Desc);
+            
+            GetPartAssignmentInfoByName_Result Result = list.FirstOrDefault();
             return Result;
         }
       
@@ -186,7 +187,6 @@ namespace Mooshak_2._0.Services
             List<string> Info = Res.ToString().Split(',').ToList<string>();
 
             return Info;
-
         }
 
         public List<string> GetAssignmentxInfoByCourse(string CourseName, string AssignmnetName)
@@ -198,29 +198,24 @@ namespace Mooshak_2._0.Services
             List<string> Info = Res.ToString().Split(',').ToList<string>();
 
             return Info;
-
         }
 
         public List<string> GetTeachers()
         {
-
             var Teachers = db.GetTeachers();
             return Teachers.ToList();
         }
 
         public List<string> GetTeachersInCoursesByName(string CourseName)
         {
-
-            var course = db.GetCourses();
-          
+            var course = db.GetCourses();      
             var role = db.GetTeachersInCoursesByName(CourseName);
             return role.ToList();
         }
 
         // List<GetUserByName_Result>
         public List<string> GetUserByName(string serchName)
-        {
-            
+        {            
             var userByName = db.GetUserByName(serchName);
 
             GetUserByName_Result Res = new GetUserByName_Result();
@@ -233,7 +228,6 @@ namespace Mooshak_2._0.Services
             return Info;
         }
         
-
         public int UppdateCourse(string searchName, string name)
         {
             db.UppdateCourse(searchName, name);
@@ -287,7 +281,7 @@ namespace Mooshak_2._0.Services
             db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
             return 0;
         }
-        
+
         public int SetGrade(int Grade, string Name)
         {
             db.SetGrade(Grade, Name);
