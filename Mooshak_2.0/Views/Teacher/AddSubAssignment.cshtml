@@ -10,6 +10,8 @@
     <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
     @using (Html.BeginForm())
     {
+        <input type="hidden" name="AssignmentName" value="@Model.CurrentAssignment" />
+        <input type="hidden" name="CourseName" value="@Model.CurrentClass" />
         <div class="form-group">
             <label for="SubName">Name:</label>                  
             <input type="text" name="SubName" class="form-control" />    

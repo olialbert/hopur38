@@ -8,9 +8,10 @@ using System.Web.Mvc;
 
 namespace Mooshak_2._0.Controllers
 {
+    //The AdminController uses the connectTables to get and send information to and from the database
     public class AdminController : Controller
     {
-        // GET: Admin
+        //So the connectTables can be used
         connectTables Tables = new connectTables();
 
         //Gets courses from the database using the connectTables and returns them to the View so they can be used
@@ -31,13 +32,14 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
+        //Gets all the courses
         public ActionResult AddCourse()
         {
             var Courses = Tables.GetCourses();
             return View(Courses);
         }
 
-        //Used to add a course to the database through the view and the connectTable, redirects you to the "Course" View afterwards 
+        //Used to add a course to the database through the view and the connectTable, redirects you to the "Courses" View afterwards 
         [HttpPost]
         public ActionResult AddCourse(string Name)
         {
@@ -143,7 +145,7 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
-        //Gets the information that need to be changed from the View and adds them to the database
+        //Gets the information that need to be changed from the View and adds them to the database using the connectTable
         [HttpPost]
         public ActionResult EditUser(string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {

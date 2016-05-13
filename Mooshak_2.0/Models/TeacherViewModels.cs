@@ -8,6 +8,7 @@ namespace Mooshak_2._0.Models
     public class AssignmentList
     {
         public string AssignmentName { get; set; }
+        public string DueDate { get; set; }
         public List<string> SubAssignments { get; set; }
     }
 
@@ -16,6 +17,7 @@ namespace Mooshak_2._0.Models
         public List<AssignmentList> Assignments { get; set; }
         public List<string> Courses { get; set; }
         public string CurrentClass { get; set; }
+        public string CurrentAssignment { get; set; }
     }
 
     public class AddAssignmentViewModel

@@ -68,7 +68,14 @@
           <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAssignmentDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetAssignmentName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAssignmentsDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAssignmentsInfoByCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -100,6 +107,10 @@
         <Function Name="GetDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="SubAssignmentName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
+          <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
@@ -323,8 +334,16 @@
             <Parameter Name="GetName" Mode="In" Type="String" />
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetPartAssignmentInfoByID" ReturnType="Collection(VLN2_2016_H38Model2.GetPartAssignmentInfoByID_Result)">
-          <Parameter Name="GetID" Mode="In" Type="Int32" />
+          <FunctionImport Name="GetName" ReturnType="Collection(String)">
+            <Parameter Name="RoleUserName" Mode="In" Type="String" />
+            <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignmentsDueDate" ReturnType="Collection(DateTime)">
+          <Parameter Name="GetCourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignmentDueDate" ReturnType="Collection(DateTime)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetAssignmentName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
@@ -359,13 +378,6 @@
           <Property Type="String" Name="CourseName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="GetPartAssignmentInfoByName_Result">
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="Int32" Name="ValuePercentage" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" />
-          <Property Type="String" Name="PathToInputOutputFile" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="GetPartAssignmentInfoByID_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="Int32" Name="ValuePercentage" Nullable="false" />
           <Property Type="String" Name="Description" Nullable="false" />
@@ -472,6 +484,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetName" FunctionName="VLN2_2016_H38Model2.Store.GetName" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentsDueDate" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentsDueDate" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentDueDate" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentDueDate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -486,7 +501,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

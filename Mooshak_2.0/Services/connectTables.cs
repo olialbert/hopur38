@@ -7,6 +7,7 @@ using System.Data.Entity;
     
 namespace Mooshak_2._0.Services
 {
+    //All those functions are used to get a procedure in stored procedures bindings out of the models, connectTable is used to connect the database with the assignment
     public class connectTables
     {
         private VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
@@ -16,18 +17,21 @@ namespace Mooshak_2._0.Services
             //_Db = new ApplicationDbContext();
         }
 
+        //e. Gets the AddCourse procedure from the database
         public int AddCourse(string name)
         {
             db.AddCourse(name);
             return 0;
         }
 
+        //e. Gets the AddUser procedure from the database
         public int AddUser(Nullable<int> userRolesId, string userName, string userUserName, string userPassWord, Nullable<int> userSsn, string userEmail)
         {
             db.AddUser(userRolesId, userName, userUserName, userPassWord, userSsn, userEmail);
             return 0;
         }
 
+        //e. Gets the AddUserToCourses procedure from the database, all the functions below are used in the same way
         public int AddUsersToCourses(string userName, string courseName)
         {
             db.AddUsersToCourses(userName, courseName);
@@ -62,6 +66,12 @@ namespace Mooshak_2._0.Services
         {
             var coursesName = db.GetAssignments(courseName);
             return coursesName.ToList();
+        }
+
+        public string GetAssignmentDueDates(string courseName, string AssignmentName)
+        {
+            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).ElementAt(0).ToString();
+            return DueDate;
         }
 
         public List<GetBestSubmissionAllStudents_Result> GetBestSubmissionAllStudents(string CourseName, string AssignmentName, string PartAssignmentName)
@@ -128,7 +138,6 @@ namespace Mooshak_2._0.Services
         public string GetRoleByUser(string UserName, string Password)
         {
             var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
-
             return Role;
         }
 
@@ -191,11 +200,23 @@ namespace Mooshak_2._0.Services
 
         public List<string> GetAssignmentxInfoByCourse(string CourseName, string AssignmnetName)
         {
+
+            
+
+
             var listX = db.GetAssignmentxInfoByCourse(CourseName, AssignmnetName);
 
-            GetAssignmentxInfoByCourse_Result Res = listX.ElementAt(0);
+            GetAssignmentxInfoByCourse_Result Res = new GetAssignmentxInfoByCourse_Result();
 
-            List<string> Info = Res.ToString().Split(',').ToList<string>();
+            Res = listX.ElementAt(0);
+
+            
+
+            List<string> Info = new List<string>();
+
+            Info.Add(Res.Name);
+            Info.Add(Res.DueDate.ToString());
+            Info.Add(Res.CourseName);
 
             return Info;
         }
@@ -213,7 +234,6 @@ namespace Mooshak_2._0.Services
             return role.ToList();
         }
 
-        // List<GetUserByName_Result>
         public List<string> GetUserByName(string serchName)
         {            
             var userByName = db.GetUserByName(serchName);
@@ -291,9 +311,7 @@ namespace Mooshak_2._0.Services
         public string GetDescription(string AssignmentName, string SubAssignmentName)
         {
             var Description = db.GetDescription(AssignmentName, SubAssignmentName).ElementAt(0);
-
             return Description;
-
         }
 
         public IEnumerable<GetAllSubmissionFromStudent_Result> GetAllSubmissionsFromStudent(string SubmissionName, string CourseName, string AssignmentName, string PartAssignmentName)
