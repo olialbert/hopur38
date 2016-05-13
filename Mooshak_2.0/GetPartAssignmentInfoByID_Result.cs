@@ -11,10 +11,12 @@ namespace Mooshak_2._0
 {
     using System;
     
-    public partial class GetBestSubmissionAllStudents_Result
+    public partial class GetPartAssignmentInfoByID_Result
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string PathToAssignmentSave { get; set; }
-        public Nullable<int> Grade { get; set; }
+        public int ValuePercentage { get; set; }
+        public string Description { get; set; }
+        public string PathToInputOutputFile { get; set; }
     }
 }

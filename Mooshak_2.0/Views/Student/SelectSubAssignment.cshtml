@@ -9,37 +9,40 @@
     <title></title>
 </head>
 <body>
-    <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
+    @Html.Partial("_StudentAssignmentsForm")
 
-    <div class="leftSide">
-        <div class="above">
-            <div class="User leftSide">
-                <img id="per" src="~/Content/Person.png" alt="Person" />
-                <div class="labels">
-                    <label>Username</label><br />
-                    <label>Student</label>
-                </div>
+    <div class="above-main submit">
+        <div class="left">
+            <h2>@Model.AssignmentName</h2>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    ~ Sub-Assignments ~
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var element in Model.SubAssignments)
+                    {
+                        <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = element, mainID = Model.AssignmentName, courseID = Model.CourseName, studentID = Model.StudentName })</li>
+                    }
+                </ul>
             </div>
         </div>
-        <div id="sidebar">
-            <ul>
-                <li id="sidebar-title">@Model.CourseName</li>
-                @foreach (var element in Model.Assignments)
-                {
-                string studentName = "gunni ben";
-                    <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { mainID = element, courseID = @Model.CourseName, studentID = studentName })</li>
-                }
-            </ul>
+
+        <div class="right">
+            <div class="browse">
+                <input type="file">
+            </div>
+            <div class="below-browse">
+                <input type="submit" class="btn btn-default" value="Submit" />
+                @Html.ActionLink("Description", "ViewDescription", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName }, new { @class = "btn btn-default input" })
+                <input type="button" class="btn btn-default" value="View" />
+            </div>
+            <p>Try limit: <input class="tryLimit" value="No limit" /></p>
         </div>
-    </div>
-    <div class="above-main">
-        <h2>@Model.AssignmentName</h2>
     </div>
 
     <div class="main">
-        <table class="default admin">
-            <caption>Courses</caption>
+        <table class="default">
             <thead>
                 <tr>
                     <th>#</th>
@@ -49,21 +52,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var element in Model.SubAssignments)
+                @foreach (var element in Model.Submissions)
                 {
+                    int grade = element.Grade;
                     <tr>
-                        <td>num</td>
-                        <td>time</td>
+                        <td>number</td>
+                        <td>@DateTime.Now</td>
                         <td>C#</td>
-                        <td>
-
-                            @Html.DisplayFor(x => element)
-                        </td>
+                        <td>@Html.DisplayFor(x => grade)</td>
                     </tr>
                 }
             </tbody>
         </table>
-        
     </div>
 </body>
 </html>

@@ -15,11 +15,5 @@ namespace Mooshak_2._0
     {
         public string PathToAssignmentSave { get; set; }
         public Nullable<int> Grade { get; set; }
-
-        public override string ToString()
-        {
-            string Res = PathToAssignmentSave + "," + Grade.ToString();
-            return Res;
-        }
     }
 }

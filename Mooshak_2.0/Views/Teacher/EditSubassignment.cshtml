@@ -3,34 +3,43 @@
     ViewBag.Title = "AddSubAssignment";
 }
 <div class="above-main"></div>
-@model List<string>
+@model GetPartAssignmentInfoByName_Result
 <div class="main">
-    <h2>New/Edit SubAssignment</h2>
+    <h2>Edit SubAssignment</h2>
 
     <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
     @using (Html.BeginForm())
     {
-        <input type="hidden" name="SearchName" value="@Model.ElementAt(0)"/>
-        <input type="hidden" name="SearchDesc" value="@Model.ElementAt(2)"/>
-
-        <input type="text" name="SubName" value="@Model.ElementAt(0)"/>
+        @Html.Hidden("SearchName", Model.Name)
+        @Html.Hidden("SearchDesc", Model.Description)
 
         <div class="form-group">
-            <label for="Descrip.">Description:</label>                  <br />
-            <textarea rows="5" cols="50" name="Descrip" placeholder="@Model.ElementAt(2)"></textarea>    <br />
+            <label for="SubName">Description:</label>
+            <input type="text" name="SubName" value="@Model.Name" />
         </div>
 
         <div class="form-group">
-            <label for="Percentage">Percentage of total grade :</label><br />
-            <input type="text" name="Percentage" value="@Model.ElementAt(1)"/>          <br />
+            <label for="Descrip.">Description:</label>                  
+            <textarea rows="5" cols="50" name="Descrip">@Model.Description</textarea>    
         </div>
 
         <div class="form-group">
-            <label for="Input">Input:</label>                           <br />
-            <input type="file"  name="Input" />                          <br />
+            <label for="Percentage">Percentage of total grade :</label>
+            <input type="text" name="Percentage" value="@Model.ValuePercentage" />          
         </div>
-        <input type="submit" value="Save" />
-            <input type="button" value="Cancel" onclick="location.href='@Url.Action(" Assignments", "Teacher" )'" />
+
+        <div class="form-group">
+            <label for="Input">Input:</label>                           
+            <input type="file" name="Input" />                          
+        </div>
+
+        <div class="form-group">
+            <label for="Input">Input:</label>                           
+            <input type="file"  name="Input" />                          
+        </div>
+
+        <input class="btn btn-default" type="submit" value="Save" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher")'" />
     }
 
 </div>

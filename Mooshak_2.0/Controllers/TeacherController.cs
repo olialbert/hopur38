@@ -3,6 +3,7 @@ using Mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,6 +14,7 @@ namespace Mooshak_2._0.Controllers
         // GET: Teacher
 
         connectTables Tables = new connectTables();
+
         string CourseName = "Forritun";
 
         public ActionResult _TeacherForm()
@@ -57,9 +59,7 @@ namespace Mooshak_2._0.Controllers
         {
             Tables.AddAssignment(CourseHidden, Name, Date);
             return RedirectToAction("Assignments");
-
         }
-
 
         public ActionResult AddSubAssignment(string ID,string courseID)
         {
@@ -81,9 +81,6 @@ namespace Mooshak_2._0.Controllers
         public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId)
         {
             var Submittions = Tables.GetBestSubmissionAllStudents(CourseId,MainID,ID);
-
-            
-
             return View(Submittions);
         }
 
@@ -108,10 +105,25 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments");
         }
 
-        public ActionResult EditSubassignment(string ID)
+        public ActionResult EditSubassignment(string subID, string mainID)
         {
-            var Assignment = Tables.GetPartAssignmentInfoByName(ID, "sdf");
-            return View(Assignment);
+            if (subID == null || mainID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var Description = Tables.GetDescription(mainID, subID);
+            var Assignment = Tables.GetPartAssignmentInfoByName(subID, Description);
+            if (Assignment == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new GetPartAssignmentInfoByName_Result();
+            Assignment.Description = Description;
+            model.Name = Assignment.Name;
+            model.Description = Assignment.Description;
+            model.ValuePercentage = Assignment.ValuePercentage;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -121,8 +133,9 @@ namespace Mooshak_2._0.Controllers
             Tables.UpdatePartAssignment(SearchName, SearchDesc, SubName, PercentNum, Descrip, Input);
             return RedirectToAction("Assignments");
         }
+    
 
-        public ActionResult UpdateDescription()
+    public ActionResult UpdateDescription()
         {
             return View();
         }
@@ -150,7 +163,7 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AllSubmissions(string ID, string MainID,string PartAssignmentId, string CourseID)
+        public ActionResult AllSubmissions(string ID, string MainID, string PartAssignmentId, string CourseID)
         {
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
@@ -206,6 +219,5 @@ namespace Mooshak_2._0.Controllers
         {
             return View();
         }
-
     }
 }

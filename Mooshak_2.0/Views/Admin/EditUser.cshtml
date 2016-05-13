@@ -43,7 +43,7 @@ ViewBag.Title = "User Page";
 
         <label>Role</label>
         <div class="form-group">
-            <span>@Html.RadioButton("Role", "2", !IsStudent) Teacher</span><br />
+            <span>@Html.RadioButton("Role", "2", !IsStudent) Teacher</span>
             <span>@Html.RadioButton("Role", "3", IsStudent) Student</span>
         </div>
 
@@ -70,11 +70,11 @@ ViewBag.Title = "User Page";
                     <input type="checkbox" name="Courses" value="@element">
                 }
                 <span>@element</span>
-                <br />
+                
             }
         </div>
 
-        <br />
+        
         <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Users", "Asmin" )'" />
         <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin" )'" />
     }

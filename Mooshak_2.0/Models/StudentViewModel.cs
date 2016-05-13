@@ -17,7 +17,6 @@ namespace Mooshak_2._0.Models
     {
         public string Description { get; set; }
         public string Ids { get; set; }
-
     }
 
     public class StudentIdsViewModel
@@ -28,11 +27,10 @@ namespace Mooshak_2._0.Models
         public string UberString { get; set; }
         public List<string> Assignments { get; set; }
         public List<string> SubAssignments { get; set; }
+        public IEnumerable<GetAllSubmissionFromStudent_Result> Submissions { get; set; }
         public List<string> Submittions { get; set; }
         public List<string> Courses { get; set; }
         public string StudentName { get; set; }
-
+        public string Description { get; set; }
     }
-
-    
 }

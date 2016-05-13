@@ -34,5 +34,4 @@ namespace Mooshak_2._0.Models
         public List<GetAllSubmissionFromStudent_Result> AllSubmit { get; set; }
         public List<GetBestSubmissionForStudent_Result> BestSubmit { get; set; }
     }
-
 }

@@ -13,15 +13,6 @@ namespace Mooshak_2._0.Controllers
         // GET: Admin
         connectTables Tables = new connectTables();
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        
-
-
-
         //Gets courses from the database using the connectTables and returns them to the View so they can be used
         public ActionResult Courses()
         {
@@ -42,7 +33,8 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult AddCourse()
         {
-            return View();
+            var Courses = Tables.GetCourses();
+            return View(Courses);
         }
 
         //Used to add a course to the database through the view and the connectTable, redirects you to the "Course" View afterwards 
@@ -51,11 +43,6 @@ namespace Mooshak_2._0.Controllers
         {
             Tables.AddCourse(Name);
             return RedirectToAction("Courses");
-        }
-
-        public ActionResult UpdateCourse()
-        {
-            return View();
         }
 
         //Deletes a course via the ID, redirects the user back to the right place in the View
