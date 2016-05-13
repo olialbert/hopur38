@@ -143,7 +143,7 @@ namespace Mooshak_2._0.Controllers
             return View(viewModel);
         }
 
-        //Gets the information that need to be changed from the View and adds them to the database
+        //Gets the information that need to be changed from the View and adds them to the database using the connectTable
         [HttpPost]
         public ActionResult EditUser(string SearchName, string Name, string Username, string Password, string Ssn, string Email, string Role, string[] Courses)
         {
