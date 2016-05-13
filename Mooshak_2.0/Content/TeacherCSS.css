@@ -5,3 +5,34 @@
 tr.sub td:first-child{
     padding-left: 50px;
 }
+
+div.above-main h2{
+    margin: 10px 5px;
+}
+
+div.left{
+    float: left; 
+    width: 50%;
+}
+
+div.right{
+    float: right;
+}
+
+div.browse, div.below-browse{
+    margin: 8px 0px;
+}
+
+div.below-browse input, .input{
+    width: 100px;
+    padding: 0px;
+    margin-right: 10px;
+}
+
+div.submit{
+    height: 100px;
+}
+
+.tryLimit{
+    border: none;
+}

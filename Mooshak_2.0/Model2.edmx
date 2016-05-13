@@ -323,6 +323,9 @@
             <Parameter Name="GetName" Mode="In" Type="String" />
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetPartAssignmentInfoByID" ReturnType="Collection(VLN2_2016_H38Model2.GetPartAssignmentInfoByID_Result)">
+          <Parameter Name="GetID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -356,6 +359,13 @@
           <Property Type="String" Name="CourseName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="GetPartAssignmentInfoByName_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="ValuePercentage" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="PathToInputOutputFile" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPartAssignmentInfoByID_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="Int32" Name="ValuePercentage" Nullable="false" />
           <Property Type="String" Name="Description" Nullable="false" />
@@ -476,7 +486,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

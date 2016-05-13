@@ -1,8 +1,4 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -10,10 +6,12 @@
     <title></title>
 </head>
 <body>
-    <div>
+    @Html.Partial("_StudentAssignmentsForm")
+    <div class="above-main"></div>
+    <div class="main">
+        <h2>Description</h2>
         <p>@Model.Description</p>
-
-        <input class="btn btn-default" type="button" value="View" onclick="location.href='@Url.Action("SelectSubmittions", "Student",new { id = @Model.Ids })'" />
+        @Html.ActionLink("Back", "SelectSubAssignment", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName }, new { @class = "btn btn-default" })
     </div>
 </body>
 </html>

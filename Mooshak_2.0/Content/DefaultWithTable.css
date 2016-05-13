@@ -25,12 +25,13 @@ div.labels{
 .rightSide{
     padding-top: 35px;
     padding-left: 10px;
-    display: flex;
 }
 
 div.above-main{
     height: 80px;
-    width: 80%;
+    width: 79%;
+    margin-left: 10px;
+    float: right;
 }
 
 div#sidebar ul {
@@ -52,7 +53,7 @@ div#sidebar li a {
     color: black;
 }
 
-div#sidebar li:hover:not(:first-child), div#sidebar li:visited:not(:first-child)  {
+div#sidebar li:hover:not(:first-child), div#sidebar li:active:not(:first-child)  {
     background-color: #CCCCCC;
     font-weight: bold;
 }

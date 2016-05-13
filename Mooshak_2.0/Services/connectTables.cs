@@ -149,15 +149,12 @@ namespace Mooshak_2._0.Services
             return courseByUser.ToList();
         }
 
-        public List<string> GetPartAssignmentInfoByName(string Name, string Desc)
+        public GetPartAssignmentInfoByName_Result GetPartAssignmentInfoByName(string Name, string Desc)
         {
             var listX = db.GetPartAssignmentInfoByName(Name, Desc);
 
-             GetPartAssignmentInfoByName_Result Res = listX.ElementAt(0);
-
-            List<string> Info = Res.ToString().Split(',').ToList<string>();
-
-            return Info;
+            GetPartAssignmentInfoByName_Result Result = listX.FirstOrDefault();
+            return Result;
         }
       
 
@@ -290,12 +287,7 @@ namespace Mooshak_2._0.Services
             db.AddSentInAssigments(userName, assignmentName, partAssignmentName, courseName, description, pathToAssinmentName, pathToAssinmentSaveName);
             return 0;
         }
-
-
-
         
-       
-
         public int SetGrade(int Grade, string Name)
         {
             db.SetGrade(Grade, Name);

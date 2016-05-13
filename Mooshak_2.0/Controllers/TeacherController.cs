@@ -3,6 +3,7 @@ using Mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,6 +14,8 @@ namespace Mooshak_2._0.Controllers
         // GET: Teacher
 
         connectTables Tables = new connectTables();
+        private VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
+
         string CourseName = "Forritun";
 
         public ActionResult _TeacherForm()
@@ -94,10 +97,25 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments");
         }
 
-        public ActionResult EditSubassignment(string ID)
+        public ActionResult EditSubassignment(string subID, string mainID)
         {
-            var Assignment = Tables.GetPartAssignmentInfoByName(ID, "sdf");
-            return View(Assignment);
+            if (subID == null || mainID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var Description = db.GetDescription(mainID, subID).FirstOrDefault();
+            var Assignment = db.GetPartAssignmentInfoByName(subID, Description).FirstOrDefault();
+            if (Assignment == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new GetPartAssignmentInfoByName_Result();
+            Assignment.Description = Description;
+            model.Name = Assignment.Name;
+            model.Description = Assignment.Description;
+            model.ValuePercentage = Assignment.ValuePercentage;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -108,7 +126,28 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments");
         }
 
-        public ActionResult UpdateDescription()
+        /*public ActionResult Edit([Bind(Include = "ID,CategoryID,Name,Description,Price,Stock")] ProductViewModel product)
+        {
+            if (ModelState.IsValid)
+            {
+                ProductModel edited = db.Products.Find(product.ID);
+                if (product != null)
+                {
+                    edited.Name = product.Name;
+                    edited.CategoryID = product.CategoryID;
+                    edited.Price = product.Price;
+                    edited.Stock = product.Stock;
+                    edited.Description = product.Description;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            product.AllCatagories = GetAllCategories();
+            return View(product);
+        }*/
+    
+
+    public ActionResult UpdateDescription()
         {
             return View();
         }

@@ -49,17 +49,16 @@ namespace Mooshak_2._0.Controllers
             ViewModel.CourseName = courseID;
             ViewModel.AssignmentName = mainID;
             ViewModel.SubAssignmentName = subID;
-            ViewModel.Submissions = Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID);
 
             ViewModel.Assignments = Tables.GetAssignments(courseID);
             ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(mainID, courseID);
+            ViewModel.Submissions = Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID);
 
             return View(ViewModel);
         }
 
         public ActionResult SelectSubmittions(string ID)
         {
-            
             List<string> Ids = ID.Split(',').ToList<string>();
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
 
@@ -115,10 +114,16 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewDescription(string ID)
+        public ActionResult ViewDescription(string subID, string mainID, string courseID)
         {
-            
-            List<string> Ids = ID.Split(',').ToList<string>();
+            var ViewModel = new StudentIdsViewModel();
+            ViewModel.CourseName = courseID;
+            ViewModel.AssignmentName = mainID;
+            ViewModel.SubAssignmentName = subID;
+
+            ViewModel.Description = Tables.GetDescription(mainID, subID);
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            /*List<string> Ids = ID.Split(',').ToList<string>();
 
             string CourseName = Ids.ElementAt(2);
             string AssignmentName = Ids.ElementAt(0);
@@ -128,7 +133,7 @@ namespace Mooshak_2._0.Controllers
             var Description = Tables.GetDescription(AssignmentName, SubAssignmentName);
             var ViewModel = new StudentsViewModel();
             ViewModel.Description = Description;
-            ViewModel.Ids = OldId;
+            ViewModel.Ids = OldId;*/
             return View(ViewModel);
         }
 

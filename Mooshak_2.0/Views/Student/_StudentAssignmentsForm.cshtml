@@ -16,8 +16,7 @@
             <li id="sidebar-title">@Model.CourseName</li>
             @foreach (var element in Model.Assignments)
             {
-                string studentName = "gunni ben";
-                <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { element, @Model.CourseName, studentName })</li>
+                <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = Model.SubAssignmentName, mainID = element, courseID = Model.CourseName, studentID = Model.StudentName })</li>
             }
         </ul>
     </div>

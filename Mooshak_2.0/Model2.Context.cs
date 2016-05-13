@@ -556,5 +556,14 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPartAssignmentInfoByName_Result>("GetPartAssignmentInfoByName", getNameParameter, descParameter);
         }
+    
+        public virtual ObjectResult<GetPartAssignmentInfoByID_Result> GetPartAssignmentInfoByID(Nullable<int> getID)
+        {
+            var getIDParameter = getID.HasValue ?
+                new ObjectParameter("GetID", getID) :
+                new ObjectParameter("GetID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPartAssignmentInfoByID_Result>("GetPartAssignmentInfoByID", getIDParameter);
+        }
     }
 }
