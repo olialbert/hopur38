@@ -16,11 +16,11 @@ namespace Mooshak_2._0.Controllers
 
         connectTables Tables = new connectTables();
 
-        public ActionResult _TeacherForm()
+        /*public ActionResult _TeacherForm()
         {
             var CoursesUsers = Tables.GetCoursesByUser("Jon Jonson");
             return View();
-        }
+        }*/
 
         //Fetches all the assignments in the database and returns them to the View
         public ActionResult Assignments(string ID)
