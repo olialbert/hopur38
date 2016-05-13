@@ -68,7 +68,14 @@
           <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAssignmentDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetAssignmentName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAssignmentsDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetAssignmentsInfoByCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -331,6 +338,13 @@
             <Parameter Name="RoleUserName" Mode="In" Type="String" />
             <Parameter Name="RolePassWord" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAssignmentsDueDate" ReturnType="Collection(DateTime)">
+          <Parameter Name="GetCourseName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignmentDueDate" ReturnType="Collection(DateTime)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -471,6 +485,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetName" FunctionName="VLN2_2016_H38Model2.Store.GetName" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentsDueDate" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentsDueDate" />
+          <FunctionImportMapping FunctionImportName="GetAssignmentDueDate" FunctionName="VLN2_2016_H38Model2.Store.GetAssignmentDueDate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -242,9 +242,6 @@
     <Compile Include="GetBestSubmissionForStudent_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetPartAssignmentInfoByID_Result.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
     <Compile Include="GetPartAssignmentInfoByName_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
@@ -348,7 +345,7 @@
     <Content Include="Model2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
+      <LastGenOutput>Model2.Context1.cs</LastGenOutput>
     </Content>
     <Content Include="Model2.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -16,11 +16,5 @@ namespace Mooshak_2._0
         public string Name { get; set; }
         public System.DateTime DueDate { get; set; }
         public string CourseName { get; set; }
-
-        public override string ToString()
-        {
-            string Res = Name + "," + DueDate.ToString() + "," + CourseName;
-            return base.ToString();
-        }
     }
 }

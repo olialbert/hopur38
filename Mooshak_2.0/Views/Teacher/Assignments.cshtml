@@ -28,7 +28,7 @@
             {
                 <tr>
                     <td>@Html.DisplayFor(m => element.AssignmentName)</td>
-                    <td></td>
+                    <td>@Html.DisplayFor(m => element.DueDate)</td>
                     <td>
                         @Html.ActionLink("Delete", "DeleteAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "delete" })
                         @Html.ActionLink("Edit", "EditAssignment", new { id = element.AssignmentName }, new { @class = "edit" })
