@@ -20,6 +20,8 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
+
+                    <!--Lists all the subassignment of a selected assignment in a selected course from the model-->
                     @foreach (var element in Model.SubAssignments)
                     {
                         <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = element, mainID = Model.AssignmentName, courseID = Model.CourseName, studentID = Model.StudentName })</li>
@@ -27,7 +29,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="right">
             <div class="browse">
                 <input type="file">
@@ -39,7 +40,6 @@
             <p>Try limit: <input class="tryLimit" value="No limit" /></p>
         </div>
     </div>
-
     <div class="main">
         <table class="default">
             <thead>
@@ -52,6 +52,8 @@
                 </tr>
             </thead>
             <tbody>
+
+                <!--Displays all of the submissions in a selected subAssignmenn using the model class-->
                 @foreach (var element in Model.Submissions)
                 {
                     int grade = element.Grade;

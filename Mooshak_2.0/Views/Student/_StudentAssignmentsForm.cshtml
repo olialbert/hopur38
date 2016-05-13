@@ -1,6 +1,7 @@
 ﻿<link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
+<!--The basic form of the Student View-->
 <div class="leftSide">
     <div class="above">
         <div class="User leftSide">
@@ -13,7 +14,10 @@
     </div>
     <div id="sidebar">
         <ul>
+            <!--Displays the correct course name-->
             <li id="sidebar-title">@Model.CourseName</li>
+
+            <!--Displays a list of assignemts in the selected course using the model-->
             @foreach (var element in Model.Assignments)
             {
                 <li>@Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = Model.SubAssignmentName, mainID = element, courseID = Model.CourseName, studentID = Model.StudentName })</li>

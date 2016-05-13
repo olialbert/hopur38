@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
+<!--Connects the cshtml with the model below-->
 @model Mooshak_2._0.Models.StudentIdsViewModel
 
 <div class="leftSide">
@@ -20,6 +21,8 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
+
+            <!--Displays the courses using the model-->
             @foreach (var element in Model.Courses)
             {
                 string name = element;
@@ -42,6 +45,8 @@
             </tr>
         </thead>
         <tbody>
+
+            <!--Displays all of the assignments in the selected course using the model-->
             @foreach (var element in Model.Assignments)
             {
                 string name = element;
