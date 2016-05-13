@@ -2,10 +2,10 @@
     ViewBag.Title = "User Page";
 }
 
-
-
-
+<!--Connects the cshtml page to the model below-->
 @model Mooshak_2._0.Models.ViewUsersInCourseEditUserViewModel
+
+<!--The form used to edit a user, interacts with the AdminController and the model-->
 @using (Html.BeginForm())
 {
     <input type="hidden" value="@Model.CourseName" name="RedirectId" />
@@ -23,45 +23,44 @@
 
     bool IsStudent = false;
     <p>Role</p>
+
     if (Model.UserInfo.ElementAt(5) == "Student")
     {
         IsStudent = true;
     }
+    
     @Html.RadioButton("Role", "2", !IsStudent) <span>Teacher</span>
     @Html.RadioButton("Role", "3", IsStudent) <span>Student</span>
+
     bool IsInCourse = false;
     <p>Courses</p>
+
+    <!--Displays the courses from Model-->
     foreach (var element in Model.Courses)
     {
         IsInCourse = false;
+
+        <!--Displays the UserCourses from the model-->
         foreach (var el in Model.UserCourses)
         {
-
             if (element == el)
             {
-
                 IsInCourse = true;
                 break;
             }
         }
+
         if (IsInCourse)
         {
-            <input type="checkbox" name="Courses" value="@element" checked>        <span>@element</span>        
+            <input type="checkbox" name="Courses" value="@element" checked><span>@element</span>        
         }
 
         else
         {
-            <input type="checkbox" name="Courses" value="@element">        <span>@element</span>            
+            <input type="checkbox" name="Courses" value="@element"><span>@element</span>            
         }
-
     }
-    
-
-
-
     <input type="submit" value="submit" />
 }
-
-
 <input type="button" value="Cancel" onclick="location.href='@Url.Action("ViewUsersinCourse", "Admin",new { id = @Model.CourseName })'" />
 

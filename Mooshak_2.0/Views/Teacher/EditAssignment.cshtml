@@ -6,8 +6,8 @@
 
 @model List<string>
 
-<!--Form used to edit an assignment, directly used with the controller-->
 <div class="main">
+    <!--Form used to edit an assignment, directly used with the controller and the Model-->
     @using (Html.BeginForm())
     {
         string Value = @Model.ElementAt(1);

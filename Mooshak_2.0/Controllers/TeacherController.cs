@@ -181,7 +181,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.AllSubmit = Tables.GetAllSubmissionFromStudent(ID, CourseID, MainID, PartAssignmentId);
             return View(viewModel);
@@ -196,7 +196,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.BestSubmit = Tables.GetBestSubmissionForStudent(ID, CourseID, MainID, PartAssignmentId);
             return View(viewModel);
