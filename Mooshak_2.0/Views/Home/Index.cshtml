@@ -9,7 +9,7 @@
     @using (Html.BeginForm())
     {
         <label for="UserName">UserName:</label>
-        <input type="text" name="UserName" />
+        <input type="text" name="UserName" /> <br />
         <label for="PassWord">PassWord:</label>
         <input type="password" name="PassWord" />
         <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Courses", "Admin" )'" />

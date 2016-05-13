@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "AddSubAssignment";
 }
 <div class="above-main"></div>
@@ -7,7 +6,7 @@
 <div class="main">
     <h2>New SubAssignment</h2>
 
-    <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
+    <!--The form used to add a sub assignment, directly used with the controller-->
     @using (Html.BeginForm())
     {
         <input type="hidden" name="AssignmentName" value="@Model.CurrentAssignment" />

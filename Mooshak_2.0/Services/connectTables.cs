@@ -116,6 +116,12 @@ namespace Mooshak_2._0.Services
             return Res;
         }
 
+        public string GetName(string UserName, string CourseName)
+        {
+            var Name = db.GetName(UserName,CourseName).ElementAt(0);
+            return Name;
+        }
+
         public List<string> GetPartAssignmentByAssignmentName(string AssignmentName, string CourseName)
         {
             var PartAssignments = db.GetPartAssignmentByAssignmentName(AssignmentName, CourseName);
