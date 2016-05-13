@@ -27,7 +27,7 @@ namespace Mooshak_2._0.Controllers
             var ViewStudentModel = new StudentIdsViewModel();
             ViewStudentModel.Assignments = Tables.GetAssignments("dsfsdf");
             ViewStudentModel.Courses = Tables.GetCoursesByUser(Name);
-                ViewStudentModel.StudentName = "gummi ben";
+            ViewStudentModel.StudentName = "gummi ben";
             return View(ViewStudentModel);
         }
 
@@ -35,37 +35,29 @@ namespace Mooshak_2._0.Controllers
         {
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = ID;
-
             ViewModel.Assignments = Tables.GetAssignments(ID);
             ViewModel.Courses = Tables.GetCoursesByUser(studentID);
             return View(ViewModel);
         }
 
-        public ActionResult SelectSubAssignment(string ID, string courseID, string studentID)
+        public ActionResult SelectSubAssignment(string subID, string mainID, string courseID, string studentID)
         {
-            //studentID = "gummi ben";
-            //courseID = "Gagnaskipann";
-
-
+            studentID = "gummi ben";
 
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = courseID;
-            ViewModel.AssignmentName = ID;
-            //ViewModel.SubAssignmentName = subID;
-            ViewModel.Assignments = Tables.GetAssignments(courseID);
-            /*foreach (var item in Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID))
-            {
-                ViewModel.Submittions.Add(item.ToString());
-            }*/
-            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(ID, courseID);
-            ViewModel.Courses = Tables.GetCoursesByUser(studentID);
-            return View(ViewModel);
+            ViewModel.AssignmentName = mainID;
+            ViewModel.SubAssignmentName = subID;
 
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(mainID, courseID);
+            ViewModel.Submissions = Tables.GetAllSubmissionsFromStudent(studentID, courseID, mainID, subID);
+
+            return View(ViewModel);
         }
 
         public ActionResult SelectSubmittions(string ID)
         {
-            
             List<string> Ids = ID.Split(',').ToList<string>();
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
 
@@ -105,7 +97,6 @@ namespace Mooshak_2._0.Controllers
         {
             var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
             return View(courses);
-
         }
 
         public ActionResult SubmitAssignment()
@@ -120,24 +111,18 @@ namespace Mooshak_2._0.Controllers
             Tables.SetGrade(54, Name);
             return RedirectToAction("Index");
         }
-
-        public ActionResult ViewDescription(string ID)
+        
+        public ActionResult ViewDescription(string subID, string mainID, string courseID)
         {
-            
-            List<string> Ids = ID.Split(',').ToList<string>();
+            var ViewModel = new StudentIdsViewModel();
+            ViewModel.CourseName = courseID;
+            ViewModel.AssignmentName = mainID;
+            ViewModel.SubAssignmentName = subID;
 
-            string CourseName = Ids.ElementAt(2);
-            string AssignmentName = Ids.ElementAt(0);
-            string SubAssignmentName = Ids.ElementAt(1);
-
-            string OldId = SubAssignmentName + "," + CourseName + "," + AssignmentName;
-            var Description = Tables.GetDescription(AssignmentName, SubAssignmentName);
-            var ViewModel = new StudentsViewModel();
-            ViewModel.Description = Description;
-            ViewModel.Ids = OldId;
+            ViewModel.Description = Tables.GetDescription(mainID, subID);
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
             return View(ViewModel);
         }
-
 
         public ActionResult ViewMySolutions(string ID)
         {

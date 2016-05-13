@@ -1,22 +1,33 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "BestSubmittions - Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    @foreach (var element in Model.Students)
-    {
-        <p>@element </p>
-        @Html.ActionLink("Get all submissions", "AllSubmissions", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, }, new { @class = "" }) <br />
-        @Html.ActionLink("Get best submission", "BestSubmission", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, }, new { @class = "" })
-    }
-    </div>
-</body>
-</html>
+<link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
+<link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
+
+<div class="above-main"></div>
+<div class="main">
+    <table class="default teacher">
+        <caption>Courses</caption>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>All Submissions</th>
+                <th>Best Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model.Students)
+            {
+                <tr>
+                    <td>@element </td>
+                    <td> @Html.ActionLink("Get all submissions", "AllSubmissions", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, StudentId = element }, new { @class = "" })</td>
+                    <td> @Html.ActionLink("Get best submission", "BestSubmission", new { id = element, mainID = Model.AssignmentName, PartAssignmentId = Model.PartAssignmentName, courseID = @Model.CourseName, StudentId = element }, new { @class = "" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,22 +1,35 @@
 ﻿@{
-    Layout = null;
+
+    ViewBag.Title = "BestSubmittions - Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    @foreach (var element in Model.AllSubmit)
-    {
-        string path = element.PathToAssignmentSave;
-        string grade = element.Grade.ToString();
-        <p>@Html.DisplayFor(m => path) @Html.DisplayFor(m => grade)</p>
-    }
-    </div>
-</body>
-</html>
+<link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
+<link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
+
+<div class="above-main"></div>
+<div class="main">
+    <table class="default teacher">
+        <caption>Courses</caption>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Path</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model.AllSubmit)
+            {
+                string path = element.PathToAssignmentSave;
+                string grade = element.Grade.ToString();
+                <tr>
+                    <td>@Model.StudentName</td>
+                    <td> @Html.DisplayFor(m => path)</td>
+                    <td> @Html.DisplayFor(m => grade)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
