@@ -35,7 +35,7 @@ namespace Mooshak_2._0.Controllers
             {
                 var AssignmentList2 = new AssignmentList();
                 AssignmentList2.AssignmentName = assignment;
-                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID,assignment);
+                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID, assignment);
                 AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
                 AssignmentList1.Add(AssignmentList2);
             }

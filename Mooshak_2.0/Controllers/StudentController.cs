@@ -31,11 +31,12 @@ namespace Mooshak_2._0.Controllers
             return View(ViewStudentModel);
         }
 
-        public ActionResult SelectAssignments(string ID, string studentID)
+        public ActionResult SelectAssignments(string mainID, string courseID, string studentID)
         {
             var ViewModel = new StudentIdsViewModel();
-            ViewModel.CourseName = ID;
-            ViewModel.Assignments = Tables.GetAssignments(ID);
+            ViewModel.CourseName = courseID;
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            ViewModel.AssignmentDueDate = Tables.GetAssignmentDueDates(courseID, mainID);
             ViewModel.Courses = Tables.GetCoursesByUser(studentID);
             ViewModel.StudentName = studentID;
             return View(ViewModel);
@@ -83,7 +84,7 @@ namespace Mooshak_2._0.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectSubmittions(string studentId,string ids,string path)
+        public ActionResult SelectSubmittions(string studentId, string ids, string path)
         {
             List<string> Ids = ids.Split(',').ToList<string>();
             string CourseName = Ids.ElementAt(2);

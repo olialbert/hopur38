@@ -35,6 +35,10 @@
           <Parameter Name="SubmissionAssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="SubmissionPartAssignmentName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetAssignmentDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GetCourseName" Type="varchar" Mode="In" />
+          <Parameter Name="GetAssignmentName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetCourseByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
         </Function>
@@ -129,6 +133,10 @@
             <Parameter Name="SubmissionAssignmentName" Mode="In" Type="String" />
             <Parameter Name="SubmissionPartAssignmentName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAssignmentDueDate" ReturnType="Collection(DateTime)">
+            <Parameter Name="GetCourseName" Mode="In" Type="String" />
+            <Parameter Name="GetAssignmentName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -182,6 +190,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAssignmentDueDate" FunctionName="VLN2_2016_H38Model1.Store.GetAssignmentDueDate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
