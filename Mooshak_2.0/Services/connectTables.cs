@@ -68,6 +68,12 @@ namespace Mooshak_2._0.Services
             return coursesName.ToList();
         }
 
+        public string GetAssignmentDueDates(string courseName, string AssignmentName)
+        {
+            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).ElementAt(0).ToString();
+            return DueDate;
+        }
+
         public List<GetBestSubmissionAllStudents_Result> GetBestSubmissionAllStudents(string CourseName, string AssignmentName, string PartAssignmentName)
         {
             var listX = db.GetBestSubmissionAllStudents(CourseName, AssignmentName, PartAssignmentName);

@@ -37,6 +37,7 @@ namespace Mooshak_2._0.Controllers
             {
                 var AssignmentList2 = new AssignmentList();
                 AssignmentList2.AssignmentName = assignment;
+                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID,assignment);
                 AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
                 AssignmentList1.Add(AssignmentList2);
             }
@@ -87,13 +88,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult EditAssignment(string ID)
          {
              var Assignment = Tables.GetAssignmentxInfoByCourse("Gagnaskipann", ID);
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(@"C:\\Users\\petur\\Desktop\\testing\test.txt"))
-            {
-                file.WriteLine("list:");
-                foreach (string i in Assignment.ToList())
-                    file.WriteLine(i);
-            }
+            
 
             return View(Assignment);
          }
