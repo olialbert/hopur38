@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "EditAssignment";
 }
 
@@ -7,11 +6,10 @@
 
 @model List<string>
 
+<!--Form used to edit an assignment, directly used with the controller-->
 <div class="main">
     @using (Html.BeginForm())
     {
-
-
         string Value = @Model.ElementAt(1);
         Value = Value.Remove(Value.Length - 11);
 
