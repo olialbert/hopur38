@@ -101,6 +101,10 @@
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="SubAssignmentName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleUserName" Type="varchar" Mode="In" />
+          <Parameter Name="RolePassWord" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetPartAssignmentByAssignmentName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="AssignmentName" Type="varchar" Mode="In" />
           <Parameter Name="CourseName" Type="varchar" Mode="In" />
@@ -323,6 +327,10 @@
             <Parameter Name="GetName" Mode="In" Type="String" />
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetName" ReturnType="Collection(String)">
+            <Parameter Name="RoleUserName" Mode="In" Type="String" />
+            <Parameter Name="RolePassWord" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserByName_Result">
           <Property Type="String" Name="Name" Nullable="false" />
@@ -462,6 +470,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetName" FunctionName="VLN2_2016_H38Model2.Store.GetName" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

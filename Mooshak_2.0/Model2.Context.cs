@@ -556,5 +556,18 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPartAssignmentInfoByName_Result>("GetPartAssignmentInfoByName", getNameParameter, descParameter);
         }
+    
+        public virtual ObjectResult<string> GetName(string roleUserName, string rolePassWord)
+        {
+            var roleUserNameParameter = roleUserName != null ?
+                new ObjectParameter("RoleUserName", roleUserName) :
+                new ObjectParameter("RoleUserName", typeof(string));
+    
+            var rolePassWordParameter = rolePassWord != null ?
+                new ObjectParameter("RolePassWord", rolePassWord) :
+                new ObjectParameter("RolePassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetName", roleUserNameParameter, rolePassWordParameter);
+        }
     }
 }

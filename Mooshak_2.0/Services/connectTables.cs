@@ -194,11 +194,23 @@ namespace Mooshak_2._0.Services
 
         public List<string> GetAssignmentxInfoByCourse(string CourseName, string AssignmnetName)
         {
+
+            
+
+
             var listX = db.GetAssignmentxInfoByCourse(CourseName, AssignmnetName);
 
-            GetAssignmentxInfoByCourse_Result Res = listX.ElementAt(0);
+            GetAssignmentxInfoByCourse_Result Res = new GetAssignmentxInfoByCourse_Result();
 
-            List<string> Info = Res.ToString().Split(',').ToList<string>();
+            Res = listX.ElementAt(0);
+
+            
+
+            List<string> Info = new List<string>();
+
+            Info.Add(Res.Name);
+            Info.Add(Res.DueDate.ToString());
+            Info.Add(Res.CourseName);
 
             return Info;
 

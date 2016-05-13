@@ -21,6 +21,9 @@ namespace Mooshak_2._0.Controllers
             return View();
         }
 
+        
+
+
         public ActionResult Assignments(string ID)
         {
             var TeacherAssignments = new TeacherViewModelsAssignmetns();
@@ -58,17 +61,20 @@ namespace Mooshak_2._0.Controllers
         }
 
 
-        public ActionResult AddSubAssignment()
+        public ActionResult AddSubAssignment(string ID,string courseID)
         {
-            var Courses = Tables.GetCoursesByUser("Jon Jonson");
-            return View(Courses);
+            var ViewModel = new TeacherViewModelsAssignmetns();
+            ViewModel.CurrentAssignment = ID;
+            ViewModel.CurrentClass = courseID;
+            //var Courses = Tables.GetCoursesByUser("Jon Jonson");
+            return View(ViewModel);
         }
 
         [HttpPost]
-        public ActionResult AddSubAssignment(string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
+        public ActionResult AddSubAssignment(string AssignmentName, string CourseName,string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
         {
             int PercentNum = Convert.ToInt32(Percentage);
-            Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, "Verk1", "Gagnaskipann");
+            Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, AssignmentName, CourseName);
             return RedirectToAction("Assignments");
         }
 
@@ -84,7 +90,15 @@ namespace Mooshak_2._0.Controllers
         public ActionResult EditAssignment(string ID)
          {
              var Assignment = Tables.GetAssignmentxInfoByCourse("Gagnaskipann", ID);
-             return View(Assignment);
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\\Users\\petur\\Desktop\\testing\test.txt"))
+            {
+                file.WriteLine("list:");
+                foreach (string i in Assignment.ToList())
+                    file.WriteLine(i);
+            }
+
+            return View(Assignment);
          }
 
         [HttpPost]
