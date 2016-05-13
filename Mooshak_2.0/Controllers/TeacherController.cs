@@ -14,7 +14,6 @@ namespace Mooshak_2._0.Controllers
         // GET: Teacher
 
         connectTables Tables = new connectTables();
-        private VLN2_2016_H38Entities3 db = new VLN2_2016_H38Entities3();
 
         string CourseName = "Forritun";
 
@@ -98,8 +97,8 @@ namespace Mooshak_2._0.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var Description = db.GetDescription(mainID, subID).FirstOrDefault();
-            var Assignment = db.GetPartAssignmentInfoByName(subID, Description).FirstOrDefault();
+            var Description = Tables.GetDescription(mainID, subID);
+            var Assignment = Tables.GetPartAssignmentInfoByName(subID, Description);
             if (Assignment == null)
             {
                 return HttpNotFound();
