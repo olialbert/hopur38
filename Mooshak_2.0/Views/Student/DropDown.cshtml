@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -9,6 +8,7 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 
+    <!--Connects the submission to the course-->
     <script>
         function loadUrl() {
             var assignment = document.getElementById("mySelect").value;
@@ -20,12 +20,14 @@
 <body>
     <select id="mySelect" onchange="loadUrl()">
         <option selected disabled hidden style='display: none' value=''></option>
+
+        <!--Displays a list of elements from the model-->
         @foreach (var element in Model)
         {
             string name = element;
             <option value="@name">@element</option>
         }
-        
+               
     </select>
 </body>
 </html>

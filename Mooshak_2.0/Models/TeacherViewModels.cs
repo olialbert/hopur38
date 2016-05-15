@@ -24,6 +24,7 @@ namespace Mooshak_2._0.Models
     public class AddAssignmentViewModel
     {
         public List<string> Assignments { get; set; }
+        public GetAssignmentxInfoByCourse_Result AssignmentX { get; set; }
         public string Courses { get; set; }
         public string Name { get; set; }
     }
@@ -37,7 +38,8 @@ namespace Mooshak_2._0.Models
     public class EditSubAssignmentViewModel
     {
         public GetPartAssignmentInfoByName_Result Info { get; set; }
-        public string Name { get; set; }
+        public string CourseName { get; set; }
+        public string UserName { get; set; }
     }
 
     public class SelectStudentViewModel

@@ -219,5 +219,18 @@ namespace Mooshak_2._0
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllSubmissionFromStudent_Result>("GetAllSubmissionFromStudent", submissionNameParameter, submissionCourseNameParameter, submissionAssignmentNameParameter, submissionPartAssignmentNameParameter);
         }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> GetAssignmentDueDate(string getCourseName, string getAssignmentName)
+        {
+            var getCourseNameParameter = getCourseName != null ?
+                new ObjectParameter("GetCourseName", getCourseName) :
+                new ObjectParameter("GetCourseName", typeof(string));
+    
+            var getAssignmentNameParameter = getAssignmentName != null ?
+                new ObjectParameter("GetAssignmentName", getAssignmentName) :
+                new ObjectParameter("GetAssignmentName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("GetAssignmentDueDate", getCourseNameParameter, getAssignmentNameParameter);
+        }
     }
 }

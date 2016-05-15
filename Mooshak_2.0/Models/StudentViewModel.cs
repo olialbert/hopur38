@@ -31,6 +31,7 @@ namespace Mooshak_2._0.Models
         public List<string> Submittions { get; set; }
         public List<string> Courses { get; set; }
         public string StudentName { get; set; }
+        public string AssignmentDueDate { get; set; }
         public string Description { get; set; }
     }
 }

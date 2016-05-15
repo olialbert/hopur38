@@ -1,5 +1,5 @@
 ﻿@{
-ViewBag.Title = "User Page";
+    ViewBag.Title = "User Page";
 }
    
 @Html.Partial("_AdminForm")
@@ -9,6 +9,8 @@ ViewBag.Title = "User Page";
 @model Mooshak_2._0.Models.EditUserViewModel
 
 <div class="main">
+
+    <!--The form used to edit an existing user, interacts with the AdminController and the model-->
     @using (Html.BeginForm())
     {
         <h2>Edit User</h2>
@@ -34,7 +36,8 @@ ViewBag.Title = "User Page";
             <label for="Email">Email:</label>
             <input type="email" value="@Model.UserInfo.ElementAt(4)" class="form-control" name="Email" />
         </div>
-    
+        
+        <!--The role of the user selected-->
         bool IsStudent = true;
         if (@Model.UserInfo.ElementAt(5) == "Teacher")
         {
@@ -50,9 +53,11 @@ ViewBag.Title = "User Page";
         <label>Courses</label>
         bool IsInCourse = true;
         <div class="form-group">
+            <!--Displays all the courses available through the model-->
             @foreach (var element in Model.Courses)
             {
                 IsInCourse = false;
+
                 foreach (var userElem in Model.UserCourses)
                 {
                     if (element == userElem)
@@ -61,6 +66,7 @@ ViewBag.Title = "User Page";
                         break;
                     }
                 }
+
                 if (IsInCourse)
                 {
                     <input type="checkbox" name="Courses" value="@element" checked>
@@ -69,12 +75,10 @@ ViewBag.Title = "User Page";
                 {
                     <input type="checkbox" name="Courses" value="@element">
                 }
-                <span>@element</span>
-                
+                <span>@element</span>             
             }
         </div>
-
-        
+     
         <input class="btn btn-default" type="submit" value="Submit" onclick="location.href='@Url.Action("Users", "Asmin" )'" />
         <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Users", "Admin" )'" />
     }

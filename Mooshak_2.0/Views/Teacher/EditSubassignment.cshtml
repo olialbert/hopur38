@@ -3,46 +3,43 @@
     ViewBag.Title = "AddSubAssignment";
 }
 <div class="above-main"></div>
-@model GetPartAssignmentInfoByName_Result
+
+<!--Connects the cshtml with the model below-->
+@model Mooshak_2._0.Models.EditSubAssignmentViewModel
+
 <div class="main">
     <h2>Edit SubAssignment</h2>
 
-    <!--Hér að neðan er að finna þau form sem notuð eru þegar á að bæta við nýju hlutverkefni eða þá breyta því-->
+    <!--This is the form used to edit a subAssignment, which is then sent to a premade model-->
     @using (Html.BeginForm())
     {
-        @Html.Hidden("TeacherID", Model.Name)
-        @Html.Hidden("SearchName", Model.Name)
-        @Html.Hidden("SearchDesc", Model.Description)
-
-
+        <!--Hidden so the user can't see and interact with it-->
+        @Html.Hidden("id", Model.CourseName)
+        @Html.Hidden("SearchName", Model.Info.Name)
+        @Html.Hidden("SearchDesc", Model.Info.Description)
 
         <div class="form-group">
-            <label for="SubName">Description:</label>
-            <input type="text" name="SubName" value="@Model.Name" />
+            <label for="SubName">Name:</label>
+            <input type="text" class="form-control" name="SubName" value="@Model.Info.Name" />
         </div>
-
         <div class="form-group">
             <label for="Descrip.">Description:</label>                  
-            <textarea rows="5" cols="50" name="Descrip">@Model.Description</textarea>    
+            <textarea class="form-control" rows="5" cols="50" name="Descrip">@Model.Info.Description</textarea>    
         </div>
-
         <div class="form-group">
             <label for="Percentage">Percentage of total grade :</label>
-            <input type="text" name="Percentage" value="@Model.ValuePercentage" />          
+            <input class="form-control" type="text" name="Percentage" value="@Model.Info.ValuePercentage" />          
         </div>
-
         <div class="form-group">
             <label for="Input">Input:</label>                           
             <input type="file" name="Input" />                          
         </div>
-
         <div class="form-group">
-            <label for="Input">Input:</label>                           
+            <label for="Input">Output:</label>                           
             <input type="file"  name="Input" />                          
         </div>
 
         <input class="btn btn-default" type="submit" value="Save" />
-        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher", new {id =  })'" />
+        <input class="btn btn-default" type="button" value="Cancel" onclick="location.href='@Url.Action("Assignments", "Teacher", new { id = Model.CourseName, TeacherID = Model.UserName })'" />
     }
-
 </div>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    @Html.Partial("_StudentAssignmentsForm")
+    <div class="above-main"></div>
+    <div class="main">
+        <h2>Input/Output</h2>
+        <div class="right form-control">
+            Input
+        </div>
+        <div class="left form-control">
+            Output
+        </div>
+
+        @Html.ActionLink("Back", "SelectSubAssignment", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName }, new { @class = "btn btn-default" })
+    </div>
+</body>
+</html>

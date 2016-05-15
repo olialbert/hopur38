@@ -5,13 +5,14 @@
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
 
+<!--Connects the cshtml with the model below-->
 @model Mooshak_2._0.Models.StudentIdsViewModel
 
 <div class="leftSide">
     <div class="above">
-        <div class="User leftSide">
-            <img id="per" src="~/Content/Person.png" alt="Person" />
-            <div class="labels">
+        <div>
+            <img id="person" align="left" src="~/Content/Person.png" alt="Smiley face">
+            <div class="lab">
                 <label>Username</label><br />
                 <label>Teacher</label>
             </div>
@@ -20,13 +21,13 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
+
+            <!--Displays the courses using the model-->
             @foreach (var element in Model.Courses)
             {
                 string name = element;
-                <li> @Html.ActionLink(name, "SelectAssignments", new { id = element, studentID = Model.StudentName})</li>
+                <li> @Html.ActionLink(name, "SelectAssignments", new { mainID = name, courseID = element, studentID = Model.StudentName})</li>
             }
-
-
         </ul>
     </div>
 </div>
@@ -42,18 +43,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    @foreach (var element in Model.Assignments)
-                    {
-                        string name = element;
-                        <p> @Html.ActionLink(name, "SelectSubAssignment", new { id = element, CourseID = Model.CourseName, StudentID = Model.StudentName })</p>
-                    }
 
-                </td>
-                <td>06/06/06</td>
-                <td>Bubbi</td>
-            </tr>
+            <!--Displays all of the assignments in the selected course using the model-->
+            @foreach (var element in Model.Assignments)
+            {
+                string name = element;
+                <tr>
+                    <td>
+                        @Html.ActionLink(name, "SelectSubAssignment", new { id = element, CourseID = Model.CourseName, StudentID = Model.StudentName })
+                    </td>
+                    <td>06/06/06</td>
+                    <td>Accepted</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

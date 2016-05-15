@@ -34,7 +34,7 @@ namespace Mooshak_2._0.Controllers
             {
                 var AssignmentList2 = new AssignmentList();
                 AssignmentList2.AssignmentName = assignment;
-                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID,assignment);
+                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID, assignment);
                 AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
                 AssignmentList1.Add(AssignmentList2);
             }
@@ -48,7 +48,7 @@ namespace Mooshak_2._0.Controllers
         public ActionResult AddAssignment(string ID, string TeacherID)
         {
             var ViewModel = new AddAssignmentViewModel();
-            var Assignments = Tables.GetCoursesByUser("Jon Jonson");
+            var Assignments = Tables.GetCoursesByUser(TeacherID);
             ViewModel.Courses = ID;
             ViewModel.Assignments = Assignments;
             ViewModel.Name = TeacherID;
@@ -57,7 +57,7 @@ namespace Mooshak_2._0.Controllers
 
         //Adds an assignment to a selected course through the View
         [HttpPost]
-        public ActionResult AddAssignment(string TeacherID,string CourseHidden, string Name, DateTime Date)
+        public ActionResult AddAssignment(string TeacherID, string CourseHidden, string Name, DateTime Date)
         {
             Tables.AddAssignment(CourseHidden, Name, Date);
             return RedirectToAction("Assignments", new { id = CourseHidden, TeacherID = TeacherID });
@@ -75,11 +75,11 @@ namespace Mooshak_2._0.Controllers
 
         //Gets a new subAssignment through the View that is about to be added to the database
         [HttpPost]
-        public ActionResult AddSubAssignment(string TeacherID, string AssignmentName, string CourseName,string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
+        public ActionResult AddSubAssignment(string id, string TeacherID, string AssignmentName, string CourseName,string SubName,string Descrip, string limit, string Percentage, string Input, string Output)
         {
             int PercentNum = Convert.ToInt32(Percentage);
             Tables.AddPartAssignment(SubName, PercentNum, Descrip, Input, AssignmentName, CourseName);
-            return RedirectToAction("Assignments", new { id = CourseName, TeacherID });
+            return RedirectToAction("Assignments", new { id = CourseName, TeacherID = TeacherID });
         }
 
         public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId)
@@ -99,7 +99,7 @@ namespace Mooshak_2._0.Controllers
         }
 
         //Gets the right Assignment that is about to be edited, sends to the View
-        public ActionResult EditAssignment(string ID,string courseID, string TeacherID)
+        public ActionResult EditAssignment(string ID, string courseID, string TeacherID)
          {
             var ViewModel = new AddAssignmentViewModel();
             ViewModel.Assignments = Tables.GetAssignmentxInfoByCourse(courseID, ID);
@@ -116,7 +116,7 @@ namespace Mooshak_2._0.Controllers
         }
 
         //Gets the right subAssignment that is about to be edited through the View
-        public ActionResult EditSubassignment(string subID, string mainID, string TeacherID)
+        public ActionResult EditSubassignment(string subID, string mainID, string courseID, string TeacherID)
         {
             if (subID == null || mainID == null)
             {
@@ -135,17 +135,18 @@ namespace Mooshak_2._0.Controllers
             model.ValuePercentage = Assignment.ValuePercentage;
             var ViewModel = new EditSubAssignmentViewModel();
             ViewModel.Info = model;
-            ViewModel.Name = TeacherID;
-            return View(model);
+            ViewModel.CourseName = courseID;
+            ViewModel.UserName = TeacherID;
+            return View(ViewModel);
         }
 
         //Edited subAssignment is fetched through the View and sends it to be added to the database
         [HttpPost]
-        public ActionResult EditSubassignment(string TeacherID,string SearchName, string SearchDesc, string SubName, string Descrip, string Percentage, string Input)
+        public ActionResult EditSubassignment(string id, string TeacherID, string SearchName, string SearchDesc, string SubName, string Descrip, string Percentage, string Input)
         {
             int PercentNum = Convert.ToInt32(Percentage);
             Tables.UpdatePartAssignment(SearchName, SearchDesc, SubName, PercentNum, Descrip, Input);
-            return RedirectToAction("Assignments");
+            return RedirectToAction("Assignments", "Teacher", new { id, TeacherID });
         }
         
         //
@@ -189,7 +190,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.AllSubmit = Tables.GetAllSubmissionFromStudent(ID, CourseID, MainID, PartAssignmentId);
             viewModel.Name = TeacherID;
@@ -205,7 +206,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.BestSubmit = Tables.GetBestSubmissionForStudent(ID, CourseID, MainID, PartAssignmentId);
             viewModel.Name = TeacherID;
