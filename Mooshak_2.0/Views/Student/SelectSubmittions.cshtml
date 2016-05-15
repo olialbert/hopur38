@@ -7,7 +7,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-
+    
+    <!--Connects the submissions to the assignment-->
     <script>
         function loadUrl() {
             var assignment = document.getElementById("mySelect").value;
@@ -17,6 +18,8 @@
 
 </head>
 <body>
+
+    <!--Displays all the submittions using the model-->
     @foreach (var element in Model.Submittions)
     {
         string name = element;
@@ -32,9 +35,10 @@
 
     <input class="btn btn-default" type="button" value="View Description" onclick="location.href='@Url.Action("ViewDescription", "Student",new { id = @Model.UberString })'" /> 
 
-
     <select id="mySelect" onchange="loadUrl()">
     <option selected disabled hidden style='display: none' value=''></option>
+
+    <!--Displays all of the subAssignments using the model-->
     @foreach (var element in Model.SubAssignments)
     {
         string value = element;
@@ -44,6 +48,5 @@
     }
 
     </select>
-
 </body>
 </html>

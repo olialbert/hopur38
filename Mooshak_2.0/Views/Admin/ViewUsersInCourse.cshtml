@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 @Html.Partial("_AdminFormViewUsers")
 
 <div class="above-main">
@@ -21,6 +20,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays all the teachers in a selected course with the help of the model-->
             @foreach (var element in Model.Teachers)
             {
                 <tr>
@@ -39,6 +39,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--List all the students in a selected course using model-->
             @foreach (var element in Model.Students)
             {
                 <tr>

@@ -2,10 +2,9 @@
     ViewBag.Title = "Select course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
-
-
 
 <div class="leftSide">
     <div class="above">
@@ -20,6 +19,8 @@
     <div id="sidebar">
         <ul>
             <li id="sidebar-title">Courses</li>
+
+            <!--Lists up the courses using the model -->
             @foreach (var element in Model.Courses)
             {
                 string name = element;
@@ -28,23 +29,23 @@
         </ul>
     </div>
 </div>
-    <div class="above-main"></div>
-    <div class="main">
-        <table class="default teacher">
-            <caption>Courses</caption>
-            <thead>
-                <tr>
-                    <th>Assignment</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td >
-                    <td></td>
-                    <td></td>
-                </tr> 
-            </tbody>
-        </table>
-    </div>
+<div class="above-main"></div>
+<div class="main">
+    <table class="default teacher">
+        <caption>Courses</caption>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td >
+                <td></td>
+                <td></td>
+            </tr> 
+        </tbody>
+    </table>
+</div>

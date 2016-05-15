@@ -34,7 +34,7 @@ namespace Mooshak_2._0.Controllers
             {
                 var AssignmentList2 = new AssignmentList();
                 AssignmentList2.AssignmentName = assignment;
-                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID,assignment);
+                AssignmentList2.DueDate = Tables.GetAssignmentDueDates(ID, assignment);
                 AssignmentList2.SubAssignments = Tables.GetPartAssignmentByAssignmentName(assignment, ID);
                 AssignmentList1.Add(AssignmentList2);
             }
@@ -189,7 +189,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.AllSubmit = Tables.GetAllSubmissionFromStudent(ID, CourseID, MainID, PartAssignmentId);
             viewModel.Name = TeacherID;
@@ -205,7 +205,7 @@ namespace Mooshak_2._0.Controllers
             var viewModel = new SelectStudentViewModel();
             viewModel.CourseName = CourseID;
             viewModel.AssignmentName = MainID;
-            viewModel.PartAssignmentName = ID;
+            viewModel.PartAssignmentName = PartAssignmentId;
             viewModel.StudentName = StudentId;
             viewModel.BestSubmit = Tables.GetBestSubmissionForStudent(ID, CourseID, MainID, PartAssignmentId);
             viewModel.Name = TeacherID;

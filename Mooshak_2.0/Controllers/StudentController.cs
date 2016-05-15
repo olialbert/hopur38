@@ -12,9 +12,7 @@ namespace Mooshak_2._0.Controllers
     {
         connectTables Tables = new connectTables();
         StudentsViewModel Student = new StudentsViewModel();
-        //string Name = "gummi ben";
         string CourseName = "Gagnaskipann";
-        string AssignmentName = "Verk1";
 
         public void SetCourseVal(string val)
         {
@@ -95,29 +93,7 @@ namespace Mooshak_2._0.Controllers
             string OldId = SubAssignmentName + "," + CourseName + "," + AssignmentName;
             return RedirectToAction("SelectSubmittions", new { id = OldId });
         }
-
-        public ActionResult DropDown ()
-        {
-            var courses = Tables.GetPartAssignmentByAssignmentName("Verk1", CourseName);
-            return View(courses);
-        }
-
-        /*
-        public ActionResult SubmitAssignment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult SubmitAssignment(string path)
-        {
-            Tables.AddSentInAssignments(Name,"Verk1","a",CourseName, "pdf","//",path);
-            Tables.SetGrade(54, Name);
-            return RedirectToAction("Index");
-        }
-        */
-
-        
+                
         public ActionResult ViewDescription(string subID, string mainID, string courseID)
         {
             var ViewModel = new StudentIdsViewModel();
@@ -130,16 +106,15 @@ namespace Mooshak_2._0.Controllers
             return View(ViewModel);
         }
 
-        /*
-        public ActionResult ViewMySolutions(string ID)
+        public ActionResult ViewSubmission(string subID, string mainID, string courseID, string studentID)
         {
-            var ViewModel = new ViewMySolutionsViewModel();
-            ViewModel.CurrentFile = "";
-            ViewModel.CurrentSubAssignment = "Select Subassignment";
-            ViewModel.SubAssignments = Tables.GetPartAssignmentByAssignmentName(ID,CourseName);
-            ViewModel.Grades = Tables.GetGrades(Name, CourseName, ID, "");
-            return View();
+            var ViewModel = new StudentIdsViewModel();
+            ViewModel.CourseName = courseID;
+            ViewModel.AssignmentName = mainID;
+            ViewModel.SubAssignmentName = subID;
+            ViewModel.StudentName = studentID;
+            ViewModel.Assignments = Tables.GetAssignments(courseID);
+            return View(ViewModel);
         }
-        */
     }
 }
