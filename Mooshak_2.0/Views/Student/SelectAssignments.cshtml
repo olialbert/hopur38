@@ -26,8 +26,10 @@
             @foreach (var element in Model.Courses)
             {
                 string name = element;
-                <li> @Html.ActionLink(name, "SelectAssignments", new { mainID = name, courseID = element, studentID = Model.StudentName})</li>
+                <li> @Html.ActionLink(name, "SelectAssignments", new { id = element, studentID = Model.StudentName})</li>
             }
+
+
         </ul>
     </div>
 </div>

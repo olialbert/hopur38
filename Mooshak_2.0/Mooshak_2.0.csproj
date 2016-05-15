@@ -461,6 +461,7 @@
     <Content Include="Views\Teacher\SelectStudent.cshtml" />
     <Content Include="Views\Teacher\BestSubmission.cshtml" />
     <Content Include="Views\Teacher\AllSubmissions.cshtml" />
+    <Content Include="Views\Student\ViewSubmission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
