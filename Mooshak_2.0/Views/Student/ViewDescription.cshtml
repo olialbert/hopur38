@@ -11,7 +11,7 @@
     <div class="main">
         <h2>Description</h2>
         <p>@Model.Description</p>
-        @Html.ActionLink("Back", "SelectSubAssignment", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Back", "SelectSubAssignment", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName, studentID = Model.StudentName }, new { @class = "btn btn-default" })
     </div>
 </body>
 </html>

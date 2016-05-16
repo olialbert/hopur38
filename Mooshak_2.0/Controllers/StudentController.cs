@@ -23,8 +23,8 @@ namespace Mooshak_2._0.Controllers
         public ActionResult Index(string ID)
         {
             var ViewStudentModel = new StudentIdsViewModel();
-            ViewStudentModel.Assignments = Tables.GetAssignments("dsfsdf");
             ViewStudentModel.Courses = Tables.GetCoursesByUser(ID);
+            ViewStudentModel.Assignments = Tables.GetAssignments(ViewStudentModel.Courses.FirstOrDefault());
             ViewStudentModel.StudentName = ID;
             return View(ViewStudentModel);
         }
@@ -41,8 +41,6 @@ namespace Mooshak_2._0.Controllers
 
         public ActionResult SelectSubAssignment(string subID, string mainID, string courseID, string studentID)
         {
-            studentID = "gummi ben";
-
             var ViewModel = new StudentIdsViewModel();
             ViewModel.StudentName = studentID;
             ViewModel.CourseName = courseID;
@@ -100,6 +98,7 @@ namespace Mooshak_2._0.Controllers
             ViewModel.CourseName = courseID;
             ViewModel.AssignmentName = mainID;
             ViewModel.SubAssignmentName = subID;
+            ViewModel.StudentName = studentID;
 
             ViewModel.Description = Tables.GetDescription(mainID, subID);
             ViewModel.Assignments = Tables.GetAssignments(courseID);

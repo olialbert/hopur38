@@ -14,7 +14,7 @@
             <img id="person" align="left" src="~/Content/Person.png" alt="Smiley face">
             <div class="lab">
                 <label>Username</label><br />
-                <label>Teacher</label>
+                <label>Student</label>
             </div>
         </div>
     </div>
@@ -28,8 +28,6 @@
                 string name = element;
                 <li> @Html.ActionLink(name, "SelectAssignments", new { id = element, studentID = Model.StudentName})</li>
             }
-
-
         </ul>
     </div>
 </div>
@@ -49,10 +47,10 @@
             <!--Displays all of the assignments in the selected course using the model-->
             @foreach (var element in Model.Assignments)
             {
-                string name = element;
                 <tr>
                     <td>
-                        @Html.ActionLink(name, "SelectSubAssignment", new { id = element, CourseID = Model.CourseName, StudentID = Model.StudentName })
+                        @Html.ActionLink(Html.DisplayFor(x => element).ToString(), "SelectSubAssignment", new { subID = Model.SubAssignmentName, mainID = element, courseID = Model.CourseName, studentID = Model.StudentName })
+
                     </td>
                     <td>06/06/06</td>
                     <td>Accepted</td>
