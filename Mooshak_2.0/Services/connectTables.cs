@@ -119,7 +119,7 @@ namespace Mooshak_2._0.Services
 
         public string GetName(string UserName, string CourseName)
         {
-            var Name = db.GetName(UserName,CourseName).ElementAt(0);
+            var Name = db.GetName(UserName, CourseName).FirstOrDefault();
             return Name;
         }
 
@@ -144,7 +144,7 @@ namespace Mooshak_2._0.Services
 
         public string GetRoleByUser(string UserName, string Password)
         {
-            var Role = db.GetRoleByUser(UserName, Password).ElementAt(0);
+            var Role = db.GetRoleByUser(UserName, Password).FirstOrDefault();
             return Role;
         }
 

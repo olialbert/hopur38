@@ -11,7 +11,7 @@
 <div class="above-main"></div>
 <div class="main">
     <table class="default teacher">
-        <caption>@Model.CourseID</caption>
+        <caption>@Model.Name</caption>
         <thead>
             <tr>
                 <th>Student Name</th>
@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             <!--Displays a list of the best submittions from all of the students from the Model-->
-            @foreach (var element in Model)
+            @foreach (var element in Model.Submittions)
             {
                 string name = element.Name;
                 string path = element.PathToAssignmentSave;
@@ -34,7 +34,7 @@
                 }
         </tbody>
     </table>
-    <input class="btn btn-default" type="button" value="Back" onclick="location.href='@Url.Action("Assignments/" + Model.CourseName, "Teacher")'" />
+    <input class="btn btn-default" type="button" value="Back" onclick="location.href='@Url.Action("Assignments", "Teacher", new { id = Model.Name, TeacherID = Model.Teacher })'" />
 </div>
 
 

@@ -82,10 +82,14 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("Assignments", new { id = CourseName, TeacherID = TeacherID });
         }
 
-        public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId)
+        public ActionResult BestSubmittionsFromAllStudents(string ID, string MainID, string CourseId, string TeacherId)
         {
-            var Submittions = Tables.GetBestSubmissionAllStudents(CourseId, MainID, ID);
-            return View(Submittions);
+            var ViewModel = new GetSumbittionsViewModel();
+
+            ViewModel.Submittions = Tables.GetBestSubmissionAllStudents(CourseId, MainID, ID);
+            ViewModel.Name = CourseId;
+            ViewModel.Teacher = TeacherId;
+            return View(ViewModel);
         }
 
         //Gets best sumbittions from all the students and sends it to the View

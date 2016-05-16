@@ -29,7 +29,7 @@
             }
         </tbody>
     </table>
-    <input class="btn btn-default" type="button" value="Back" onclick="location.href='@Url.Action("Assignments/" + Model.CourseName, "Teacher")'" />
+    <input class="btn btn-default" type="button" value="Back" onclick="location.href='@Url.Action("Assignments" , "Teacher", new { id = Model.CourseName, TeacherID = Model.Name })'" />
 </div>
 
 

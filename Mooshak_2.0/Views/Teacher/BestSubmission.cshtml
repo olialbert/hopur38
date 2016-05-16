@@ -31,6 +31,6 @@
             }
         </tbody>
     </table>
-    <input class="btn btn-default" type="button" value="Back To Course" onclick="location.href='@Url.Action("Assignments/" + Model.CourseName, "Teacher")'" />
+    <input class="btn btn-default" type="button" value="Back To Course" onclick="location.href='@Url.Action("SelectStudent", "Teacher", new { id = Model.PartAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName, TeacherID = Model.Name })'" />
 </div>
 

@@ -34,6 +34,7 @@ namespace Mooshak_2._0.Models
     {
         public List<GetBestSubmissionAllStudents_Result> Submittions { get; set; }
         public string Name { get; set; }
+        public string Teacher { get; set; }
     }
 
     public class EditSubAssignmentViewModel

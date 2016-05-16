@@ -19,5 +19,11 @@ namespace Mooshak_2._0
         public string Ssn { get; set; }
         public string Email { get; set; }
         public string Roles { get; set; }
+		
+		public override string ToString()
+        {
+            string Res = Name + "," + UserName + "," + PassWord + "," + Ssn + "," + Email + "," + Roles;
+            return Res;
+        }
     }
 }
