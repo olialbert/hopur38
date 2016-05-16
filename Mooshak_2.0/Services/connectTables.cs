@@ -71,13 +71,8 @@ namespace Mooshak_2._0.Services
         public string GetAssignmentDueDates(string courseName, string AssignmentName)
         {
             var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).FirstOrDefault();
-            return DueDate.ToString();
-        }
-
-        public string GetAssignmentDueDate(string courseName, string AssignmentName)
-        {
-            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).FirstOrDefault();
-            return DueDate.ToString();
+            var date = DueDate.Value.ToString("MM/dd/yy");
+            return date;
         }
 
         public List<GetBestSubmissionAllStudents_Result> GetBestSubmissionAllStudents(string CourseName, string AssignmentName, string PartAssignmentName)
@@ -215,9 +210,8 @@ namespace Mooshak_2._0.Services
             Res = listX.ElementAt(0);
 
             List<string> Info = new List<string>();
-
             Info.Add(Res.Name);
-            Info.Add(Res.DueDate.ToString());
+            Info.Add(Res.DueDate.ToString("yyyy-MM-dd"));
             Info.Add(Res.CourseName);
 
             return Info;

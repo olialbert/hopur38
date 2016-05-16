@@ -94,7 +94,7 @@ namespace Mooshak_2._0.Controllers
             return RedirectToAction("SelectSubmittions", new { id = OldId });
         }
                 
-        public ActionResult ViewDescription(string subID, string mainID, string courseID)
+        public ActionResult ViewDescription(string subID, string mainID, string courseID, string studentID)
         {
             var ViewModel = new StudentIdsViewModel();
             ViewModel.CourseName = courseID;

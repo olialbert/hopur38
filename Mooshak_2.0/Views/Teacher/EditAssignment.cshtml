@@ -5,25 +5,10 @@
 
 <h2>EditAssignment</h2>
 
-
 @model Mooshak_2._0.Models.AddAssignmentViewModel
 <div class="main">
     @using (Html.BeginForm())
     {
-        /*string Value = @Model.Assignments.ElementAt(1);
-        Value = Value.Remove(Value.Length - 11);
-
-        string day = Value.Substring(0, Value.IndexOf('-')+1);
-        Value = Value.Remove(0,day.Length);
-        string month = Value.Substring(0, Value.IndexOf('-')+1);
-        int montNum = DateTime.Parse("01," +month+",1900").Month;
-        string monthVal = montNum.ToString();
-        monthVal = (monthVal.Length == 1) ? ("0" + monthVal) : monthVal;
-        Value = Value.Remove(0, month.Length);
-        string Year = "20" + Value;
-        Year = Year.Remove(Year.Length-1);
-        day= day.Remove(day.Length - 1);*/
-                 
         <input type="hidden" value="@Model.Name" name="AssignmentID" />
         <input type="hidden" value="@Model.Assignments.ElementAt(0)" name="searchName" />
         <input type="hidden" value="@Model.Assignments.ElementAt(2)" name="searchCourseName" />
@@ -33,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="updateDueDate">Due date:</label>
-            <input type="date" value="@Model.Assignments.ElementAt(1)" class="form-control" name="updateDueDate" />
+            <input type="date" value="@Model.Assignments.ElementAt(1)" class="form-control" name="updateDueDate"/>
         </div>
 
         <input class="btn btn-default" type="submit" value="Submit" />
