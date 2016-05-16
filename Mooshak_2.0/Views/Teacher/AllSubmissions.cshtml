@@ -1,9 +1,7 @@
 ﻿@{
-
     ViewBag.Title = "BestSubmittions - Student";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <link rel="stylesheet" type="text/css" href="~/Content/DefaultWithTable.css">
 <link rel="stylesheet" type="text/css" href="~/Content/TeacherCss.css">
@@ -11,7 +9,7 @@
 <div class="above-main"></div>
 <div class="main">
     <table class="default teacher">
-        <caption>Courses</caption>
+        <caption>Student - @Model.PartAssignmentName</caption>
         <thead>
             <tr>
                 <th>Student Name</th>
@@ -20,6 +18,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays list of submissions-->
             @foreach (var element in Model.AllSubmit)
             {
                 string path = element.PathToAssignmentSave;
@@ -32,4 +31,5 @@
             }
         </tbody>
     </table>
+    <input class="btn btn-default" type="button" value="Back To Course" onclick="location.href='@Url.Action("SelectStudent", "Teacher", new { id = Model.PartAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName, TeacherID = Model.Name })'" />
 </div>

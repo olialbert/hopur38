@@ -5,6 +5,7 @@
 
 @Html.Partial("_TeacherForm")
 
+<!--Connects this cshtml file to the model below-->
 @model Mooshak_2._0.Models.TeacherViewModelsAssignmetns
 
 <div class="above-main">
@@ -15,7 +16,7 @@
 
 <div class="main">
     <table class="default teacher">
-        <caption>Courses</caption>
+        <caption>@Model.CurrentClass</caption>
         <thead>
             <tr>
                 <th>Assignment</th>
@@ -24,6 +25,7 @@
             </tr>
         </thead>
         <tbody>
+            <!--Displays list of assignments from the Model-->
             @foreach (var element in Model.Assignments)
             {
                 <tr>
@@ -35,6 +37,7 @@
                         @Html.ActionLink("Add subassignment", "AddSubAssignment", new { id = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name })
                     </td>
                 </tr>
+                <!--Displays list  of SubAssignments that are assigned to the assignment-->
                 foreach (var subelement in element.SubAssignments)
                 {
                     <tr class="sub">
@@ -42,14 +45,13 @@
                         <td></td>
                         <td>
                             @Html.ActionLink("Delete", "DeleteSubAssignment", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "delete" })
-                            @Html.ActionLink("Edit", "EditSubassignment", new { subID = subelement, mainID = element.AssignmentName, TeacherID = @Model.Name }, new { @class = "edit" }) <br />
-                            @Html.ActionLink("View Best Submissions from all students", "BestSubmittionsFromAllStudents", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" }) <br />
-                            @Html.ActionLink("View Submission from student", "SelectStudent", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass }, new { @class = "" })
+                            @Html.ActionLink("Edit", "EditSubassignment", new { subID = subelement, mainID = element.AssignmentName, courseID = Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "edit" }) <br />
+                            @Html.ActionLink("View Best Submissions from all students", "BestSubmittionsFromAllStudents", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "" }) <br />
+                            @Html.ActionLink("View Submission from student", "SelectStudent", new { id = subelement, mainID = element.AssignmentName, courseID = @Model.CurrentClass, TeacherID = @Model.Name }, new { @class = "" })
                         </td>
                     </tr>
                 }
-            }
-            
+            }            
         </tbody>
     </table>
 </div>

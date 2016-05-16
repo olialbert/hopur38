@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Mooshak_2._0.Models
 {
+    //All of these classes are used to get and set variables, they can be used in the View
     public class AssignmentList
     {
         public string AssignmentName { get; set; }
@@ -24,6 +25,7 @@ namespace Mooshak_2._0.Models
     public class AddAssignmentViewModel
     {
         public List<string> Assignments { get; set; }
+        public GetAssignmentxInfoByCourse_Result AssignmentX { get; set; }
         public string Courses { get; set; }
         public string Name { get; set; }
     }
@@ -32,12 +34,14 @@ namespace Mooshak_2._0.Models
     {
         public List<GetBestSubmissionAllStudents_Result> Submittions { get; set; }
         public string Name { get; set; }
+        public string Teacher { get; set; }
     }
 
     public class EditSubAssignmentViewModel
     {
         public GetPartAssignmentInfoByName_Result Info { get; set; }
-        public string Name { get; set; }
+        public string CourseName { get; set; }
+        public string UserName { get; set; }
     }
 
     public class SelectStudentViewModel

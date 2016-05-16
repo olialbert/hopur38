@@ -70,8 +70,14 @@ namespace Mooshak_2._0.Services
 
         public string GetAssignmentDueDates(string courseName, string AssignmentName)
         {
-            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).ElementAt(0).ToString();
-            return DueDate;
+            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).FirstOrDefault();
+            return DueDate.ToString();
+        }
+
+        public string GetAssignmentDueDate(string courseName, string AssignmentName)
+        {
+            var DueDate = db.GetAssignmentDueDate(courseName, AssignmentName).FirstOrDefault();
+            return DueDate.ToString();
         }
 
         public List<GetBestSubmissionAllStudents_Result> GetBestSubmissionAllStudents(string CourseName, string AssignmentName, string PartAssignmentName)
@@ -193,30 +199,20 @@ namespace Mooshak_2._0.Services
             return role.ToList();
         }
 
-        public List<string> GetAssignmentsInfoByCourse(string CourseName, string AssignmnetName)
+        public GetAssignmentxInfoByCourse_Result GetAssignmentInfoByCourse(string CourseName, string AssignmnetName)
         {
-            var listX = db.GetAssignmentsInfoByCourse(CourseName, AssignmnetName);
-
-            GetAssignmentsInfoByCourse_Result Res = listX.ElementAt(0);
-
-            List<string> Info = Res.ToString().Split(',').ToList<string>();
-
-            return Info;
+            var info = db.GetAssignmentxInfoByCourse(CourseName, AssignmnetName).FirstOrDefault();
+            
+            return info;
         }
 
         public List<string> GetAssignmentxInfoByCourse(string CourseName, string AssignmnetName)
         {
-
-            
-
-
             var listX = db.GetAssignmentxInfoByCourse(CourseName, AssignmnetName);
 
             GetAssignmentxInfoByCourse_Result Res = new GetAssignmentxInfoByCourse_Result();
 
             Res = listX.ElementAt(0);
-
-            
 
             List<string> Info = new List<string>();
 
