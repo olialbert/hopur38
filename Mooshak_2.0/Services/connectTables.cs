@@ -119,7 +119,7 @@ namespace Mooshak_2._0.Services
 
         public string GetName(string UserName, string CourseName)
         {
-            var Name = db.GetName(UserName, CourseName).FirstOrDefault();
+            var Name = db.GetName(UserName,CourseName).FirstOrDefault();
             return Name;
         }
 

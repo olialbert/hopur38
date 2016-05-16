@@ -12,12 +12,13 @@ namespace Mooshak_2._0.Controllers
     {
         connectTables Tables = new connectTables();
         StudentsViewModel Student = new StudentsViewModel();
-        string CourseName = "Gagnaskipann";
-
+        //string CourseName = "Gagnaskipann";
+        /*
         public void SetCourseVal(string val)
         {
             CourseName = val;
         }
+        */
 
         // GET: Student
         public ActionResult Index(string ID)
@@ -54,6 +55,18 @@ namespace Mooshak_2._0.Controllers
             return View(ViewModel);
         }
 
+        [HttpPost]
+        public ActionResult SelectSubAssignment(string subID, string mainID, string courseID, string studentID, string path)
+        {
+            
+
+            string Description = Tables.GetDescription(mainID, subID);
+            Tables.AddSentInAssignments(studentID, mainID, subID, courseID, Description, "//", path);
+            Tables.SetGrade(58, studentID);
+            return RedirectToAction("SelectSubAssignment", new {id = mainID,subID = subID, mainID = mainID, courseID = courseID, studentID = studentID });
+        }
+
+        /*
         public ActionResult SelectSubmittions(string ID, string studentID)
         {
             List<string> Ids = ID.Split(',').ToList<string>();
@@ -86,11 +99,12 @@ namespace Mooshak_2._0.Controllers
             string AssignmentName = Ids.ElementAt(0);
             string SubAssignmentName = Ids.ElementAt(1);
             var Description = Tables.GetDescription(Ids.ElementAt(0), Ids.ElementAt(1));
-            Tables.AddSentInAssignments(studentId, Ids.ElementAt(0), Ids.ElementAt(1), Ids.ElementAt(2), Description, "//",path);
+            
             Tables.SetGrade(58, studentId);
             string OldId = SubAssignmentName + "," + CourseName + "," + AssignmentName;
             return RedirectToAction("SelectSubmittions", new { id = OldId });
         }
+        */
                 
         public ActionResult ViewDescription(string subID, string mainID, string courseID, string studentID)
         {

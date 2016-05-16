@@ -28,17 +28,25 @@
                     }
                 </ul>
             </div>
+            <input type="button" value="Back" onclick="location.href='@Url.Action("SelectAssignments", "Student", new { id = Model.CourseName, studentID = Model.StudentName })'" />
         </div>
+            @using (Html.BeginForm())
+            {
         <div class="right">
             <div class="browse">
-                <input type="file">
+                <input type="hidden" name="subID" value="@Model.SubAssignmentName" />
+                <input type="hidden" name="mainID" value="@Model.AssignmentName" />
+                <input type="hidden" name="courseID" value="@Model.CourseName" />
+                <input type="hidden" name="studentID" value="@Model.StudentName" />
+                <input type="file" name="path">
             </div>
             <div class="below-browse">
                 <input type="submit" class="btn btn-default" value="Submit" />
-                @Html.ActionLink("Description", "ViewDescription", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName }, new { @class = "btn btn-default input" })
+                @Html.ActionLink("Description", "ViewDescription", "Student", new { subID = Model.SubAssignmentName, mainID = Model.AssignmentName, courseID = Model.CourseName, studentID = Model.StudentName }, new { @class = "btn btn-default input" })
             </div>
             <p>Try limit: <input class="tryLimit" value="No limit" /></p>
         </div>
+            }
     </div>
     <div class="main">
         <table class="default">
